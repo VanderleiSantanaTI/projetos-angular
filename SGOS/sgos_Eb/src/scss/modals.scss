@@ -1,0 +1,490 @@
+// Modais de adicionar sócio
+.add-partner-mb {
+    --height: auto;
+
+    &::part(content) {
+        width: 80% !important;
+        height: 32rem !important;
+        position: absolute;
+        top: auto;
+        left: auto;
+        right: auto;
+        border-radius: 10px;
+    }
+}
+
+.add-partner-dp {
+    --height: auto;
+
+    &::part(content) {
+        width: 40% !important;
+        height: 32rem !important;
+        position: absolute;
+        top: auto;
+        left: auto;
+        right: auto;
+        border-radius: 10px;
+    }
+}
+
+// Modais de cliente criado
+.client-created-mb {
+    --height: auto;
+
+    &::part(content) {
+        width: 80% !important;
+        height: 18rem !important;
+        position: absolute;
+        top: auto;
+        left: auto;
+        right: auto;
+        border-radius: 10px;
+    }
+}
+
+.client-created-dp {
+  --height: auto;
+
+  &::part(content) {
+      width: 40% !important;
+      height: 18rem !important;
+      position: absolute;
+      top: auto;
+      left: auto;
+      right: auto;
+      border-radius: 10px;
+  }
+}
+
+
+.filter-statement {
+    --height: auto;
+
+    &::part(content) {
+        width: 70% !important;
+        height: 18rem !important;
+        position: absolute;
+        top: auto;
+        left: auto;
+        right: auto;
+        border-radius: 10px;
+    }
+}
+
+.actions-pix {
+    --height: auto;
+
+    &::part(content) {
+        width: 80% !important;
+        height: 13.5rem !important;
+        position: absolute;
+        top: auto;
+        left: auto;
+        right: auto;
+        border-radius: 10px;
+    }
+}
+
+.action-pix-web {
+    --height: auto;
+
+    &::part(content) {
+        width: 35% !important;
+        height: 13.5rem !important;
+        position: absolute;
+        top: auto;
+        left: auto;
+        right: auto;
+        border-radius: 10px;
+    }
+}
+
+
+.new-limit {
+    --height: auto;
+
+    &::part(content) {
+        width: 80% !important;
+        height: 17.5rem !important;
+        position: absolute;
+        top: auto;
+        left: auto;
+        right: auto;
+        border-radius: 10px;
+    }
+}
+
+.new-limit-web {
+    --height: auto;
+
+    &::part(content) {
+        width: 40% !important;
+        height: 19.5rem !important;
+        position: absolute;
+        top: auto;
+        left: auto;
+        right: auto;
+        border-radius: 10px;
+    }
+}
+
+.validate-key-pix {
+    --height: auto;
+
+    &::part(content) {
+        width: 80% !important;
+        height: 14.5rem !important;
+        position: absolute;
+        top: auto;
+        left: auto;
+        right: auto;
+        border-radius: 10px;
+    }
+}
+
+.validate-key-pix-web {
+    --height: auto;
+
+    &::part(content) {
+        width: 30% !important;
+        height: 14.5rem !important;
+        position: absolute;
+        top: auto;
+        left: auto;
+        right: auto;
+        border-radius: 10px;
+    }
+}
+
+.generate-key-pix {
+    --height: auto;
+
+    &::part(content) {
+        width: 80% !important;
+        height: 12rem !important;
+        position: absolute;
+        top: auto;
+        left: auto;
+        right: auto;
+        border-radius: 10px;
+    }
+}
+
+.generate-key-pix-desktop {
+    --height: auto;
+
+    &::part(content) {
+        width: 30% !important;
+        height: 12rem !important;
+        position: absolute;
+        top: auto;
+        left: auto;
+        right: auto;
+        border-radius: 10px;
+    }
+}
+
+.select-key-pix {
+    --height: auto;
+
+    &::part(content) {
+        width: 80% !important;
+        height: 19rem !important;
+        position: absolute;
+        top: auto;
+        left: auto;
+        right: auto;
+        border-radius: 10px;
+    }
+}
+
+.export-statement {
+    --height: auto;
+
+    &::part(content) {
+        width: 30% !important;
+        height: 2rem !important;
+        position: absolute;
+        top: 17rem;
+        left: 62%;
+        right: auto;
+        background-color: #000;
+    }
+}
+
+.loading {
+    --height: auto;
+
+    &::part(content) {
+        width: 40% !important;
+        height: 5rem !important;
+        position: absolute;
+        top: auto;
+        left: auto;
+        right: auto;
+        border-radius: 10px;
+    }
+
+    @media screen and (min-width: 768px) {
+        &::part(content) {
+            width: 30% !important;
+            height: 16rem !important;
+            position: absolute;
+            top: auto;
+            left: auto;
+            right: auto;
+            border-radius: 10px;
+        }
+    }
+}
+
+.alter-password {
+    --height: auto;
+
+    &::part(content) {
+      width: 60% !important;
+      height: 20rem !important;
+      position: absolute;
+      top: auto;
+      left: auto;
+      right: auto;
+      border-radius: .625rem;
+  }
+}
+
+.to-up-generated {
+    --height: auto;
+
+    &::part(content) {
+        width: 80% !important;
+        height: 16rem !important;
+        position: absolute;
+        top: auto;
+        left: auto;
+        right: auto;
+        border-radius: .625rem;
+    }
+}
+
+.authenticate-transaction {
+  --height: auto;
+
+  &::part(content) {
+      width: 60% !important;
+      height: auto !important;
+      position: absolute;
+      top: auto;
+      left: auto;
+      right: auto;
+      border-radius: 10px;
+  }
+}
+
+.receipt-lg {
+  --height: auto;
+
+  &::part(content) {
+      width: 60% !important;
+      height: auto !important;
+      position: absolute;
+      top: auto;
+      left: auto;
+      right: auto;
+      border-radius: 10px;
+  }
+}
+
+.receipt-sm {
+  --height: auto;
+
+  &::part(content) {
+      width: 90% !important;
+      height: auto !important;
+      position: absolute;
+      top: auto;
+      left: auto;
+      right: auto;
+      border-radius: 10px;
+  }
+}
+
+.contacts {
+  --height: auto;
+
+  &::part(content) {
+      width: auto !important;
+      height: auto !important;
+      position: absolute;
+      top: auto;
+      left: auto;
+      right: auto;
+      border-radius: 10px;
+  }
+}
+
+.change-password-card {
+  --height: auto;
+
+  &::part(content) {
+      width: 42% !important;
+      height: 28rem !important;
+      position: absolute;
+      top: auto;
+      left: auto;
+      right: auto;
+      border-radius: 10px;
+  }
+}
+
+.request-duplicate {
+  --height: auto;
+
+  &::part(content) {
+      width: 26rem !important;
+      height: 42rem !important;
+      position: absolute;
+      top: auto;
+      left: auto;
+      right: auto;
+      border-radius: 10px;
+  }
+}
+
+.request-additional {
+  --height: auto;
+
+  &::part(content) {
+      width: 26rem !important;
+      height: 46rem !important;
+      position: absolute;
+      top: auto;
+      left: auto;
+      right: auto;
+      border-radius: 10px;
+  }
+}
+
+.new-payroll {
+    --height: auto;
+
+    &::part(content) {
+        width: 40% !important;
+        height: 19rem !important;
+        position: absolute;
+        top: auto;
+        left: auto;
+        right: auto;
+        border-radius: 10px;
+    }
+}
+
+.block-card-lg {
+  --height: auto;
+
+  &::part(content) {
+      width: 42rem !important;
+      height: 24rem !important;
+      position: absolute;
+      top: auto;
+      left: auto;
+      right: auto;
+      border-radius: 10px;
+  }
+}
+
+.block-card-sm {
+  --height: auto;
+
+  &::part(content) {
+      width: 24rem !important;
+      height: 42rem !important;
+      position: absolute;
+      top: auto;
+      left: auto;
+      right: auto;
+      border-radius: 10px;
+  }
+}
+
+.cancel-card {
+  --height: auto;
+
+  &::part(content) {
+      width: 42rem !important;
+      height: 24rem !important;
+      position: absolute;
+      top: auto;
+      left: auto;
+      right: auto;
+      border-radius: 10px;
+  }
+}
+
+.create-card-password {
+  --height: auto;
+
+  &::part(content) {
+      width: 42rem !important;
+      height: 24rem !important;
+      position: absolute;
+      top: auto;
+      left: auto;
+      right: auto;
+      border-radius: 10px;
+  }
+}
+
+.auth-card {
+  --height: auto;
+
+  &::part(content) {
+      width: 100% !important;
+      height: 100vh !important;
+      position: absolute;
+      top: auto;
+      left: auto;
+      right: auto;
+  }
+}
+
+.auth-card-desktop {
+    --height: auto;
+    
+    &::part(content) {
+        width: 42rem !important;
+        height: 24rem !important;
+        position: absolute;
+        top: auto;
+        left: auto;
+        right: auto;
+        border-radius: 10px;
+    }
+}
+
+.alter-payroll-details-lg {
+  --height: auto;
+
+  &::part(content) {
+      width: 24rem !important;
+      height: auto !important;
+      position: absolute;
+      top: auto;
+      left: auto;
+      right: auto;
+      border-radius: 12px;
+  }
+}
+
+.alter-payroll-details-sm {
+  --height: auto;
+
+  &::part(content) {
+      width: 100% !important;
+      height: 100vh !important;
+      position: absolute;
+      top: auto;
+      left: auto;
+      right: auto;
+      border-radius: 10px;
+  }
+}

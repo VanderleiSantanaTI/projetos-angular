@@ -1,0 +1,7 @@
+{
+  "name": "sgos_Eb",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

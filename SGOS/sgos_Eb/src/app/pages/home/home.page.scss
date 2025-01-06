@@ -1,0 +1,14 @@
+// @import '_abstracts/responsive';
+@import '../../../theme/_abstracts/responsive';
+
+@include mobile() {
+    @import './responsive/mobile.scss';
+}
+
+@include tablet() {
+    @import './responsive/tablet.scss';
+}
+
+@include desktop() {
+    @import './responsive/desktop.scss';
+}
