@@ -5,16 +5,14 @@
     </ion-title>
   </ion-toolbar>
 </ion-header>
+@if (show){
 
+}
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <h2 [ngStyle]="{'font-size': '12px', 'font-font-family': font}">Testando diretiva de estilos</h2>
+  <h2 [ngClass]="classes">testando diretiva de classe 1</h2>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <div *ngIf="show; else outro">Estamos mostrando isso porque foi permitido</div>
+  <ng-template #outro><div>Estamos mostrando isso porque não foi permitido</div></ng-template>
+
 </ion-content>
