@@ -1,0 +1,24 @@
+* {
+  font-family: "Arial";
+}
+
+p,
+figure,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+ion-toolbar {
+  --border-width: 0 !important;
+}
+
+@media screen and (min-width: 768px) { 
+  ion-tab-bar {
+    display: none;
+  }
+}

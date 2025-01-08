@@ -1,0 +1,56 @@
+@mixin mobile() {
+    @media screen and (max-width: 560px) {
+        @content;
+    }
+}
+
+@mixin tablet() {
+  @media screen and (min-width: 561px) and (max-width: 890px) {
+      @content;
+  }
+}
+
+@mixin desktop() {
+    @media screen and (min-width: 891px){
+        @content;
+    }
+}
+
+@mixin mobile-inline($property, $value) {
+  // #{$property}: $value;
+
+  $breakpoints: (sm: 200px, md: 410px, lg: 480px, xl: 530px);
+  @each $breakpoint, $width in $breakpoints {
+    @media (min-width: $width) and (max-width: 530px) {
+      #{$property}: $value; // Mantém o mesmo valor por padrão, ajuste conforme necessário
+    }
+  }
+}
+
+@mixin tablet-inline($property, $values...) {
+  // #{$property}: nth($values, 1);
+
+  @if length($values) > 1 {
+    $breakpoints: (sm: 620px, md: 680px, lg: 740px, xl: 800px);
+
+    @each $breakpoint, $width in $breakpoints {
+      $in: index($breakpoints, ($breakpoint $width)) + 1;
+      @if length($values) >= $in {
+        @media (min-width: $width) and (max-width: 800px) {
+          #{$property}: nth($values, $in);
+        }
+      }
+    }
+  }
+}
+
+@mixin desktop-inline($property, $value) {
+  // #{$property}: $value;
+
+  $breakpoints: (md: 768px, lg: 992px, xl: 1200px);
+  @each $breakpoint, $width in $breakpoints {
+    @media (min-width: $width) {
+      #{$property}: $value; // Mantém o mesmo valor por padrão, ajuste conforme necessário
+    }
+  }
+}

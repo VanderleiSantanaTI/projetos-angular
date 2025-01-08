@@ -1,0 +1,108 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: var(--Medium-Gray);
+  color: white;
+  border-bottom: 3px solid var(--Verde-EB);
+  flex-direction: row-reverse;
+}
+
+.menu-icon {
+  color: var(--White-Light);
+  cursor: pointer;
+  font-size: 24px;
+}
+
+.logo {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.logo img {
+  height: 1.25rem;
+}
+
+.right-icon {
+  display: flex;
+  align-items: center;
+}
+
+.right-icon img {
+  height: 1.5rem;
+}
+
+.sidebar {
+  position: fixed;
+  left: 0;
+  width: 75%;
+  height: 100%;
+  background-color: var(--Medium-Gray);
+  z-index: 1000;
+  transition: transform 0.3s ease;
+  transform: translateX(-100%);
+
+}
+.voltarBar {
+  border-top: 2px solid  var(--Medium-Gray); /* Linha em cima */
+  border-bottom: 2px solid var(--Medium-Gray); /* Linha embaixo */
+  padding: 10px 0; /* Espaçamento interno */
+  cursor: pointer; /* Cursor de ponteiro para indicar que é clicável */
+  text-align: center; /* Centraliza o texto */
+  color: var(--White-Light); /* Cor do texto */
+}
+img.setinhaVoltar {
+  color: var(--Gray-BG);
+  width: 1.5rem;
+  margin-left: 20px;
+  margin-right: 5px;
+  height: 16px;
+
+}
+
+.sub-menu ul ul li{
+  font-size: 15px;
+  padding-left: 25px;
+}
+
+.setinha {
+  width: 1.5rem;
+  margin-left: 40px;
+}
+
+.setinha.rotated {
+
+  transform: rotate(180deg); /* Rotaciona a imagem em 180 graus */
+}
+.select.selected {
+  color: var(--Verde-EB); /* Cor do texto quando selecionado */
+}
+.sidebar.open {
+  transform: translateX(0); /* Aparece na tela */
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  display: flex;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  flex-direction: row;
+  align-items: center;
+}
+
+.sub-menu {
+  background-color: var(--Medium-Gray);
+}

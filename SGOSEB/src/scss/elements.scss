@@ -1,0 +1,187 @@
+// Classe de elementos(card, input, botao, etc) aqui
+// GLOBALS
+
+// Input
+ion-select {
+  font-family: Arial, Helvetica, sans-serif !important;
+}
+.input-padrao {
+    --border-color: transparent;
+    --inner-padding-bottom: 0;
+    --inner-padding-end: 0;
+    --inner-padding-start: 0;
+    --inner-padding-top: 0;
+    --highlight-color-valid: #000;
+
+    .input-disabled {
+        opacity: 0.75 !important;
+    }
+
+    &::part(native) {
+        padding: 0;
+    }
+
+    ion-label {
+        color: #F3F3F3 !important;
+        font-weight: 600;
+        font-size: 14px !important;
+        margin-top: 14px !important;
+        margin-bottom: 6px !important;
+        // font-family: OneDot-Bold !important;
+    }
+
+    ion-input,
+    ion-textarea,
+    ion-select {
+        font-size: 14px;
+        font-weight: 400;
+        font-family: OneDot;
+        --padding-start: 14px !important;
+        border-radius: 10px !important;
+        --padding-top: 13px !important;
+        --padding-bottom: 13px !important;
+        --highlight-color-invalid: #FCC200 !important;
+        --highlight-color-valid: #FCC200 !important;
+
+        color: #adadad;
+        --placeholder-opacity: 1;
+        --placeholder-color: #B5B5B5;
+        --highlight-color-focused: #FCC200;
+        --background: transparent;
+        border: 1px solid #B5B5B5;
+
+        &::placeholder {
+            // font-family: OneDot;
+            text-transform: none !important;
+        }
+
+        :disabled {
+            opacity: 0.75 !important;
+        }
+    }
+
+    ion-select {
+        position: relative;
+
+        &::part(icon) {
+            position: absolute;
+            right: 0.5rem;
+        }
+    }
+
+    .has-focus,
+    .item-has-focus {
+        color: #F3F3F3;
+        --placeholder-color: #F3F3F3;
+        border: 1px solid #FCC200;
+        transition: 0.1s ease;
+    }
+
+    &.item-error {
+        ion-label {
+            color: #E31837 !important;
+        }
+
+        ion-input, ion-select {
+            border: 1px solid #E31837 !important;
+            box-shadow: 0px 0px 4px 0px #e3183780 !important;
+        }
+    }
+}
+
+.erro-input {
+    margin-bottom: 0 !important;
+    margin-top: .375rem !important;
+    color: #ea1f44 !important;
+    font-size: .825rem !important;
+    margin-left: .625rem !important;
+}
+
+.icon-password {
+    font-size: 1.25rem;
+    padding-right: .5rem;
+}
+
+.container-error-message {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    padding: 0 .25rem;
+}
+
+.error-message {
+    font-size: .875rem !important;
+    font-weight: 500 !important;
+    text-align: center !important;
+    color: #E31837 !important;
+}
+
+.inputs {
+    display: flex !important;
+    gap: .75rem !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+}
+
+//SCANNER
+.scanner-overlay {
+    display: none;
+}
+
+body.scanner-active {
+    --background: transparent;
+    --ion-background-color: transparent;
+    background: transparent !important;
+
+    .scanner-hide {
+      display: none;
+    }
+
+    .scanner-overlay {
+        display: block;
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+
+        .center {
+            flex-grow: 1;
+            flex-shrink: 0;
+            flex-basis: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .bg-dark {
+            background: rgba(12, 12, 12, 0.5);
+            color: #F3F3F3;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .block-line {
+            background-color: rgba(12, 12, 12, 0.5);
+            height: 100%;
+            width: 5rem;
+        }
+
+        .line {
+            height: 100%;
+            width: 100%;
+            background: transparent;
+        }
+
+        ion-button {
+            color: #F3F3F3;
+            height: 2.5rem;
+            min-height: 2.5rem;
+            width: 12rem;
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: none;
+        }
+    }
+
+}

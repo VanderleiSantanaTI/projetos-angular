@@ -1,0 +1,50 @@
+import { inject, Injectable } from '@angular/core';
+import { NavController } from '@ionic/angular';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class NavService {
+
+  navController = inject(NavController);
+
+  constructor() { }
+
+  async navigateForward(
+    page: string,
+    queryParams: object = {},
+    animation: boolean = true
+  ): Promise<void> {
+    await this.navController.navigateForward(page, {
+      animated: animation,
+      queryParams
+    });
+  }
+
+  async navigateRoot(
+    page: string,
+    queryParams: object = {},
+    animation: boolean = true
+  ): Promise<void> {
+    await this.navController.navigateRoot(page, {
+      animated: animation,
+      queryParams,
+      replaceUrl: true
+    });
+  }
+
+  async navigateBack(
+    page: string,
+    queryParams: object = {},
+    animation: boolean = true
+  ): Promise<void> {
+    this.navController.navigateBack(page, {
+      animated: animation,
+      queryParams
+    });
+  }
+
+  async back(animation: boolean = true): Promise<void> {
+    this.navController.back({ animated: animation });
+  }
+}

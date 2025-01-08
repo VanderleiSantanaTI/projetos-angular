@@ -1,0 +1,143 @@
+<header>
+  <div class="menu-icon" (click)="toggleMenu()">☰</div>
+  <div class="logo">
+    <img src="#" alt="Logo" (click)="goTo('home')" />
+  </div>
+  <div class="right-icon" (click)="goTo('home')">
+    <img src="#" alt="person" />
+  </div>
+</header>
+<nav [class.sidebar]="true" [class.open]="isMenuOpen">
+  <ul *ngIf="activeSubMenuIndex === null" class="sub-menu">
+    <li (click)="goTo('start')">Home</li>
+    <li (click)="toggleSubMenu(1)">Cadastar</li>
+    <li (click)="toggleSubMenu(2)">Pesquisar</li>
+    <li (click)="toggleSubMenu(3)">Encerrar</li>
+    <li (click)="toggleSubMenu(4)">Relatorio</li>
+    <li (click)="toggleSubMenu(5)">Usuario</li>
+    <li (click)="toggleSubMenu(6)">Mais Opções</li>
+    <li>Sair</li>
+  </ul>
+  <div *ngIf="activeSubMenuIndex === 1" class="sub-menu">
+    <ul>
+      <li class="voltarBar" (click)="closeSubMenu()">
+        <img class="setinhaVoltar" src="/assets/icon/chevron-left-solid.svg" alt=""> Voltar
+      </li>
+      <li>
+        <h3>Conta Corrente</h3>
+      </li>
+      <li (click)="goTo(screenWidth <= 768 ? 'statement-details' : 'statement-desktop')">Extrato</li>
+      <li (click)="goTo('home')">Comprovantes</li>
+    </ul>
+  </div>
+
+
+  <div *ngIf="activeSubMenuIndex === 2" class="sub-menu">
+    <ul>
+      <li class="voltarBar" (click)="closeSubMenu()">
+        <img class="setinhaVoltar" src="/assets/icon/chevron-left-solid.svg" alt=""> Voltar
+      </li>
+      <li>
+        <h3>Tranferência</h3>
+      </li>
+      <li (click)="goTo('home')">TED</li>
+      <li (click)="goTo('home')">Comprovantes</li>
+      <li (click)="goTo('home')">Limites</li>
+    </ul>
+  </div>
+
+
+  <div *ngIf="activeSubMenuIndex === 3" class="sub-menu">
+    <ul>
+      <li class="voltarBar" (click)="closeSubMenu()">
+        <img class="setinhaVoltar" src="/assets/icon/chevron-left-solid.svg" alt=""> Voltar
+      </li>
+      <li>
+        <h3>PIX</h3>
+      </li>
+      <li (click)="goTo('home')">Transferir</li>
+      <li (click)="goTo('home')">Extrato Pix</li>
+      <li (click)="goTo('home')">Cadastro de Chave</li>
+      <li (click)="goTo('home')">Minhas Chaves</li>
+    </ul>
+  </div>
+
+
+  <div *ngIf="activeSubMenuIndex === 4" class="sub-menu">
+    <ul>
+      <li class="voltarBar" (click)="closeSubMenu()">
+        <img class="setinhaVoltar" src="/assets/icon/chevron-left-solid.svg" alt=""> Voltar
+      </li>
+      <li>
+        <h3>Pagamentos</h3>
+      </li>
+      <li [style]="activeOption === 'folha de pagamento' ? 'color: var(--Verde-Light)' : ''"
+        (click)="toggleSubOptions('folha de pagamento')" [ngClass]="{'d-none': typeUser === 'personal'}">
+        Folha de Pagamento
+        <img class="setinha" [class.rotated]="activeOption === 'folha de pagamento'"
+          src="/assets/icon/setinha.svg" alt="">
+      </li>
+      <ul *ngIf="activeOption === 'folha de pagamento'">
+        <li (click)="goTo('payroll-management')">Consultar Folha</li>
+      </ul>
+      <li [style]="activeOption === 'dda' ? 'color: var(--Verde-Light)' : ''" (click)="toggleSubOptions('dda')">DDA
+        <img class="setinha" [class.rotated]="activeOption === 'dda'" src="/assets/icon/setinha.svg" alt="">
+      </li>
+      <ul *ngIf="activeOption === 'dda'">
+
+        <li (click)="goTo('')">Consultar DDA</li>
+      </ul>
+      <li [style]="activeOption === 'outros-pagamentos' ? 'color: var(--Verde-Light)' : ''"
+        (click)="toggleSubOptions('outros-pagamentos')">Outros Pagamentos
+        <img class="setinha" [class.rotated]="activeOption === 'outros-pagamentos'" src="/assets/icon/setinha.svg" alt="">
+      </li>
+      <ul *ngIf="activeOption === 'outros-pagamentos'">
+        <li (click)="goTo('payment/boleto-options/manual')">Boletos</li>
+        <li (click)="goTo('gps')">GPS</li>
+        <li (click)="goTo('darf')">DARF</li>
+      </ul>
+    </ul>
+  </div>
+
+
+  <div *ngIf="activeSubMenuIndex === 5" class="sub-menu">
+    <ul>
+      <li class="voltarBar" (click)="closeSubMenu()">
+        <img class="setinhaVoltar" src="/assets/icon/chevron-left-solid.svg" alt=""> Voltar
+      </li>
+      <li>
+        <h3>Cartão</h3>
+      </li>
+      <li (click)="goTo('card')" [ngClass]="{'d-none': !menuCardVisible }">Ver Cartões</li>
+      <li (click)="goTo('card-statement')" [ngClass]="{'d-none': !menuCardVisible }">Extrato cartão</li>
+      <li (click)="goTo('request-card')">Solicitar novo cartão</li>
+    </ul>
+  </div>
+
+  <div *ngIf="activeSubMenuIndex === 6" class="sub-menu">
+    <ul>
+      <li class="voltarBar" (click)="closeSubMenu()">
+        <img class="setinhaVoltar" src="/assets/icon/chevron-left-solid.svg" alt=""> Voltar
+      </li>
+      <li>
+        <h3>Mais Opções</h3>
+      </li>
+      <li [style]="activeOption === 'usuario' ? 'color: var(--Verde-Light)' : ''" (click)="toggleSubOptions('usuario')">
+        Usuário
+        <img class="setinha" [class.rotated]="activeOption === 'usuario'" src="/assets/icon/setinha.svg" alt="">
+      </li>
+      <ul *ngIf="activeOption === 'usuario'">
+        <li (click)="goTo('profile-details')">Perfil</li>
+        <li (click)="goTo('change-password')">Alterar Senha</li>
+      </ul>
+      <li [style]="activeOption === 'Outros' ? 'color: var(--Verde-Light)' : ''" (click)="toggleSubOptions('Outros')">
+        Outros
+        <img class="setinha" [class.rotated]="activeOption === 'Outros'" src="/assets/icon/setinha.svg" alt="">
+      </li>
+      <ul *ngIf="activeOption === 'Outros'">
+        <li (click)="goTo('document')">Documentos</li>
+        <li (click)="goTo('terms')">Termos de Uso</li>
+      </ul>
+    </ul>
+  </div>
+</nav>

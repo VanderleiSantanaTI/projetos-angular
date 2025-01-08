@@ -1,0 +1,45 @@
+// For information on how to create your own theme, please see:
+// http://ionicframework.com/docs/theming/
+// For information on how to create your own theme, please see:
+// http://ionicframework.com/docs/theming/
+
+:root {
+  // config
+  --ion-color-primary: #115c0e;
+	--ion-color-primary-rgb: 252,194,0;
+	--ion-color-primary-contrast: #000000;
+	--ion-color-primary-contrast-rgb: 0,0,0;
+	--ion-color-primary-shade: #0e4e0c;
+	--ion-color-primary-tint: #1a8616;
+
+	--ion-color-secondary: #115c0e;
+	--ion-color-secondary-rgb: 252,194,0;
+	--ion-color-secondary-contrast: #000000;
+	--ion-color-secondary-contrast-rgb: 0,0,0;
+	--ion-color-secondary-shade: #0e4e0c;
+	--ion-color-secondary-tint: #1a8616;
+
+	--ion-color-tertiary: #115c0e;
+	--ion-color-tertiary-rgb: 252,194,0;
+	--ion-color-tertiary-contrast: #000000;
+	--ion-color-tertiary-contrast-rgb: 0,0,0;
+	--ion-color-tertiary-shade: #0e4e0c;
+	--ion-color-tertiary-tint: #23c71e;
+
+  // default colors
+  --Verde-EB: #115c0e;
+  --Verde-Light: #23c71e;
+  --Petroleo-BG: #0C0C0C;
+  --Gray-BG: #242424;
+  --White-Light: #F3F3F3;
+  --Light-Gray: #494948;
+  --Medium-Gray: #3D3C3C;
+}
+
+ion-app, ion-content {
+  --background: var(--Petroleo-BG);
+}
+
+body, ion-content, ion-text, p, h1, h2, h3, h4, h5, h6, span {
+  color: var(--White-Light);
+}

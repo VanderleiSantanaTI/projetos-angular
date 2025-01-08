@@ -1,0 +1,16 @@
+.toast-success, .toast-error {
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.toast-success{
+    --border-radius: 0.3125rem;
+    --background: var(--White-Light);
+    color: #000000;
+    font-weight: 700;
+}
+
+.toast-error{
+    --background: #D9534F;
+    color: #F3F3F3;
+    --border-radius: 0.3125rem;
+}
