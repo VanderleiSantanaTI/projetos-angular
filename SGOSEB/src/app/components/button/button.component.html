@@ -1,0 +1,28 @@
+<ion-button
+  class="btn-{{ type }}"
+  [disabled]="disabled || showSpinner"
+  [ngStyle]="{ 'width': width, 'background-color': background, 'border': border, 'margin-bottom': marginBottom, 'height': height, 'border-color': borderColor}"
+  [ngClass]="{ 'button-icon': !text, 'size-small': size === 'small' }"
+  [ngClass]="active ? 'active-'+type : ''"
+  [size]="size"
+  fill="clear"
+  mode="md"
+  (click)="callAction()"
+>
+  <div class="d-flex align-items-center justify-content-center" [style]="'gap:' + iconSpacing">
+    @if(icon) {
+        <img [src]="icon" alt="" id="icon" [ngClass]="{'order': alignIcon === 'right'}">
+    }
+
+    @if(!showSpinner && text) {
+      <h4 [ngClass]="{'text-upper': textUpper, 'font-bold': fontBold, 'underline': underline}" [style.color]="colorText">
+        {{ text }}
+      </h4>
+    }
+
+    @if(showSpinner) {
+      <h4 class="loading">
+      </h4>
+    }
+  </div>
+</ion-button>

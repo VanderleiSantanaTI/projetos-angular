@@ -1,0 +1,29 @@
+<div class="input-padrao d-flex fd-c" [ngClass]="{ 'item-error': errorFormDisplay}">
+  <ion-label position="stacked" mode="ios">{{label}}</ion-label>
+  <ion-input
+      mode="ios"
+      id="{{name}}"
+      [type]="name === 'password' ? passwordFields.password.type : name === 'confirmedPassword' ? passwordFields.confirmedPassword?.type : name === 'actualPassword' ? passwordFields.actualPassword?.type : 'text'"
+      [name]="name"
+      [class]="class"
+      [autocapitalize]="autocapitalize"
+      [placeholder]="placeholder"
+      (ionInput)="callAction()"
+      [formControlName]="name"
+      [maxlength]="maxlength"
+      [value]="value"
+      [disabled]="disabled">
+    @if(name === 'password' || name === 'confirmedPassword' || name === 'actualPassword') {
+      <ion-icon
+        mode="ios"
+        class="icon-password"
+        (click)="togglePassword(name)"
+        [name]="name === 'password' ? passwordFields.password.icon : name === 'confirmedPassword' ? passwordFields.confirmedPassword?.icon : passwordFields.actualPassword?.icon"
+        slot="end">
+      </ion-icon>
+    }
+  </ion-input>
+  @if(errorFormDisplay) {
+    <p class="erro-input">{{errorFormessage}}</p>
+  }
+</div>

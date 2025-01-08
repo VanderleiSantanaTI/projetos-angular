@@ -6,6 +6,9 @@ import { HomePage } from './home.page';
 import { HomePageRoutingModule } from './home-routing.module';
 import { HeaderMobileComponent } from "../components/header-mobile/header-mobile.component";
 import { ComponentModule } from '../component/component.module';
+import { MaskedInputComponent } from "../components/masked-input/masked-input.component";
+import { ButtonComponent } from "../components/button/button.component";
+import { UnmaskedInputComponent } from "../components/unmasked-input/unmasked-input.component";
 
 
 
@@ -17,7 +20,10 @@ import { ComponentModule } from '../component/component.module';
     IonicModule,
     HomePageRoutingModule,
     // HeaderMobileComponent
-    ComponentModule
+    ComponentModule,
+    MaskedInputComponent,
+    ButtonComponent,
+    UnmaskedInputComponent
 ],
   declarations: [HomePage]
 })

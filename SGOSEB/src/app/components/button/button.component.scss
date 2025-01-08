@@ -1,0 +1,102 @@
+.btn-primary {
+  background-color: var(--Verde-EB);
+  width: 90vw;
+  height: 6vh;
+  border-radius: 0.625rem;
+  box-shadow: 0px 1px 4px 0px #00000040;
+}
+
+.btn-secondary {
+  background-color: #FFF;
+  width: 90vw;
+  height: 6vh;
+  border-radius: 0.625rem;
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--Verder-EB);
+  width: 90vw;
+  height: 6vh;
+  border-radius: 0.625rem;
+  border: 1px solid var(--Verde-EB, #115c0e);
+
+  h4 {
+    color: var(--Verde-EB);
+  }
+}
+
+.btn-error {
+  background-color: #D9534F;
+  width: 90vw;
+  height: 6vh;
+  border-radius: 0.625rem;
+
+  h4 {
+    color: #FFF;
+  }
+}
+
+.btn-success {
+  background-color: #5CB85C;
+  width: 90vw;
+  height: 6vh;
+  border-radius: 0.625rem;
+
+  h4 {
+    color: #FFF;
+  }
+}
+
+h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #0C0C0C;
+  text-transform: none !important;
+}
+
+#icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+@media (max-width: 340px) {
+  h4 {
+    font-size: 1rem;
+  }
+
+  #icon {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+}
+ion-button {
+  --background-activated: transparent !important;
+  --background: transparent;
+  --color: transparent;
+}
+
+ion-button::part(native) {
+  --background-activated: transparent !important;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+@keyframes loading {
+  0% { content: "."; }
+  33% { content: ".."; }
+  66% { content: "..."; }
+  100% { content: ""; }
+}
+
+.loading {
+  &:after {
+    content: "";
+    display: inline-block;
+    animation: loading 1s steps(4, end) infinite;
+  }
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}

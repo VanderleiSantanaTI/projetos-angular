@@ -10,7 +10,40 @@
   </ion-header>
 
   <div id="container">
-    <strong>Ready to create an app?</strong>
+    <p>Ready to create an app?</p>
+
+    <app-masked-input
+    inputmode="numeric"
+    ></app-masked-input>
+
+    <app-button
+       text="Click Me"
+       width="300px"
+    ></app-button>
+
+    <form-unmasked-input
+    [label]="'Nome completo'"
+    [type]="'text'"
+    [name]="'name'"
+    [placeholder]="'Insira o nome'"
+    [maxlength]="40"
+
+    >
+    </form-unmasked-input>
     <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
   </div>
+
+
+  <!-- <form-unmasked-input
+  [label]="'E-mail*'"
+  [type]="'email'"
+  [name]="'email'"
+  [placeholder]="'mail@email.com'"
+  (ionInput)="callAction('email', $event)"
+  [errorFormessage]="errorFormUserManager.email.message"
+  [errorFormDisplay]="errorFormUserManager.email.display"
+  [maxlength]="50"
+  [value]="valueInput['email']">
+</form-unmasked-input> -->
+
 </ion-content>
