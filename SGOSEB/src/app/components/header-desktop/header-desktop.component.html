@@ -1,0 +1,42 @@
+<header class="header-container">
+  <div class="top-header">
+    <img src="/assets/images/logo-com-texto.svg" alt="Logo da marca" (click)="goTo('/home')" style="cursor: pointer;">
+
+
+
+      </div>
+
+
+  <nav class="header-options-container">
+    @for(section of nav; track section; let idx = $index) {
+      <div class="header-option" (click)="setActiveSection(idx)" [ngClass]="{'active': activeSection === idx, 'd-none': typeUser === 'personal' && section.title === 'Folha de Pagamento'}">
+        <p class="section-name">{{section.title}}</p>
+        <img class="setinha" src="/assets/icon/setinha.svg" alt="">
+      </div>
+    }
+
+    <!-- <div (click)="handleLogout()" class="header-option">
+      <p class="section-name">Sair</p>
+      <img src="/assets/icon/logout.png" alt="">
+    </div> -->
+  </nav>
+
+</header>
+
+@if(activeSection !== null) {
+  <section class="dropdown-options">
+    <div class="objs-container">
+      @for(obj of nav[activeSection].sections; track obj; let idx = $index) {
+        <div class="obj" [ngClass]="{'d-none': (typeUser === 'personal' && obj.title === 'Folha de Pagamento') || (obj.title === 'Configurar' && !menuCardVisible)}">
+          <div class="obj-header">{{obj.title}}</div>
+          @for(option of obj.options; track option; let idx = $index) {
+            <div class="dropdown-option" (click)="option.action ? option.action() : goTo(option.url)" [ngClass]="{'d-none': (typeUser === 'personal' && option.label === 'Acesso de Usuários') || (option.label === 'Ver Cartões' && !menuCardVisible) || (option.label === 'Extrato cartão' && !menuCardVisible)}">
+              <p class="option-name">{{option.label}}</p>
+            </div>
+          }
+        </div>
+      }
+    </div>
+  </section>
+}
+

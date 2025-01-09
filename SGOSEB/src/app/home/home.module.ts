@@ -9,6 +9,7 @@ import { ComponentModule } from '../component/component.module';
 import { MaskedInputComponent } from "../components/masked-input/masked-input.component";
 import { ButtonComponent } from "../components/button/button.component";
 import { UnmaskedInputComponent } from "../components/unmasked-input/unmasked-input.component";
+import { HeaderDesktopComponent } from "../components/header-desktop/header-desktop.component";
 
 
 
@@ -23,7 +24,8 @@ import { UnmaskedInputComponent } from "../components/unmasked-input/unmasked-in
     ComponentModule,
     MaskedInputComponent,
     ButtonComponent,
-    UnmaskedInputComponent
+    UnmaskedInputComponent,
+    HeaderDesktopComponent
 ],
   declarations: [HomePage]
 })
