@@ -14,23 +14,38 @@
     <p>Ready to create an app?</p>
 
     <app-masked-input
-    inputmode="numeric"
-    ></app-masked-input>
+    [label]="'CPF*'"
+    [type]="'text'"
+    [name]="'cpf'"
+    [inputmode]="'numeric'"
+    [placeholder]="'000.000.000-00'"
+    (ionInput)="callAction('cpf', $event)"
+    [errorFormessage]="erroCPFMessage"
+    [mask]="masks[5]"
+    [maxLength] = "14"
+    [value]="valueInput['cpf']"
+    [errorFormDisplay]="errorColaboratorDisplayCPF">
+   ></app-masked-input>
 
     <app-button
        text="Click Me"
        width="300px"
+       (click)="authenticateColaborator()"
     ></app-button>
 
-    <form-unmasked-input
-    [label]="'Nome completo'"
-    [type]="'text'"
-    [name]="'name'"
-    [placeholder]="'Insira o nome'"
-    [maxlength]="40"
+    <app-unmasked-input
+    [label]="'Insira seu e-mail corporativo'"
+    [type]="'email'"
+    [name]="'email'"
+    [placeholder]="'mail@email.com'"
+    (ionInput)="callAction('email', $event)"
+    [errorFormessage]="errorEmailMessage"
 
-    >
-    </form-unmasked-input>
+    [maxLength] = "50"
+    [value]="valueInput['email']"
+    [errorFormDisplay]="errorColaboratorDisplayEmail"
+    > </app-unmasked-input>
+
     <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
   </div>
 

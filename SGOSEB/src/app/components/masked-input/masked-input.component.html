@@ -13,14 +13,14 @@
       [placeholder]="placeholder"
       (ionInput)="callAction()"
       formControlName="{{name}}"
+      [maskito]="mask"
+      [maskitoElement]="maskPredicate"
       [value]="value"
       [maxlength]="name === 'name' ? 50 : maxLength"
       [disabled]="disabled">
   </ion-input>
+
   @if(errorFormDisplay) {
     <p class="erro-input">{{errorFormessage}}</p>
   }
 </div>
-<!-- [maskito]="mask"
- formControlName="{{name}}"
-[maskitoElement]="maskPredicate" -->

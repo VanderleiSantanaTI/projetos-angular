@@ -1,10 +1,9 @@
 
 import { NgClass } from '@angular/common';
-import { Component, Input, OnInit, Output, EventEmitter, SimpleChanges } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter, SimpleChanges, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { MaskitoOptions, MaskitoElementPredicate } from "@maskito/core";
-import { ComponentModule } from 'src/app/component/component.module';
 
 
 @Component({
@@ -12,6 +11,7 @@ import { ComponentModule } from 'src/app/component/component.module';
   templateUrl: './masked-input.component.html',
   styleUrls: ['./masked-input.component.scss'],
   imports: [ NgClass, IonicModule, ReactiveFormsModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class MaskedInputComponent  implements OnInit {
 
@@ -33,6 +33,7 @@ export class MaskedInputComponent  implements OnInit {
   @Input() maxLength: number = 120;
 
   @Output() action = new EventEmitter();
+
 
   maskPredicate: MaskitoElementPredicate = async (el) => (el as HTMLIonInputElement).getInputElement();
 
