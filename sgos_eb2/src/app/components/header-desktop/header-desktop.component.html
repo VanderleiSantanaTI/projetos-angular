@@ -1,0 +1,55 @@
+<header class="header">
+  <a class="logo" routerLink="/">MyApp</a>
+  
+
+  <div class="header-container">
+    <!-- Conteúdo principal da página -->
+    <nav>
+      <ul>
+        <li *ngFor="let link of navLinks">
+          <div
+            class="menu-item"
+            (click)="link.subMenu ? toggleSubMenu(link.name) : navigateTo(link.path)"
+          >
+            <a>{{ link.name }}</a>
+          </div>
+          <ul
+            class="submenu"
+            *ngIf="link.subMenu && activeSubMenu === link.name"
+          >
+            <li *ngFor="let subLink of link.subMenu">
+              <a (click)="navigateTo(subLink.path)">{{ subLink.name }}</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- Menu Hamburguer (Responsivo) -->
+  <div *ngIf="menuOpen" class="menu-overlay">
+    <div>
+      
+      <div routerLink="/home" (click)="toggleMenu()">Home</div>
+
+      <div routerLink="/register-vehicle" (click)="toggleMenu()">Registrar Veículos</div>
+      
+      <div routerLink="/register-entry" (click)="toggleMenu()">Registrar Entrada</div>
+      
+      <div routerLink="/register-exit" (click)="toggleMenu()">Registrar Saída</div>
+
+      <div routerLink="/report" (click)="toggleMenu()">Relatório</div>
+
+      <div routerLink="/start" (click)="toggleMenu()">Login</div>
+
+    </div>
+  </div>
+
+  <!-- Botão Hamburguer -->
+  <button class="hamburger" (click)="toggleMenu()">
+    <div></div>
+    <div></div>
+    <div></div>
+    <!-- <ion-icon [name]="menuOpen ? 'close-outline' : 'menu-outline'"></ion-icon> -->
+  </button>
+</header>

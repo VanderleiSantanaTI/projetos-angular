@@ -1,0 +1,42 @@
+<ion-content [fullscreen]="true">
+  @if(screenWidth <=560){
+    <div class="card">
+      <app-header-desktop></app-header-desktop>
+      <h1>Relatório</h1>
+      <div class="d-flex w-100 justify-content-between">
+        <p class="title">respostas mobile</p>
+      </div>
+      <div>
+        <app-button
+        (action)="goToServiceList('/service-list')"
+        type="outline"
+        width="250px"
+        text="Lista de senviço"
+        [fontBold] = true
+        
+          >
+        </app-button>
+      </div>
+        
+    </div>
+  }@else if (screenWidth <= 890) {
+
+    <div class="card">
+      <app-header-desktop></app-header-desktop>
+      <h1>Relatório</h1>
+      <div class="d-flex w-100 justify-content-between">
+        <p class="title">respostas tablet</p>
+      </div>
+    </div>
+
+  }@else {
+    <div class="card">
+      <app-header-desktop></app-header-desktop>
+      <h1>Relatório</h1>
+      <div class="d-flex w-100 justify-content-between">
+        <p class="title">respostas desktop</p>
+      </div>
+    </div>
+  }
+
+</ion-content>

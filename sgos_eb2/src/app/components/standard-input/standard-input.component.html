@@ -1,0 +1,21 @@
+<div class="input-padrao d-flex fd-c" [ngClass]="{ 'item-error': errorFormDisplay }">
+  <ion-label *ngIf="!withoutLabel" position="stacked" mode="ios">{{ label }}</ion-label>
+  <ion-input
+    mode="ios"
+    [id]="name"
+    [type]="type"
+    [name]="name"
+    [class]="class"
+    [inputmode]="inputMode"
+    [autocapitalize]="autocapitalize"
+    [placeholder]="placeholder"
+    (ionInput)="callAction()"
+    [formControlName]="name"
+    [maskito]="mask"
+    [maskitoElement]="maskPredicate"
+    [value]="value"
+    [maxlength]="name === 'name' ? 50 : maxLength"
+    [disabled]="disabled">
+  </ion-input>
+  <p *ngIf="errorFormDisplay" class="error-input">{{ errorFormMessage }}</p>
+</div>

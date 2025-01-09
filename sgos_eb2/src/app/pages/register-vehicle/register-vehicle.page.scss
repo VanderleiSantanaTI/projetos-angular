@@ -1,0 +1,14 @@
+@import '../../../scss/mixin';
+
+@include mobile() {
+    @import './responsive/mobile.scss';
+}
+
+@include tablet() {
+  @import './responsive/tablet.scss';
+}
+
+
+@include desktop() {
+  @import './responsive/desktop.scss';
+}

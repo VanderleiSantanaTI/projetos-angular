@@ -1,0 +1,32 @@
+<ion-content [fullscreen]="true">
+  @if(screenWidth <=560){
+    <ion-content [fullscreen]="true">
+    <div class="card">
+      <app-header-desktop></app-header-desktop>
+      <h1>Principal</h1>
+      <div class="d-flex w-100 justify-content-between">
+        <p class="title">respostas mobile</p>
+      </div> 
+    </div>
+    </ion-content>
+  }@else if (screenWidth <= 890) {
+
+    <div class="card">
+      <app-header-desktop></app-header-desktop>
+      <h1>Principal</h1>
+      <div class="d-flex w-100 justify-content-between">
+        <p class="title">respostas tablet</p>
+      </div>
+    </div>
+
+  }@else {
+    <div class="card">
+      <app-header-desktop></app-header-desktop>
+      <h1>Principal</h1>
+      <div class="d-flex w-100 justify-content-between">
+        <p class="title">respostas desktop</p>
+      </div>
+    </div>
+  }
+
+</ion-content>

@@ -1,0 +1,21 @@
+// Mixin para dispositivos móveis (celulares)
+@mixin mobile() {
+    @media screen and (max-width: 560px) {
+        @content;
+    }
+}
+
+// Mixin para tablets
+@mixin tablet() {
+    @media screen and (min-width: 561px) and (max-width: 890px) {
+        @content;
+    }
+}
+
+// Mixin para notebooks
+@mixin desktop() {
+    @media screen and (min-width: 891px) {
+        @content;
+    }
+}
+
