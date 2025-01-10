@@ -28,5 +28,6 @@ import { HeaderDesktopComponent } from "../components/header-desktop/header-desk
     HeaderDesktopComponent
 ],
   declarations: [HomePage]
+  
 })
 export class HomePageModule {}

@@ -20,8 +20,6 @@ export class HomePage {
 
   public masks: MaskitoOptions[] = [
     masks.cpfMask,
-    masks.account,
-    masks.agency,
     masks.phoneMask,
     masks.dateMask,
     masks.emailMask

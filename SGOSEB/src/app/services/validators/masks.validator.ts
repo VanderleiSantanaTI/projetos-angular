@@ -3,12 +3,8 @@ interface IMaskitoElementState {
 }
 
 export const masks = {
-  account: {
-    mask: [/\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/],
-  },
-  agency: {
-    mask: [/\d/, /\d/, /\d/, /\d/],
-  },
+
+
   zipCode: {
     mask: [/\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/],
   },
@@ -33,15 +29,7 @@ export const masks = {
   emailMask: {
     mask: /^[a-zA-Z0-9._%+-@]*$/
   },
-  cardNumberMask: {
-    mask: [/\d/, /\d/, /\d/, /\d/, " ", /\d/, /\d/, /\d/, /\d/, " ", /\d/, /\d/, /\d/, /\d/, " ", /\d/, /\d/, /\d/, /\d/],
-  },
-  cardExpirationDateMask: {
-    mask: [/\d/, /\d/, "/", /\d/, /\d/],
-  },
-  cardCVVMask: {
-    mask: [/\d/, /\d/, /\d/],
-  },
+
   onlyNumbersMask: {
     mask: Array(50).fill(/\d/)
   },
@@ -51,15 +39,7 @@ export const masks = {
   cnhMask: {
     mask: [/[0-9]/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/]
   },
-  boletoMask: {
-    mask: [
-      /\d/, /\d/, /\d/, /\d/, /\d/, ".", /\d/, /\d/, /\d/, /\d/, /\d/,
-      " ", /\d/, /\d/, /\d/, /\d/, /\d/, ".", /\d/, /\d/, /\d/, /\d/, /\d/, /\d/,
-      " ", /\d/, /\d/, /\d/, /\d/, /\d/, ".", /\d/, /\d/, /\d/, /\d/, /\d/, /\d/,
-      " ", /\d/,
-      " ", /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/
-    ]
-  },
+
   cpfAndCnpjMask: {
     mask: (elementState: IMaskitoElementState) => {
       const value = elementState.value.replace(/\D/g, "");
