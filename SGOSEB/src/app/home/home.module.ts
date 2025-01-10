@@ -13,7 +13,6 @@ import { HeaderDesktopComponent } from "../components/header-desktop/header-desk
 
 
 
-
 @NgModule({
   imports: [
     CommonModule,
@@ -28,6 +27,6 @@ import { HeaderDesktopComponent } from "../components/header-desktop/header-desk
     HeaderDesktopComponent
 ],
   declarations: [HomePage]
-  
+
 })
 export class HomePageModule {}

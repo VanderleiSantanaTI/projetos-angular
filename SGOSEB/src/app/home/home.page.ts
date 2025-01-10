@@ -1,80 +1,69 @@
 import { Component } from '@angular/core';
-import { masks } from '../services/validators/masks.validator';
-import { MaskitoOptions } from '@maskito/core';
-import { FormControl, Validators } from '@angular/forms';
-import { ValidatorsService } from '../services/validators/validators.service';
+import { ValidationService } from '../services/validation/validation.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  standalone: false,
+  standalone: false
 })
 export class HomePage {
-  errorColaboratorDisplayEmail: boolean = false;
-  errorColaboratorDisplayCPF: boolean = false;
-  errorEmailMessage: string ="";
-  erroCPFMessage: string ="";
-  constructor(private validatorService: ValidatorsService,) {}
-
-
-  public masks: MaskitoOptions[] = [
-    masks.cpfMask,
-    masks.phoneMask,
-    masks.dateMask,
-    masks.emailMask
-  ];
-
-  formControlConfig = {
-    name: new FormControl('', [Validators.required]),
-    cpf: new FormControl('', [Validators.required, this.validatorService.validateCPF()]),
-    email: new FormControl('', [Validators.required, this.validatorService.validateEmail()]),
-  };
 
   valueInput: { [key: string]: string } = {
-    name: '',
     cpf: '',
     email: ''
   };
 
-  callAction(input: string, event: Event = new Event("click")) {
-    const inputValue =  ((event.target as HTMLInputElement).value);
+  errorColaboratorDisplayCPF: boolean = false;
+  errorColaboratorDisplayEmail: boolean = false;
+
+  erroCPFMessage: string = '';
+  errorEmailMessage: string = '';
+
+  constructor(private validationService: ValidationService) { } // Injeta a service
+
+  // Função para chamar quando o usuário digita
+  callAction(input: string, event: Event) {
+    const inputValue = ((event.target as HTMLInputElement).value);
     this.valueInput[input] = inputValue;
 
-        if(input === 'email') {
-          this.errorColaboratorDisplayEmail = false;
-        }
-        if(input === 'cpf') {
-          this.errorColaboratorDisplayCPF = false;
-        }
-      }
-
-
-      authenticateColaborator() {
-        if(this.valueInput['email'] === '') {
-          this.errorEmailMessage = 'Campo Email obrigatório';
-          this.errorColaboratorDisplayEmail = true;
-        } else {
-          const emailValid = this.validatorService.validateEmail();
-          if(!emailValid) {
-            this.errorEmailMessage = 'Email inválido';
-            this.errorColaboratorDisplayEmail = true;
-            return
-          }
-          console.log(this.valueInput['email']);
-        }
-
-        if(this.valueInput['cpf'] === '') {
-          this.erroCPFMessage = 'Campo CPF obrigatório';
-          this.errorColaboratorDisplayCPF = true;
-        } else {
-          const CPFValid = this.validatorService.validateCPF(this.valueInput['cpf']);
-          if(!CPFValid) {
-            this.erroCPFMessage = 'CPF  inválido';
-            this.errorColaboratorDisplayCPF = true;
-          }
-        }
-
-      }
-
+    if (input === 'email') {
+      this.errorColaboratorDisplayEmail = false;
     }
+
+    if (input === 'cpf') {
+      this.errorColaboratorDisplayCPF = false;
+    }
+  }
+
+  // Função para autenticar colaborador
+  authenticateColaborator() {
+    // Validação do CPF
+    if (this.valueInput['cpf'] === '') {
+      this.erroCPFMessage = 'Campo CPF obrigatório';
+      this.errorColaboratorDisplayCPF = true;
+    } else if (!this.validationService.validateCPF(this.valueInput['cpf'])) { // Usa a service de validação
+      this.erroCPFMessage = 'CPF inválido';
+      this.errorColaboratorDisplayCPF = true;
+    }
+
+    // Validação do e-mail
+    if (this.valueInput['email'] === '') {
+      this.errorEmailMessage = 'Campo e-mail obrigatório';
+      this.errorColaboratorDisplayEmail = true;
+    } else if (!this.validationService.validateEmail(this.valueInput['email'])) { // Usa a service de validação
+      this.errorEmailMessage = 'E-mail inválido';
+      this.errorColaboratorDisplayEmail = true;
+    }
+
+    // Se ambos CPF e E-mail forem válidos
+    if (!this.errorColaboratorDisplayCPF && !this.errorColaboratorDisplayEmail) {
+      console.log('CPF e E-mail válidos');
+      // Aqui você pode fazer a autenticação ou qualquer outra ação desejada
+    }
+  }
+
+  getMasks(type: string) {
+    return this.validationService.getMask(type);
+  }
+}
