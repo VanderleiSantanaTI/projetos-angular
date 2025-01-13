@@ -24,7 +24,7 @@
         <img class="setinhaVoltar" src="/assets/icon/chevron-left-solid.svg" alt=""> Voltar
       </li>
       <li>
-        <h3>Conta Corrente</h3>
+        <h3>Cadatrar Os</h3>
       </li>
       <li (click)="goTo(screenWidth <= 768 ? 'statement-details' : 'statement-desktop')">Extrato</li>
       <li (click)="goTo('home')">Comprovantes</li>
@@ -38,11 +38,11 @@
         <img class="setinhaVoltar" src="/assets/icon/chevron-left-solid.svg" alt=""> Voltar
       </li>
       <li>
-        <h3>Tranferência</h3>
+        <h3>Pesquisar</h3>
       </li>
-      <li (click)="goTo('home')">TED</li>
-      <li (click)="goTo('home')">Comprovantes</li>
-      <li (click)="goTo('home')">Limites</li>
+      <li (click)="goTo('home')">OS</li>
+      <li (click)="goTo('home')">Entrada</li>
+      <li (click)="goTo('home')">Saida</li>
     </ul>
   </div>
 
@@ -53,12 +53,11 @@
         <img class="setinhaVoltar" src="/assets/icon/chevron-left-solid.svg" alt=""> Voltar
       </li>
       <li>
-        <h3>PIX</h3>
+        <h3>Comprovantes</h3>
       </li>
-      <li (click)="goTo('home')">Transferir</li>
-      <li (click)="goTo('home')">Extrato Pix</li>
-      <li (click)="goTo('home')">Cadastro de Chave</li>
-      <li (click)="goTo('home')">Minhas Chaves</li>
+      <li (click)="goTo('home')">Retiradas dos veículos</li>
+      <li (click)="goTo('home')">relatório OS</li>
+ 
     </ul>
   </div>
 
@@ -69,7 +68,7 @@
         <img class="setinhaVoltar" src="/assets/icon/chevron-left-solid.svg" alt=""> Voltar
       </li>
       <li>
-        <h3>Pagamentos</h3>
+        <h3>PDF</h3>
       </li>
       <li [style]="activeOption === 'folha de pagamento' ? 'color: var(--Verde-Light)' : ''"
         (click)="toggleSubOptions('folha de pagamento')" [ngClass]="{'d-none': typeUser === 'personal'}">
@@ -80,21 +79,21 @@
       <ul *ngIf="activeOption === 'folha de pagamento'">
         <li (click)="goTo('payroll-management')">Consultar Folha</li>
       </ul>
-      <li [style]="activeOption === 'dda' ? 'color: var(--Verde-Light)' : ''" (click)="toggleSubOptions('dda')">DDA
+      <li [style]="activeOption === 'dda' ? 'color: var(--Verde-Light)' : ''" (click)="toggleSubOptions('dda')">OS retiradas
         <img class="setinha" [class.rotated]="activeOption === 'dda'" src="/assets/icon/setinha.svg" alt="">
       </li>
       <ul *ngIf="activeOption === 'dda'">
 
-        <li (click)="goTo('')">Consultar DDA</li>
+        <li (click)="goTo('')">Formulario</li>
       </ul>
       <li [style]="activeOption === 'outros-pagamentos' ? 'color: var(--Verde-Light)' : ''"
-        (click)="toggleSubOptions('outros-pagamentos')">Outros Pagamentos
+        (click)="toggleSubOptions('outros-pagamentos')">Resumo de estoques
         <img class="setinha" [class.rotated]="activeOption === 'outros-pagamentos'" src="/assets/icon/setinha.svg" alt="">
       </li>
       <ul *ngIf="activeOption === 'outros-pagamentos'">
-        <li (click)="goTo('payment/boleto-options/manual')">Boletos</li>
-        <li (click)="goTo('gps')">GPS</li>
-        <li (click)="goTo('darf')">DARF</li>
+        <li (click)="goTo('payment/boleto-options/manual')">quantidade</li>
+        <li (click)="goTo('gps')">media de saída</li>
+        <li (click)="goTo('darf')">total de saída</li>
       </ul>
     </ul>
   </div>
@@ -106,11 +105,11 @@
         <img class="setinhaVoltar" src="/assets/icon/chevron-left-solid.svg" alt=""> Voltar
       </li>
       <li>
-        <h3>Cartão</h3>
+        <h3>Dados</h3>
       </li>
-      <li (click)="goTo('card')" [ngClass]="{'d-none': !menuCardVisible }">Ver Cartões</li>
-      <li (click)="goTo('card-statement')" [ngClass]="{'d-none': !menuCardVisible }">Extrato cartão</li>
-      <li (click)="goTo('request-card')">Solicitar novo cartão</li>
+      <li (click)="goTo('card')" [ngClass]="{'d-none': !menuCardVisible }">Ver perfil</li>
+      <li (click)="goTo('card-statement')" [ngClass]="{'d-none': !menuCardVisible }">editar</li>
+      <li (click)="goTo('request-card')">Avatar</li>
     </ul>
   </div>
 

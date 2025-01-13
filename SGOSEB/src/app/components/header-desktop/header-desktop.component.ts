@@ -73,105 +73,21 @@ export class HeaderDesktopComponent implements OnInit {
       ]
     },
     {
-      title: 'PIX',
+      title: 'Comprovantes',
       sections: [
         {
-          title: 'Transferir',
+          title: 'PDF',
           options: [
             {
-              label: 'Transferir PIX',
-              url: '/pix'
-            },
-            {
-              label: 'Copia e Cola',
-              url: '/copy-paste-pix'
-            }
-          ]
-        },
-        {
-          title: 'PIX',
-          options: [
-            {
-              label: 'Extrato PIX',
-              url: '/statement-pix'
-            },
-            {
-              label: 'Ajuste de limite',
-              url: '/limits-pix'
-            },
-            {
-              label: 'Minhas chaves',
-              url: '/payment-keys-pix'
-            },
-            {
-              label: 'Cadastro de chave',
-              url: '/new-payment-key-pix'
-            }
-          ]
-        }
-      ]
-    },
-    {
-      title: 'Transferências',
-      sections: [
-        {
-          title: 'Transferir',
-          options: [
-            {
-              label: 'TED',
+              label: 'Retirada de OS',
               url: '/new-wire-transfer'
             },
             {
-              label: 'Comprovantes',
-              url: '/receipt-desktop/wire-transfer'
-            },
-            {
-              label: 'Ajuste de limite',
+              label: 'Relatorio de OS',
               url: '/limits-wire-transfer'
             }
           ]
         }
-      ]
-    },
-    {
-      title: 'Cartões',
-      sections: [
-        {
-          title: 'Meu cartão',
-          options: [
-            {
-              label: 'Ver Cartões',
-              url: '/card'
-            },
-            {
-              label: 'Extrato cartão',
-              url: '/card-statement'
-            },
-            {
-              label: 'Solicitar novo cartão',
-              url: '/request-card'
-            }
-          ]
-        },
-        // {
-        //   title: 'Configurar',
-        //   options: [
-        //     {
-        //       label: 'Bloqueio',
-        //       url: '/cartao/bloqueio',
-        //       action: () => this.handleOpenBlockCard(),
-        //     },
-        //     {
-        //       label: 'Cancelamento',
-        //       url: '/cartao/cancelamento',
-        //       action: () => this.handleOpenCancelCard(),
-        //     },
-        //     {
-        //       label: 'Ajuste de limite',
-        //       url: '/card-limit'
-        //     }
-        //   ]
-        // },
       ]
     },
     {

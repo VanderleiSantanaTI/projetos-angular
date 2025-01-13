@@ -20,7 +20,8 @@ export class RegisterOsPage {
   causa: string = '';
   manutencao: string = '';
   dateSelected: string = '';
-  
+  window: any;
+   
 
   constructor(private modalController: ModalController) {}
 

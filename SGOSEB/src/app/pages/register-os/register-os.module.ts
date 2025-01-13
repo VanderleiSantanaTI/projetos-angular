@@ -7,6 +7,8 @@ import { IonicModule } from '@ionic/angular';
 import { RegisterOsPageRoutingModule } from './register-os-routing.module';
 
 import { RegisterOsPage } from './register-os.page';
+import { HeaderDesktopComponent } from "../../components/header-desktop/header-desktop.component";
+import { HeaderMobileComponent } from 'src/app/components/header-mobile/header-mobile.component';
 
 @NgModule({
   imports: [
@@ -14,9 +16,9 @@ import { RegisterOsPage } from './register-os.page';
     FormsModule,
     IonicModule,
     RegisterOsPageRoutingModule,
-    
-    
-  ],
+    HeaderDesktopComponent,
+    HeaderMobileComponent
+],
   declarations: [RegisterOsPage]
 })
 export class RegisterOsPageModule {}

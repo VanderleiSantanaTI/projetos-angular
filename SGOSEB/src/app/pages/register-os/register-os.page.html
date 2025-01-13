@@ -1,7 +1,10 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Cadastro de OS</ion-title>
-  </ion-toolbar>
+  <!-- @if(window.innerWidth < 768) { -->
+    <app-header-mobile></app-header-mobile>
+  <!-- }@else { -->
+    <app-header-desktop></app-header-desktop>
+  <!-- } -->
+ 
 </ion-header>
 
 <ion-content [fullscreen]="true" class="ion-padding">
