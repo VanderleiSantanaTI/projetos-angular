@@ -1,10 +1,10 @@
 <ion-header>
-  <!-- @if(window.innerWidth < 768) { -->
+  @if(isMobile) {
     <app-header-mobile></app-header-mobile>
-  <!-- }@else { -->
+  }@else {
     <app-header-desktop></app-header-desktop>
-  <!-- } -->
- 
+  }
+
 </ion-header>
 
 <ion-content [fullscreen]="true" class="ion-padding">
@@ -89,7 +89,7 @@
             (keypress)="onKeyPressBlock($event)"
             (input)="limitNumber($event)"
             >
-    
+
           </ion-input>
         </ion-col>
       </ion-row>

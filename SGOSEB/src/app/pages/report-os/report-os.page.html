@@ -1,0 +1,153 @@
+<ion-header>
+<app-header-mobile></app-header-mobile>
+</ion-header>
+
+<ion-content class="container ">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title class="titulo-color">Encerrar Ordem de Serviço</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+        <ion-input
+            type="number"
+            label="Encerrar (OS) Nº"
+            label-placement="floating"
+            fill="outline"
+            placeholder="Encerrar"
+            required
+            maxlength="2">
+          </ion-input>
+
+      <ion-button expand="block" color="medium">
+        <ion-icon slot="start" name="search"></ion-icon>
+        Pesquisar OS(s) aberta(s)
+      </ion-button>
+
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+        <ion-card-title class="titulo-color">Detalhes da OS</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+        <ion-row>
+            <ion-col class="col" size="12" size-md="9">
+            <ion-input
+                type="text"
+                label="Peça Utilizada"
+                label-placement="floating"
+                fill="outline"
+                placeholder="peça"
+                required
+                maxlength="50">
+            </ion-input>
+          </ion-col>
+
+        <ion-col class="col" size="12" size-md="3">
+          <ion-input
+            type="number"
+            label="Nº de Ficha"
+            label-placement="floating"
+            fill="outline"
+            placeholder="Encerrar"
+            required
+            maxlength="2">
+        </ion-input>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col class="col" size="12" size-md="9">
+        <ion-input
+            type="text"
+            label="Serviço Realizado"
+            label-placement="floating"
+            fill="outline"
+            placeholder="Encerrar"
+            required
+            maxlength="50">
+        </ion-input>
+      </ion-col>
+
+      <ion-col class="col" size="12" size-md="3">
+        <ion-input
+            type="number"
+            label="Quantidade"
+            label-placement="floating"
+            fill="outline"
+            placeholder="Encerrar"
+            required
+            maxlength="2">
+        </ion-input>
+      </ion-col>
+    </ion-row>
+
+
+    <ion-row>
+      <ion-col class="col " size="12" size-md="9">
+      </ion-col>
+
+      <ion-col class="col " size="12" size-md="3">
+        <ion-datetime-button datetime="datetime"></ion-datetime-button>
+        <ion-modal [keepContentsMounted]="true" id="datetimeModal">
+          <ng-template>
+            <ion-datetime
+             id="datetime"
+             presentation="date"
+             (ionChange)="onDateChange($event)"
+             ></ion-datetime>
+          </ng-template>
+        </ion-modal>
+      </ion-col>
+      </ion-row>
+
+      <ion-button expand="block" color="success">
+        Cadastrar peças e serviços
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title class="titulo-color">Finalizar OS</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+        <ion-datetime-button datetime="datetime"></ion-datetime-button>
+        <ion-modal [keepContentsMounted]="true" id="datetimeModal">
+          <ng-template>
+            <ion-datetime
+             id="datetime"
+             presentation="date"
+             (ionChange)="onDateChange($event)"
+             ></ion-datetime>
+          </ng-template>
+        </ion-modal>
+
+        <ion-input
+        type="text"
+        label="Serviço Realizado"
+        label-placement="floating"
+        fill="outline"
+        placeholder="Encerrar"
+        required
+        maxlength="50">
+       </ion-input>
+
+      <ion-button expand="block" color="danger">
+        Encerrar OS
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-footer>
+    <ion-toolbar>
+      <ion-title slot="end" color="medium">Login: Vanderlei</ion-title>
+    </ion-toolbar>
+  </ion-footer>
+
+
+</ion-content>

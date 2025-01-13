@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component, HostListener} from '@angular/core';
 import { ModalController } from '@ionic/angular';
 
 @Component({
@@ -6,7 +6,7 @@ import { ModalController } from '@ionic/angular';
   templateUrl: './register-os.page.html',
   styleUrls: ['./register-os.page.scss'],
   standalone: false,
-  
+
 })
 export class RegisterOsPage {
   marca: string = '';
@@ -21,12 +21,15 @@ export class RegisterOsPage {
   manutencao: string = '';
   dateSelected: string = '';
   window: any;
-   
+  isMobile!: boolean;
 
+  ngOnInit() {
+    this.checkWindowSize();
+  }
   constructor(private modalController: ModalController) {}
 
   async onDateChange(event: any) {
-    
+
     this.dateSelected = event.detail.value; // Armazena o valor da data selecionada
     this.dateSelected = new Date(this.dateSelected).toLocaleDateString('pt-BR'); // Formata a data
     console.log('Data selecionada:', this.dateSelected);
@@ -83,28 +86,37 @@ export class RegisterOsPage {
       !!this.sistema.trim() &&
       !!this.manutencao.trim() &&
       !!this.causa.trim() &&
-      !!this.dateSelected 
+      !!this.dateSelected
     );
   }
 
   onKeyPressBlock(event: KeyboardEvent) {
     const invalidChars = ['e', 'E', '+', '-','.',','];
-    
+
     if (invalidChars.includes(event.key)) {
       event.preventDefault(); // Bloqueia o caractere
     }
 
-    
+
   }
 
   limitNumber(event: any) {
     const maxLength = 20; // Defina o número máximo de caracteres permitidos
     const input = event.target.value;
-  
+
     if (input.length > maxLength) {
       event.target.value = input.slice(0, maxLength); // Limita o número de caracteres
       this.hodometro = event.target.value; // Atualiza o valor no modelo
     }
   }
-  
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event) {
+    this.checkWindowSize();
+  }
+
+  checkWindowSize() {
+    this.isMobile = window.innerWidth < 768;
+  }
+
 }
