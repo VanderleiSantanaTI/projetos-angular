@@ -6,7 +6,21 @@
   <div id="container">
     <p>Ready to create an app?</p>
 
-    <app-masked-input
+    <div>
+      <app-masked-input
+        [label]="'CPF*'"
+        [type]="'cnpj'"
+        [name]="'cpf'"
+        [inputmode]="'numeric'"
+        [placeholder]="'000.000.000-00'"
+        (ionInput)="callAction('cpf', $event)"
+        [errorFormessage]="erroCPFMessage"
+        [maxLength]="14"
+        [mask]="getMasks('cnpj')"
+        [value]="valueInput['cpf']"
+        [errorFormDisplay]="errorColaboratorDisplayCPF">
+      </app-masked-input>
+      <app-masked-input
       [label]="'CPF*'"
       [type]="'cnpj'"
       [name]="'cpf'"
@@ -18,9 +32,67 @@
       [mask]="getMasks('cnpj')"
       [value]="valueInput['cpf']"
       [errorFormDisplay]="errorColaboratorDisplayCPF">
-    </app-masked-input>
+        </app-masked-input>
+      
+        <app-masked-input
+        [label]="'CPF*'"
+        [type]="'cnpj'"
+        [name]="'cpf'"
+        [inputmode]="'numeric'"
+        [placeholder]="'000.000.000-00'"
+        (ionInput)="callAction('cpf', $event)"
+        [errorFormessage]="erroCPFMessage"
+        [maxLength]="14"
+        [mask]="getMasks('cnpj')"
+        [value]="valueInput['cpf']"
+        [errorFormDisplay]="errorColaboratorDisplayCPF">
+        </app-masked-input>
+    </div>
 
-    <app-unmasked-input
+    <div>
+      <app-masked-input
+        [label]="'CPF*'"
+        [type]="'cnpj'"
+        [name]="'cpf'"
+        [inputmode]="'numeric'"
+        [placeholder]="'000.000.000-00'"
+        (ionInput)="callAction('cpf', $event)"
+        [errorFormessage]="erroCPFMessage"
+        [maxLength]="14"
+        [mask]="getMasks('cnpj')"
+        [value]="valueInput['cpf']"
+        [errorFormDisplay]="errorColaboratorDisplayCPF">
+      </app-masked-input>
+      <app-masked-input
+      [label]="'CPF*'"
+      [type]="'cnpj'"
+      [name]="'cpf'"
+      [inputmode]="'numeric'"
+      [placeholder]="'000.000.000-00'"
+      (ionInput)="callAction('cpf', $event)"
+      [errorFormessage]="erroCPFMessage"
+      [maxLength]="14"
+      [mask]="getMasks('cnpj')"
+      [value]="valueInput['cpf']"
+      [errorFormDisplay]="errorColaboratorDisplayCPF">
+        </app-masked-input>
+      
+        <app-masked-input
+        [label]="'CPF*'"
+        [type]="'cnpj'"
+        [name]="'cpf'"
+        [inputmode]="'numeric'"
+        [placeholder]="'000.000.000-00'"
+        (ionInput)="callAction('cpf', $event)"
+        [errorFormessage]="erroCPFMessage"
+        [maxLength]="14"
+        [mask]="getMasks('cnpj')"
+        [value]="valueInput['cpf']"
+        [errorFormDisplay]="errorColaboratorDisplayCPF">
+        </app-masked-input>
+    </div>
+
+    <!-- <app-unmasked-input
       [label]="'Insira seu e-mail corporativo'"
       [type]="'email'"
       [name]="'email'"
@@ -30,14 +102,16 @@
       [maxLength]="50"
       [value]="valueInput['email']"
       [errorFormDisplay]="errorColaboratorDisplayEmail">
-    </app-unmasked-input>
+    </app-unmasked-input> -->
 
-    <app-button
-      text="Click Me"
-      width="300px"
-      (click)="authenticateColaborator()">
-    </app-button>
-
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+    <div>
+      <app-button
+        text="Click Me"
+        width="300px"
+        (click)="authenticateColaborator()">
+      </app-button>
+      <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+        </div>
+    </div>
 </ion-content>
+

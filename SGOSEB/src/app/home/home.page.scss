@@ -1,11 +1,16 @@
 #container {
   text-align: left;
-
+  display: flex;
   position: absolute;
   left: 0;
   right: 0;
   top: 50%;
   transform: translateY(-50%);
+  flex-direction: column;
+  flex-wrap: nowrap;
+  div{
+    margin: 20px;
+  }
 }
 
 #container strong {
@@ -25,3 +30,4 @@
 #container a {
   text-decoration: none;
 }
+

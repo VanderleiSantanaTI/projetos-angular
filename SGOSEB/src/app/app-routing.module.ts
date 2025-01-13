@@ -8,9 +8,15 @@ const routes: Routes = [
   },
   {
     path: '',
+    // redirectTo: 'register-os',
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'register-os',
+    loadChildren: () => import('./pages/register-os/register-os.module').then( m => m.RegisterOsPageModule)
+  },
+
 ];
 
 @NgModule({

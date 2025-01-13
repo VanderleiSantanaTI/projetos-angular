@@ -1,0 +1,73 @@
+:host {
+  --background: #f5f5dc; /* Cor de fundo */
+}
+
+.container {
+  max-width: 1024px;
+  background-color: var(--Gray-BG);
+  margin-top:50px ;
+  padding: 20px 10px;
+  border-radius: 15px;
+  
+  ion-input{
+    --border-radius: 10px;
+    // background-color: var(--Petroleo-BG);
+  }
+  ion-select{
+    --border-radius: 10px;
+    // background-color: var(--Petroleo-BG);
+  }
+  ion-textarea{
+    --border-radius: 10px;
+    // background-color: var(--Petroleo-BG);
+  }
+}
+
+
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+
+  .logo {
+    max-width: 100px;
+    margin-bottom: 10px;
+  }
+
+  h1 {
+    color: #ffffff;
+    font-size: 24px;
+  }
+}
+
+
+  .col {
+  color: #f5f5dc;
+
+}
+
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+
+  ion-button {
+    flex: 1;
+    margin: 0 5px;
+  }
+  ion-datetime{
+    padding: 10px;
+  }
+}
+
+
+/* Tema escuro */
+ion-datetime {
+  --background: #1e1e1e; /* Fundo escuro */
+ color: var(--White-Light); /* Cor do texto */
+  border-radius: 20px; /* Bordas arredondadas */
+}
+
+
+
+

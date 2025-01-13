@@ -1,0 +1,178 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Cadastro de OS</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <div class="container  m-auto" >
+    <!-- Cabeçalho -->
+    <div class="header">
+      <h1>Cadastro de OS</h1>
+    </div>
+    <!-- Inputs principais -->
+    <ion-grid>
+      <ion-row>
+        <ion-col class="col" size="12" size-md="4">
+          <ion-input
+            label="Marca da Viatura"
+            label-placement="floating"
+            fill="outline"
+            placeholder="Digite a marca"
+            [(ngModel)]="marca"
+            required
+            maxlength="50">
+          </ion-input>
+        </ion-col>
+        <ion-col class="col" size="12" size-md="4">
+          <ion-input
+            label="Modelo"
+            label-placement="floating"
+            fill="outline"
+            placeholder="Digite o modelo"
+            [(ngModel)]="modelo"
+            required
+            maxlength="50">
+          </ion-input>
+        </ion-col>
+        <ion-col class="col" size="12" size-md="4">
+          <ion-input
+            label="Placa/EB"
+            label-placement="floating"
+            fill="outline"
+            placeholder="Digite a placa"
+            [(ngModel)]="placa"
+            required
+            maxlength="50">
+          </ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="col" size="12" size-md="4">
+          <ion-input
+            label="SU/CIA da Viatura"
+            label-placement="floating"
+            fill="outline"
+            placeholder="Digite a SU/CIA"
+            [(ngModel)]="suCia"
+            required
+            maxlength="10">
+          </ion-input>
+        </ion-col>
+        <ion-col class="col" size="12" size-md="4">
+          <ion-input
+            type="number"
+            label="Patrimônio"
+            label-placement="floating"
+            fill="outline"
+            placeholder="Digite o patrimônio"
+            [(ngModel)]="patrimonio"
+            required
+            (keypress)="onKeyPressBlock($event)"
+            (input)="limitNumber($event)"
+            >
+          </ion-input>
+        </ion-col>
+        <ion-col class="col" size="12" size-md="4">
+          <ion-input
+            type="number"
+            label="Hodômetro"
+            label-placement="floating"
+            fill="outline"
+            placeholder="Digite o hodômetro"
+            [(ngModel)]="hodometro"
+            required
+            (keypress)="onKeyPressBlock($event)"
+            (input)="limitNumber($event)"
+            >
+    
+          </ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="col" size="12">
+          <ion-textarea
+            label="Problema Apresentado"
+            label-placement="floating"
+            fill="outline"
+            placeholder="Descreva o problema"
+            [(ngModel)]="problema"
+            required
+            [counter]="true"
+            maxlength="300"
+            >
+          </ion-textarea>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="col" size="12" size-md="12">
+          <ion-input
+            label="Sistema Afetado"
+            label-placement="floating"
+            fill="outline"
+            placeholder="Digite o sistema"
+            [(ngModel)]="sistema"
+            [counter]="true" maxlength="55"
+            required>
+          </ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="col" size="12">
+          <ion-textarea
+            label="Causa da Avaria"
+            label-placement="floating"
+            fill="outline"
+            placeholder="Descreva a causa"
+            [(ngModel)]="causa"
+            [counter]="true"
+            maxlength="300"
+            required>
+          </ion-textarea>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="col" size="12" size-md="3">
+          <ion-datetime-button datetime="datetime"></ion-datetime-button>
+          <ion-modal [keepContentsMounted]="true" id="datetimeModal">
+            <ng-template>
+              <ion-datetime
+               id="datetime"
+               presentation="date"
+               (ionChange)="onDateChange($event)"
+               ></ion-datetime>
+            </ng-template>
+          </ion-modal>
+        </ion-col>
+        <ion-col class="col" size="12" size-md="3">
+          <ion-select
+            label="Manutenção"
+            label-placement="floating"
+            fill="outline"
+            [(ngModel)]="manutencao"
+            required>
+            <ion-select-option value="corretiva">Corretiva</ion-select-option>
+            <ion-select-option value="preventiva">Preventiva</ion-select-option>
+          </ion-select>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <!-- Botões -->
+    <div class="button-group">
+      <ion-button
+        color="danger"
+        expand="block"
+        (click)="limpar()">
+        Limpar
+      </ion-button>
+      <ion-button
+        color="success"
+        expand="block"
+        [disabled]="!formValido()"
+        (click)="cadastrar()">
+        Cadastrar
+      </ion-button>
+    </div>
+  </div>
+</ion-content>
