@@ -82,7 +82,7 @@
 
       <li [style]="activeOption === 'resumo' ? 'color: var(--Verde-Light)' : ''"
         (click)="toggleSubOptions('resumo')">Resumo operacional
-        <img class="setinha" [class.rotated]="activeOption === 'outros-pagamentos'" src="/assets/icon/setinha.svg" alt="">
+        <img class="setinha" [class.rotated]="activeOption === 'resumo'" src="/assets/icon/setinha.svg" alt="">
       </li>
       <ul *ngIf="activeOption === 'resumo'">
         <li (click)="goTo('home')">Relatório de produção</li>
