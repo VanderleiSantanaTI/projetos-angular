@@ -6,8 +6,8 @@ import { ModalController } from '@ionic/angular';
   templateUrl: './register-os.page.html',
   styleUrls: ['./register-os.page.scss'],
   standalone: false,
-
 })
+
 export class RegisterOsPage {
   marca: string = '';
   modelo: string = '';
@@ -71,6 +71,8 @@ export class RegisterOsPage {
     };
     console.log('Cadastro realizado:', osData);
     alert('Ordem de Serviço cadastrada com sucesso!');
+    this.limpar();
+    window.location.reload();
   }
 
   formValido(): boolean {
