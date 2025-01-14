@@ -33,7 +33,11 @@ const routes: Routes = [
   {
     path: 'start',
     loadChildren: () => import('./pages/start/start.module').then( m => m.StartPageModule)
+  },  {
+    path: 'close-sevice-order',
+    loadChildren: () => import('./pages/close-sevice-order/close-sevice-order.module').then( m => m.CloseSeviceOrderPageModule)
   },
+
 
 
 

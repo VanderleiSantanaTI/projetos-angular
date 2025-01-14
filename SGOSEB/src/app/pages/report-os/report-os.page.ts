@@ -8,11 +8,9 @@ import { ModalController } from '@ionic/angular';
   standalone:false
 })
 export class ReportOsPage implements OnInit {
-  encerrar: string = '';
   OS!:number;
   peca: string = '';
-  dateSelected: string = '';
-  dateSelectedEnd: string = '';
+  formatedDate: string = '';
   ficha: string = '';
   servico: string = '';
   quantidade: number = 0;
@@ -24,18 +22,12 @@ export class ReportOsPage implements OnInit {
     this.checkWindowSize();
   }
 
-  async onDateChange(event: any, dateType: 'startDate' | 'endDate') {
+  async onDateChange(event: any) {
     const selectedDate = event.detail.value; // Armazena o valor da data selecionada
-    const formattedDate = new Date(selectedDate).toLocaleDateString('pt-BR'); // Formata a data
-    if (dateType === 'startDate') {
+    this.formatedDate = new Date(selectedDate).toLocaleDateString('pt-BR'); // Formata a data
 
-      this.dateSelected = formattedDate;
-    } else if (dateType === 'endDate') {
 
-      this.dateSelectedEnd = formattedDate;
-    }
-
-    console.log(`${dateType} selecionada:`, formattedDate);
+    console.log(" selecionada:", this.formatedDate);
 
     // Fecha o modal após a seleção
     const modal = await this.modalController.getTop(); // Obtém o modal ativo
@@ -44,13 +36,14 @@ export class ReportOsPage implements OnInit {
     }
   }
 
+
   cadastrar() {
     const osData = {
       peca: this.peca,
       ficha: this.ficha,
       servico: this.servico,
       quantidade: this.quantidade,
-      dateSelected: this.dateSelected,
+      formatedDate: this.formatedDate,
       OS: this.OS
     };
 
@@ -64,40 +57,23 @@ export class ReportOsPage implements OnInit {
     // Verifica se todos os campos obrigatórios estão preenchidos
     return (
       !!this.servico.trim() &&
-      !!this.quantidade &&
       this.quantidade > 0 &&
       this.OS > 0 &&
-      !!this.dateSelected
+      !!this.formatedDate
     );
   }
 
-  formValidoEncerrar(): boolean {
-    // Verifica se todos os campos obrigatórios estão preenchidos
-    return (
-      !!this.encerrar.trim() &&
-      !!this.dateSelectedEnd
 
-    );
+
+
+
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event) {
+    this.checkWindowSize();
   }
 
-  cadastrarEncerrar() {
-    const osData = {
-      encerrar: this.encerrar,
-      date: this.dateSelectedEnd
-    };
-    console.log('Cadastro realizado:', osData);
-    alert('Ordem de Serviço encerrada com sucesso!');
-
-    window.location.reload();
+  checkWindowSize() {
+    this.isMobile = window.innerWidth < 768;
   }
-
-
-    @HostListener('window:resize', ['$event'])
-    onResize(event: Event) {
-      this.checkWindowSize();
-    }
-
-    checkWindowSize() {
-      this.isMobile = window.innerWidth < 768;
-    }
 }

@@ -13,23 +13,28 @@ ion-button {
 }
 
 .container {
+  background-color: var(--Gray-BG);
+  padding: 20px 10px;
+  border-radius: 15px;
+  height: 100%;
 
   ion-card {
-    margin: auto;
+    margin: 20px auto;
     max-width: 1024px;
     background-color: var(--Gray-BG);
-    margin-top: 50px;
+    margin-top:50px ;
     padding: 20px 10px;
     border-radius: 15px;
 
+
   }
 
 
-  ion-input{
+  ion-input {
     --border-radius: 10px;
     // background-color: var(--Petroleo-BG);
   }
-  ion-select{
+  ion-select {
     --border-radius: 10px;
     // background-color: var(--Petroleo-BG);
   }

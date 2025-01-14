@@ -62,6 +62,21 @@ export class HeaderDesktopComponent implements OnInit {
       ]
     },
     {
+      title: 'Fechar-OS',
+      sections: [
+        {
+          title: 'Fechar',
+          options: [
+            {
+              label: 'Fechar Ordem de Serviço',
+              url: '/close-sevice-order'
+            }
+          ]
+        }
+
+      ]
+    },
+    {
       title: 'Relatórios',
       sections: [
         {
