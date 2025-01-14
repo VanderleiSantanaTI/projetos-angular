@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { ValidationService } from '../services/validation/validation.service';
+import { Component, HostListener, OnInit } from '@angular/core';
+import { ValidationService } from '../../services/validation/validation.service';
 
 @Component({
   selector: 'app-home',
@@ -7,7 +7,8 @@ import { ValidationService } from '../services/validation/validation.service';
   styleUrls: ['home.page.scss'],
   standalone: false
 })
-export class HomePage {
+export class HomePage implements OnInit {
+  isMobile!: boolean;
 
   valueInput: { [key: string]: string } = {
     cpf: '',
@@ -21,6 +22,10 @@ export class HomePage {
   errorEmailMessage: string = '';
 
   constructor(private validationService: ValidationService) { } // Injeta a service
+
+  ngOnInit() {
+    this.checkWindowSize();
+  }
 
   // Função para chamar quando o usuário digita
   callAction(input: string, event: Event) {
@@ -66,4 +71,13 @@ export class HomePage {
   getMasks(type: string) {
     return this.validationService.getMask(type);
   }
+
+    @HostListener('window:resize', ['$event'])
+    onResize(event: Event) {
+      this.checkWindowSize();
+    }
+
+    checkWindowSize() {
+      this.isMobile = window.innerWidth < 768;
+    }
 }

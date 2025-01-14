@@ -1,7 +1,11 @@
 <ion-header [translucent]="true">
-<app-header-mobile></app-header-mobile>
-<!-- <app-header-desktop></app-header-desktop> -->
+  @if(isMobile) {
+    <app-header-mobile></app-header-mobile>
+  }@else {
+    <app-header-desktop></app-header-desktop>
+  }
 </ion-header>
+
 <ion-content [fullscreen]="true">
   <div id="container">
     <p>Ready to create an app?</p>
@@ -33,7 +37,7 @@
       [value]="valueInput['cpf']"
       [errorFormDisplay]="errorColaboratorDisplayCPF">
         </app-masked-input>
-      
+
         <app-masked-input
         [label]="'CPF*'"
         [type]="'cnpj'"
@@ -76,7 +80,7 @@
       [value]="valueInput['cpf']"
       [errorFormDisplay]="errorColaboratorDisplayCPF">
         </app-masked-input>
-      
+
         <app-masked-input
         [label]="'CPF*'"
         [type]="'cnpj'"
