@@ -13,16 +13,18 @@ ion-button {
 }
 
 .container {
-  max-width: 1024px;
   background-color: var(--Gray-BG);
-  margin-top:50px ;
   padding: 20px 10px;
   border-radius: 15px;
 
-  ion-card{
-    border: 1px solid var(--Verde-EB);
-    --border-radius: 10px;
-    background-color: var(--Petroleo-BG);
+  ion-card {
+    margin: 20px auto;
+    max-width: 1024px;
+    background-color: var(--Gray-BG);
+    margin-top:50px ;
+    padding: 20px 10px;
+    border-radius: 15px;
+
   }
 
 
