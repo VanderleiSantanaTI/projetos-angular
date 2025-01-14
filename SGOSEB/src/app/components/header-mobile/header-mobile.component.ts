@@ -11,7 +11,7 @@ import { NavService } from 'src/app/services/nav/nav.service';
   selector: 'app-header-mobile',
   templateUrl: './header-mobile.component.html',
   styleUrls: ['./header-mobile.component.scss'],
-  imports : [NgIf, NgClass, IonicModule]
+  imports : [NgIf, IonicModule]
 
 })
 export class HeaderMobileComponent {
@@ -57,12 +57,9 @@ export class HeaderMobileComponent {
   }
 
   goTo(page: string) {
-    if(page === 'request-card') {
-      const pageRequest = this.menuCardVisible ? 'request-additional-card' : 'request-card';
-      this.navService.navigateForward(pageRequest);
-    } else {
+
       this.navService.navigateForward(page);
-    }
+
     this.closeSubMenu();
     this.closeMenu();
   }

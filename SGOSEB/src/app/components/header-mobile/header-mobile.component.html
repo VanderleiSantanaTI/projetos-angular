@@ -12,10 +12,9 @@
     <li (click)="goTo('start')">Home</li>
     <li (click)="toggleSubMenu(1)">Cadastar</li>
     <li (click)="toggleSubMenu(2)">Pesquisar</li>
-    <li (click)="toggleSubMenu(3)">Encerrar</li>
+    <li (click)="toggleSubMenu(3)">Fechar OS</li>
     <li (click)="toggleSubMenu(4)">Relatorio</li>
-    <li (click)="toggleSubMenu(5)">Usuario</li>
-    <li (click)="toggleSubMenu(6)">Mais Opções</li>
+    <li (click)="toggleSubMenu(5)">Mais Opções</li>
     <li>Sair</li>
   </ul>
   <div *ngIf="activeSubMenuIndex === 1" class="sub-menu">
@@ -24,10 +23,11 @@
         <img class="setinhaVoltar" src="/assets/icon/chevron-left-solid.svg" alt=""> Voltar
       </li>
       <li>
-        <h3>Cadatrar Os</h3>
+        <h3><strong>Cadatrar Os</strong></h3>
       </li>
-      <li (click)="goTo(screenWidth <= 768 ? 'statement-details' : 'statement-desktop')">Extrato</li>
-      <li (click)="goTo('home')">Comprovantes</li>
+      <!-- <li (click)="goTo(screenWidth <= 300 ? 'register-os' : 'report-os')">Extrato</li> -->
+      <li (click)="goTo('register-os')">Ordem de Serviço</li>
+      <li (click)="goTo('report-os')">Peças e Serviços</li>
     </ul>
   </div>
 
@@ -38,11 +38,10 @@
         <img class="setinhaVoltar" src="/assets/icon/chevron-left-solid.svg" alt=""> Voltar
       </li>
       <li>
-        <h3>Pesquisar</h3>
+        <h3><strong>Pesquisar</strong></h3>
       </li>
-      <li (click)="goTo('home')">OS</li>
-      <li (click)="goTo('home')">Entrada</li>
-      <li (click)="goTo('home')">Saida</li>
+      <li (click)="goTo('search')">Ordem de Serviço</li>
+
     </ul>
   </div>
 
@@ -53,11 +52,11 @@
         <img class="setinhaVoltar" src="/assets/icon/chevron-left-solid.svg" alt=""> Voltar
       </li>
       <li>
-        <h3>Comprovantes</h3>
+        <h3><strong>Fechar ordem de serviço</strong></h3>
       </li>
-      <li (click)="goTo('home')">Retiradas dos veículos</li>
-      <li (click)="goTo('home')">relatório OS</li>
- 
+      <li (click)="goTo('home')">Fechar</li>
+
+
     </ul>
   </div>
 
@@ -70,50 +69,30 @@
       <li>
         <h3>PDF</h3>
       </li>
-      <li [style]="activeOption === 'folha de pagamento' ? 'color: var(--Verde-Light)' : ''"
-        (click)="toggleSubOptions('folha de pagamento')" [ngClass]="{'d-none': typeUser === 'personal'}">
-        Folha de Pagamento
-        <img class="setinha" [class.rotated]="activeOption === 'folha de pagamento'"
-          src="/assets/icon/setinha.svg" alt="">
-      </li>
-      <ul *ngIf="activeOption === 'folha de pagamento'">
-        <li (click)="goTo('payroll-management')">Consultar Folha</li>
-      </ul>
-      <li [style]="activeOption === 'dda' ? 'color: var(--Verde-Light)' : ''" (click)="toggleSubOptions('dda')">OS retiradas
-        <img class="setinha" [class.rotated]="activeOption === 'dda'" src="/assets/icon/setinha.svg" alt="">
-      </li>
-      <ul *ngIf="activeOption === 'dda'">
 
-        <li (click)="goTo('')">Formulario</li>
+      <li [style]="activeOption === 'retirada' ? 'color: var(--Verde-Light)' : ''"
+      (click)="toggleSubOptions('retirada')">(OS) retiradas
+        <img class="setinha" [class.rotated]="activeOption === 'retirada'" src="/assets/icon/setinha.svg" alt="">
+      </li>
+
+      <ul *ngIf="activeOption === 'retirada'">
+
+        <li (click)="goTo('home')">Oredem de serviço-PDF</li>
       </ul>
-      <li [style]="activeOption === 'outros-pagamentos' ? 'color: var(--Verde-Light)' : ''"
-        (click)="toggleSubOptions('outros-pagamentos')">Resumo de estoques
+
+      <li [style]="activeOption === 'resumo' ? 'color: var(--Verde-Light)' : ''"
+        (click)="toggleSubOptions('resumo')">Resumo operacional
         <img class="setinha" [class.rotated]="activeOption === 'outros-pagamentos'" src="/assets/icon/setinha.svg" alt="">
       </li>
-      <ul *ngIf="activeOption === 'outros-pagamentos'">
-        <li (click)="goTo('payment/boleto-options/manual')">quantidade</li>
-        <li (click)="goTo('gps')">media de saída</li>
-        <li (click)="goTo('darf')">total de saída</li>
+      <ul *ngIf="activeOption === 'resumo'">
+        <li (click)="goTo('home')">Relatório de produção</li>
+        <li (click)="goTo('home')">Problemas operacionais</li>
+
       </ul>
     </ul>
   </div>
 
-
   <div *ngIf="activeSubMenuIndex === 5" class="sub-menu">
-    <ul>
-      <li class="voltarBar" (click)="closeSubMenu()">
-        <img class="setinhaVoltar" src="/assets/icon/chevron-left-solid.svg" alt=""> Voltar
-      </li>
-      <li>
-        <h3>Dados</h3>
-      </li>
-      <li (click)="goTo('card')" [ngClass]="{'d-none': !menuCardVisible }">Ver perfil</li>
-      <li (click)="goTo('card-statement')" [ngClass]="{'d-none': !menuCardVisible }">editar</li>
-      <li (click)="goTo('request-card')">Avatar</li>
-    </ul>
-  </div>
-
-  <div *ngIf="activeSubMenuIndex === 6" class="sub-menu">
     <ul>
       <li class="voltarBar" (click)="closeSubMenu()">
         <img class="setinhaVoltar" src="/assets/icon/chevron-left-solid.svg" alt=""> Voltar
@@ -126,16 +105,16 @@
         <img class="setinha" [class.rotated]="activeOption === 'usuario'" src="/assets/icon/setinha.svg" alt="">
       </li>
       <ul *ngIf="activeOption === 'usuario'">
-        <li (click)="goTo('profile-details')">Perfil</li>
-        <li (click)="goTo('change-password')">Alterar Senha</li>
+        <li (click)="goTo('start')">Perfil</li>
+        <li (click)="goTo('start')">Alterar Senha</li>
       </ul>
       <li [style]="activeOption === 'Outros' ? 'color: var(--Verde-Light)' : ''" (click)="toggleSubOptions('Outros')">
         Outros
         <img class="setinha" [class.rotated]="activeOption === 'Outros'" src="/assets/icon/setinha.svg" alt="">
       </li>
       <ul *ngIf="activeOption === 'Outros'">
-        <li (click)="goTo('document')">Documentos</li>
-        <li (click)="goTo('terms')">Termos de Uso</li>
+        <li (click)="goTo('start')">Documentos</li>
+        <li (click)="goTo('start')">Termos de Uso</li>
       </ul>
     </ul>
   </div>

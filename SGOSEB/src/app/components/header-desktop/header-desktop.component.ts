@@ -18,6 +18,16 @@ export class HeaderDesktopComponent implements OnInit {
   menuCardVisible: boolean = false;
 
   protected nav: NavItem[] = [
+    { title: 'Home',
+      sections: [
+        {
+          title: 'Home',
+          options:[
+         { label: 'Tela principal',
+              url: '/start'}
+         ]
+    }]
+  },
     {
       title: 'Cadastrar',
       sections: [
@@ -25,12 +35,12 @@ export class HeaderDesktopComponent implements OnInit {
           title: 'Veiculos',
           options: [
             {
-              label: 'OS',
+              label: 'Oderm de serviço',
               url: '/register-os'
             },
             {
-              label: 'Novo veiculo',
-              url: '/register-vehicle'
+              label: 'Peças e serviços',
+              url: '/report-os'
             }
           ]
         }
@@ -40,54 +50,42 @@ export class HeaderDesktopComponent implements OnInit {
       title: 'pesquisar',
       sections: [
         {
-          title: 'Veiculos',
+          title: 'Pesquisar',
           options: [
             {
-              label: 'Entradas',
-              url: '/home'
-            },
-            {
-              label: 'Saídas',
-              url: '/home'
-            },
-          ]
-        }
-      ,
-        {
-          title: 'Status',
-          options: [
-            {
-              label: 'Aberta',
-              url: '/home'
-            },
-            {
-              label: 'Fechada',
-              url: '/home'
-            },
-            {
-              label: 'Retirada',
-              url: '/home'
+              label: 'Ordem de serviço',
+              url: '/search'
             }
           ]
-        },
+        }
+
       ]
     },
     {
-      title: 'Comprovantes',
+      title: 'Relatórios',
       sections: [
         {
-          title: 'PDF',
+          title: 'OS retiradas',
           options: [
             {
-              label: 'Retirada de OS',
-              url: '/new-wire-transfer'
-            },
-            {
-              label: 'Relatorio de OS',
-              url: '/limits-wire-transfer'
+              label: 'Oredem de serviço-PDF',
+              url: '/start'
             }
           ]
-        }
+        },
+        {
+          title: 'Resumo Operacional',
+          options: [
+            {
+              label: 'Relatório de produção',
+              url: ''
+            },
+            {
+              label: 'Problemas operacionais',
+              url: ''
+            }
+          ]
+        },
       ]
     },
     {
