@@ -4,7 +4,7 @@ import { AlertController, ModalController, ToastController, NavController, Anima
 import { Observable } from "rxjs";
 import { Platform } from "@ionic/angular";
 import { IPlatformDevice } from "src/app/interfaces/platform-device";
-import { HomePage } from "src/app/home/home.page";
+import { HomePage } from "src/app/pages/home/home.page";
 
 
 

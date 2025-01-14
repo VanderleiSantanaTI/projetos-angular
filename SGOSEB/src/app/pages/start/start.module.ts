@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { SearchPageRoutingModule } from './search-routing.module';
+import { StartPageRoutingModule } from './start-routing.module';
 
-import { SearchPage } from './search.page';
+import { StartPage } from './start.page';
 import { HeaderDesktopComponent } from 'src/app/components/header-desktop/header-desktop.component';
 import { HeaderMobileComponent } from 'src/app/components/header-mobile/header-mobile.component';
 
@@ -15,10 +15,11 @@ import { HeaderMobileComponent } from 'src/app/components/header-mobile/header-m
     CommonModule,
     FormsModule,
     IonicModule,
-    SearchPageRoutingModule,
-    HeaderDesktopComponent,
-    HeaderMobileComponent
+    StartPageRoutingModule,
+    HeaderMobileComponent,
+    HeaderDesktopComponent
+
   ],
-  declarations: [SearchPage]
+  declarations: [StartPage]
 })
-export class SearchPageModule {}
+export class StartPageModule {}

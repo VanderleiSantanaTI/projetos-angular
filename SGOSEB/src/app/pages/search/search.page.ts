@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-search',
@@ -7,10 +7,20 @@ import { Component, OnInit } from '@angular/core';
   standalone: false
 })
 export class SearchPage implements OnInit {
+  isMobile!: boolean;
 
   constructor() { }
 
   ngOnInit() {
+    this.checkWindowSize();
   }
 
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event) {
+    this.checkWindowSize();
+  }
+
+  checkWindowSize() {
+    this.isMobile = window.innerWidth < 768;
+  }
 }
