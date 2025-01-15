@@ -20,7 +20,6 @@ export class RegisterOsPage {
   causa: string = '';
   manutencao: string = '';
   dateSelected: string = '';
-  window: any;
   isMobile!: boolean;
 
   ngOnInit() {
@@ -67,7 +66,7 @@ export class RegisterOsPage {
       sistema: this.sistema,
       manutencao: this.manutencao,
       causa: this.causa,
-      date: this.dateSelected,
+      dateSelected: this.dateSelected,
     };
     console.log('Cadastro realizado:', osData);
     alert('Ordem de Serviço cadastrada com sucesso!');
