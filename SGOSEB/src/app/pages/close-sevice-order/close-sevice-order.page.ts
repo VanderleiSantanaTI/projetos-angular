@@ -18,7 +18,7 @@ export class CloseSeviceOrderPage implements OnInit {
 
   constructor(private fb: FormBuilder, private modalController: ModalController) {
     this.form = this.fb.group({
-      OS: [null, [Validators.required, Validators.min(1)]],
+      OS: [null, [Validators.required, Validators.min(1), Validators.max(10)]],
       nome: ['', Validators.required],
       dateSelected: [null, Validators.required]
     });
@@ -66,8 +66,6 @@ export class CloseSeviceOrderPage implements OnInit {
     });
   }
 
-
-
   onKeyPressBlock(event: KeyboardEvent) {
     if (isNaN(Number(event.key))) {
       event.preventDefault(); // Bloqueia o caractere
@@ -103,5 +101,15 @@ export class CloseSeviceOrderPage implements OnInit {
   //     !!this.selectedDate
   //   );
   // }
+
+  limitNumber(event: any) {
+    const maxLength = 20; // Defina o número máximo de caracteres permitidos
+    const input = event.target.value;
+    event.target.value = input.slice(0, maxLength); // Limita o número de caracteres
+
+    if (input.length > maxLength) {
+      this.form.controls['OS'].setValue(event.target.value); // Atualiza o valor no modelo
+  }
+}
 
 }

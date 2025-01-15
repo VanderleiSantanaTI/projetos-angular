@@ -14,13 +14,23 @@
 
       </ion-row>
       <ion-col class="col" size="12" size-md="3">
-        <ion-input type="number" label="Nº (OS) " label-placement="floating" fill="outline"
-          placeholder="Ordem de Serviço" formControlName="OS" maxlength="20">
+        <ion-input
+          type="number"
+          label="Nº (OS) "
+          label-placement="floating"
+          fill="outline"
+          placeholder="Ordem de Serviço"
+          formControlName="OS"
+          (input)="limitNumber($event)"
+          (keypress)="onKeyPressBlock($event)"
+          >
         </ion-input>
       </ion-col>
 
       <ion-col class="col" size="12" size-md="4">
-        <ion-button expand="block" color="medium">
+        <ion-button
+          expand="block"
+          color="medium">
           <ion-icon slot="start" name="search"></ion-icon>
           Pesquisar OS(s) aberta(s)
         </ion-button>
@@ -37,21 +47,33 @@
         <ion-datetime-button datetime="datetime"></ion-datetime-button>
         <ion-modal [keepContentsMounted]="true" id="datetimeModal">
           <ng-template>
-            <ion-datetime id="datetime" presentation="date" (ionChange)="onDateChange($event)">
+            <ion-datetime
+            id="datetime"
+            presentation="date"
+            (ionChange)="onDateChange($event)">
             </ion-datetime>
           </ng-template>
         </ion-modal>
 
         <ion-row>
           <ion-col class="col" size="12" size-md="12">
-            <ion-input label="Serviço Realizado" label-placement="floating" fill="outline"
-              placeholder="Nome do mecanico" formControlName="nome" maxlength="50">
+            <ion-input
+              label="Nome do mecânico"
+              label-placement="floating"
+              fill="outline"
+              placeholder="Nome"
+              formControlName="nome"
+              maxlength="50">
             </ion-input>
           </ion-col>
         </ion-row>
 
-        <ion-button color="success" expand="block" [disabled]="!form.valid" type="submit">
-          Cadastrar
+        <ion-button
+          color="danger"
+          expand="block"
+          [disabled]="!form.valid"
+          type="submit">
+          Cadastrar fechamento
         </ion-button>
       </ion-card-content>
     </ion-card>
