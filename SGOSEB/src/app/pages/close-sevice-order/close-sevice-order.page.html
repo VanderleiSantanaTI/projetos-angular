@@ -1,53 +1,61 @@
 <ion-header [translucent]="true">
   @if(isMobile) {
-    <app-header-mobile></app-header-mobile>
+  <app-header-mobile></app-header-mobile>
   }@else {
-    <app-header-desktop></app-header-desktop>
+  <app-header-desktop></app-header-desktop>
   }
 </ion-header>
 
 
 <ion-content class="container" [fullscreen]="true">
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title class="titulo-color">Finalizar OS</ion-card-title>
-    </ion-card-header>
-
-    <ion-card-content>
-      <ion-datetime-button datetime="datetime"></ion-datetime-button>
-      <ion-modal [keepContentsMounted]="true" id="datetimeModal">
-        <ng-template>
-          <ion-datetime
-            id="datetime"
-            presentation="date"
-            (ionChange)="onDateChange($event)">
-          </ion-datetime>
-        </ng-template>
-      </ion-modal>
-
+  <form [formGroup]="form" (ngSubmit)="cadastrar()">
+    <ion-card>
       <ion-row>
-        <ion-col class="col" size="12" size-md="12">
-          <ion-input
-            type="text"
-            label="Serviço Realizado"
-            label-placement="floating"
-            fill="outline"
-            placeholder="Nome do mecanico"
-            [(ngModel)]="encerrar"
-            required
-            maxlength="50">
-          </ion-input>
-        </ion-col>
-      </ion-row>
 
-      <ion-button
-        expand="block"
-        color="danger"
-        [disabled]="!formValidoEncerrar()">
-        Encerrar OS
-      </ion-button>
-    </ion-card-content>
-  </ion-card>
+      </ion-row>
+      <ion-col class="col" size="12" size-md="3">
+        <ion-input type="number" label="Nº (OS) " label-placement="floating" fill="outline"
+          placeholder="Ordem de Serviço" formControlName="OS" maxlength="20">
+        </ion-input>
+      </ion-col>
+
+      <ion-col class="col" size="12" size-md="4">
+        <ion-button expand="block" color="medium">
+          <ion-icon slot="start" name="search"></ion-icon>
+          Pesquisar OS(s) aberta(s)
+        </ion-button>
+      </ion-col>
+
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title class="titulo-color">Finalizar OS</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-datetime-button datetime="datetime"></ion-datetime-button>
+        <ion-modal [keepContentsMounted]="true" id="datetimeModal">
+          <ng-template>
+            <ion-datetime id="datetime" presentation="date" (ionChange)="onDateChange($event)">
+            </ion-datetime>
+          </ng-template>
+        </ion-modal>
+
+        <ion-row>
+          <ion-col class="col" size="12" size-md="12">
+            <ion-input label="Serviço Realizado" label-placement="floating" fill="outline"
+              placeholder="Nome do mecanico" formControlName="nome" maxlength="50">
+            </ion-input>
+          </ion-col>
+        </ion-row>
+
+        <ion-button color="success" expand="block" [disabled]="!form.valid" type="submit">
+          Cadastrar
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </form>
 </ion-content>
 
 <ion-footer>

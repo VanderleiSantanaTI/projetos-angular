@@ -57,6 +57,13 @@ export class RegisterOsPage implements OnInit {
     this.dateTimeFields.forEach(date => date.value = '');
   }
 
+  adicionarRequired() {
+    Object.keys(this.form.controls).forEach(key => {
+      this.form.controls[key].setValidators(Validators.required);
+      this.form.controls[key].updateValueAndValidity();
+    });
+  }
+  
   cadastrar() {
     if (this.form.valid) {
       const osData = this.form.value;
@@ -69,12 +76,6 @@ export class RegisterOsPage implements OnInit {
     }
   }
 
-  adicionarRequired() {
-    Object.keys(this.form.controls).forEach(key => {
-      this.form.controls[key].setValidators(Validators.required);
-      this.form.controls[key].updateValueAndValidity();
-    });
-  }
 
   onKeyPressBlock(event: KeyboardEvent) {
     if (isNaN(Number(event.key))) {

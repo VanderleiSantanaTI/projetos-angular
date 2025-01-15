@@ -7,121 +7,110 @@
 </ion-header>
 
 <ion-content class="container m-auto">
-
-
-  <ion-card>
-    <ion-card-header>
+  <form [formGroup]="form" (ngSubmit)="cadastrar()">
+    <ion-card>
+      <ion-card-header>
         <ion-card-title class="titulo-color">Cadastro de peças e serviços</ion-card-title>
-    </ion-card-header>
+      </ion-card-header>
 
-    <ion-card-content>
-      <ion-row>
-
-        <ion-col class="col" size="12" size-md="3">
-          <ion-input
+      <ion-card-content>
+        <ion-row>
+          <ion-col class="col" size="12" size-md="3">
+            <ion-input
               type="number"
-              label="Nº (OS) "
+              label="Nº (OS)"
               label-placement="floating"
               fill="outline"
               placeholder="Ordem de Serviço"
-              [(ngModel)]="OS"
-              required
+              formControlName="OS"
               maxlength="20">
             </ion-input>
-        </ion-col>
+          </ion-col>
 
-        <ion-col class="col" size="12" size-md="4">
+          <ion-col class="col" size="12" size-md="4">
             <ion-button expand="block" color="medium">
               <ion-icon slot="start" name="search"></ion-icon>
               Pesquisar OS(s) aberta(s)
             </ion-button>
-        </ion-col>
-      </ion-row>
-        <ion-row>
-            <ion-col class="col" size="12" size-md="9">
-            <ion-input
-                type="text"
-                label="Peça Utilizada"
-                label-placement="floating"
-                fill="outline"
-                placeholder="peça"
-                [(ngModel)]="peca"
+          </ion-col>
+        </ion-row>
 
-                maxlength="50">
+        <ion-row>
+          <ion-col class="col" size="12" size-md="9">
+            <ion-input
+              label="Peça Utilizada"
+              label-placement="floating"
+              fill="outline"
+              placeholder="peça"
+              formControlName="peca"
+              maxlength="50">
             </ion-input>
           </ion-col>
 
-        <ion-col class="col" size="12" size-md="3">
-          <ion-input
-            type="text"
-            label="Nº de Ficha"
-            label-placement="floating"
-            fill="outline"
-            placeholder="Nº de Ficha"
-            [(ngModel)]= "ficha"
-             maxlength="30">
-        </ion-input>
-      </ion-col>
-    </ion-row>
+          <ion-col class="col" size="12" size-md="3">
+            <ion-input
+              label="Nº de Ficha"
+              label-placement="floating"
+              fill="outline"
+              placeholder="Nº de Ficha"
+              formControlName="ficha"
+              maxlength="30">
+            </ion-input>
+          </ion-col>
+        </ion-row>
 
-    <ion-row>
-      <ion-col class="col" size="12" size-md="9">
-        <ion-input
-            type="text"
-            label="Serviço Realizado"
-            label-placement="floating"
-            fill="outline"
-            placeholder="Serviço"
-            [(ngModel)]="servico"
-            required
-            maxlength="50">
-        </ion-input>
-      </ion-col>
+        <ion-row>
+          <ion-col class="col" size="12" size-md="9">
+            <ion-input
+              label="Serviço Realizado"
+              label-placement="floating"
+              fill="outline"
+              placeholder="Serviço"
+              formControlName="servico"
+              maxlength="50">
+            </ion-input>
+          </ion-col>
 
-      <ion-col class="col" size="12" size-md="3">
-        <ion-input
-            type="number"
-            label="Quantidade"
-            label-placement="floating"
-            fill="outline"
-            placeholder= "Quantidade"
-            [(ngModel)]="quantidade"
-            required
-            maxlength="2">
-        </ion-input>
-      </ion-col>
-    </ion-row>
+          <ion-col class="col" size="12" size-md="3">
+            <ion-input
+              type="number"
+              label="Quantidade"
+              label-placement="floating"
+              fill="outline"
+              placeholder="Quantidade"
+              formControlName="quantidade"
+              (keypress)="onKeyPressBlock($event)"
+              (input)="limitNumber($event, 'quantidade')">
+            </ion-input>
+          </ion-col>
+        </ion-row>
 
+        <ion-row>
+          <ion-col class="col" size="12" size-md="9">
+          </ion-col>
 
-    <ion-row>
-      <ion-col class="col " size="12" size-md="9">
-      </ion-col>
+          <ion-col class="col" size="12" size-md="3">
+            <ion-datetime-button datetime="datetime"></ion-datetime-button>
+            <ion-modal [keepContentsMounted]="true" id="datetimeModal">
+              <ng-template>
+                <ion-datetime
+                  id="datetime"
+                  presentation="date"
+                  (ionChange)="onDateChange($event)">
+                </ion-datetime>
+              </ng-template>
+            </ion-modal>
+          </ion-col>
+        </ion-row>
 
-      <ion-col class="col " size="12" size-md="3">
-        <ion-datetime-button datetime="datetime"></ion-datetime-button>
-        <ion-modal [keepContentsMounted]="true" id="datetimeModal">
-          <ng-template>
-            <ion-datetime
-             id="datetime"
-             presentation="date"
-             (ionChange)="onDateChange($event)"
-             ></ion-datetime>
-          </ng-template>
-        </ion-modal>
-      </ion-col>
-      </ion-row>
-
-      <ion-button
+        <ion-button
           expand="block"
           color="success"
-          [disabled]="!formValido()"
-          (click)="cadastrar()">
-        Cadastrar peças e serviços
-      </ion-button>
-    </ion-card-content>
-  </ion-card>
-
-
-
-
+          [disabled]="!form.valid"
+          type="submit">
+          Cadastrar peças e serviços
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </form>
 </ion-content>
