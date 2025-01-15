@@ -73,7 +73,7 @@
             [(ngModel)]="patrimonio"
             required
             (keypress)="onKeyPressBlock($event)"
-            (input)="limitNumber($event)"
+            (input)="limitNumber($event, 'patrimonio')"
             >
           </ion-input>
         </ion-col>
@@ -87,7 +87,7 @@
             [(ngModel)]="hodometro"
             required
             (keypress)="onKeyPressBlock($event)"
-            (input)="limitNumber($event)"
+            (input)="limitNumber($event, 'hodometro')"
             >
 
           </ion-input>

@@ -8,7 +8,7 @@ import { ModalController } from '@ionic/angular';
   standalone:false
 })
 export class ReportOsPage implements OnInit {
-  OS!:number;
+  OS:number | null = null;
   peca: string = '';
   formatedDate: string = '';
   ficha: string = '';
@@ -58,7 +58,7 @@ export class ReportOsPage implements OnInit {
     return (
       !!this.servico.trim() &&
       this.quantidade > 0 &&
-      this.OS > 0 &&
+      this.OS! > 0 &&
       !!this.formatedDate
     );
   }

@@ -70,7 +70,6 @@ export class RegisterOsPage {
     };
     console.log('Cadastro realizado:', osData);
     alert('Ordem de Serviço cadastrada com sucesso!');
-    this.limpar();
     window.location.reload();
   }
 
@@ -81,8 +80,8 @@ export class RegisterOsPage {
       !!this.modelo.trim() &&
       !!this.placa.trim() &&
       !!this.suCia.trim() &&
-      this.patrimonio !== null &&
-      this.hodometro !== null &&
+      this.patrimonio! > 0 &&
+      this.hodometro! > 0 &&
       !!this.problema.trim() &&
       !!this.sistema.trim() &&
       !!this.manutencao.trim() &&
@@ -92,23 +91,23 @@ export class RegisterOsPage {
   }
 
   onKeyPressBlock(event: KeyboardEvent) {
-    const invalidChars = ['e', 'E', '+', '-','.',','];
 
-    if (invalidChars.includes(event.key)) {
+    if (isNaN(Number(event.key))) {
       event.preventDefault(); // Bloqueia o caractere
     }
-
-
   }
 
-  limitNumber(event: any) {
+  limitNumber(event: any, field: 'hodometro' | 'patrimonio') {
     const maxLength = 20; // Defina o número máximo de caracteres permitidos
     const input = event.target.value;
-
-    if (input.length > maxLength) {
-      event.target.value = input.slice(0, maxLength); // Limita o número de caracteres
+    event.target.value = input.slice(0, maxLength); // Limita o número de caracteres
+    if(input.length > maxLength && field === 'hodometro') {
       this.hodometro = event.target.value; // Atualiza o valor no modelo
+    }else if(input.length > maxLength && field === 'patrimonio') {
+      this.patrimonio = event.target.value; // Atualiza o valor no modelo
+    
     }
+
   }
 
   @HostListener('window:resize', ['$event'])
