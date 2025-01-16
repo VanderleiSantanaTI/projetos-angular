@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -9,6 +9,7 @@ import { SearchPageRoutingModule } from './search-routing.module';
 import { SearchPage } from './search.page';
 import { HeaderDesktopComponent } from 'src/app/components/header-desktop/header-desktop.component';
 import { HeaderMobileComponent } from 'src/app/components/header-mobile/header-mobile.component';
+import { ComponentModule } from 'src/app/component/component.module';
 
 @NgModule({
   imports: [
@@ -17,7 +18,9 @@ import { HeaderMobileComponent } from 'src/app/components/header-mobile/header-m
     IonicModule,
     SearchPageRoutingModule,
     HeaderDesktopComponent,
-    HeaderMobileComponent
+    HeaderMobileComponent,
+    ComponentModule
+
   ],
   declarations: [SearchPage]
 })

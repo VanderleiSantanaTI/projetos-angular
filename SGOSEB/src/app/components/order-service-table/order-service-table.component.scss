@@ -1,0 +1,80 @@
+.table-container {
+  width: 90%;
+  margin: auto;
+  overflow-x: auto;
+  border-radius: 16px;
+  background-color: var(--Gray-BG);
+  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  color: white;
+  table-layout: auto;
+}
+
+th,
+td {
+  padding: 12px;
+  text-align: center;
+}
+
+th {
+  background-color: var(--Verde-EB);
+}
+
+tr {
+  background-color: var(--Gray-BG);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+tr:nth-child(odd) {
+  background-color: rgba(171, 171, 171, 0.3);
+}
+
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.pagination-controls button {
+  margin: 8px 10px;
+  padding: 10px 20px;
+  background-color: var(--Petroleo-BG);
+  color: white;
+  border: 1px solid var(--Verde-EB);
+  cursor: pointer;
+  border-radius: 30px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.pagination-controls button:hover {
+  background-color: var(--Verde-EB);
+}
+
+.pagination-controls button[disabled] {
+  background-color: var(--Petroleo-BG);
+  color: var(--Gray-BG);
+}
+
+.items-per-page-select {
+  margin-left: 20px;
+  padding: 8px 12px;
+  font-size: 14px;
+  border: 1px solid var(--Verde-EB);
+  border-radius: 30px;
+  background-color: var(--Gray-BG);
+  color: white;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 400px) {
+
+  .items-per-page-select {
+    display: none;
+  }
+}

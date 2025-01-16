@@ -63,12 +63,13 @@ export class RegisterOsPage implements OnInit {
       this.form.controls[key].updateValueAndValidity();
     });
   }
-  
+
   cadastrar() {
     if (this.form.valid) {
       const osData = this.form.value;
       console.log('Cadastro realizado:', osData);
       alert('Ordem de Serviço cadastrada com sucesso!');
+      
       this.limpar();
       // window.location.reload();
     } else {

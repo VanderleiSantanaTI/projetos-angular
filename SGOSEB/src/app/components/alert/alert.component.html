@@ -1,0 +1,15 @@
+
+<div class="alert-overlay" @fadeInOut>
+  <div class="alert-box">
+    <div class="close-btn" (click)="close()">
+      <ion-icon name="close-outline"></ion-icon>
+    </div>
+    <h2 class="header">{{ header }}</h2>
+    <p class="message" [innerHtml]="safeMessage"></p>
+    <div class="alert-buttons">
+      <ion-button *ngFor="let button of buttons" [ngClass]="button.color" (click)="buttonHandler(button.handler)">
+        {{ button.text }}
+      </ion-button>
+    </div>
+  </div>
+</div>
