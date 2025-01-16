@@ -23,7 +23,7 @@
               fill="outline"
               placeholder="Ordem de Serviço"
               formControlName="OS"
-              maxlength="20">
+              (input)="limitNumber($event, 'OS')">
             </ion-input>
           </ion-col>
 
@@ -49,12 +49,14 @@
 
           <ion-col class="col" size="12" size-md="3">
             <ion-input
+              type="text"
               label="Nº de Ficha"
               label-placement="floating"
               fill="outline"
               placeholder="Nº de Ficha"
               formControlName="ficha"
-              maxlength="30">
+              maxlength="20"
+              >
             </ion-input>
           </ion-col>
         </ion-row>
@@ -90,11 +92,11 @@
           </ion-col>
 
           <ion-col class="col" size="12" size-md="3">
-            <ion-datetime-button datetime="datetime"></ion-datetime-button>
+            <ion-datetime-button datetime="datetimeReport"></ion-datetime-button>
             <ion-modal [keepContentsMounted]="true" id="datetimeModal">
               <ng-template>
                 <ion-datetime
-                  id="datetime"
+                  id="datetimeReport"
                   presentation="date"
                   (ionChange)="onDateChange($event)">
                 </ion-datetime>

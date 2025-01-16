@@ -6,7 +6,7 @@ import { IonDatetime, ModalController } from '@ionic/angular';
   selector: 'app-register-os',
   templateUrl: './register-os.page.html',
   styleUrls: ['./register-os.page.scss'],
-  standalone: false,
+  standalone: false
 })
 export class RegisterOsPage implements OnInit {
   form: FormGroup;

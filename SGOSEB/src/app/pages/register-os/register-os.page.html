@@ -1,11 +1,11 @@
 <ion-header [translucent]="true">
-  <ng-container *ngIf="isMobile; else desktopHeader">
+  @if(isMobile) {
     <app-header-mobile></app-header-mobile>
-  </ng-container>
-  <ng-template #desktopHeader>
+  }@else {
     <app-header-desktop></app-header-desktop>
-  </ng-template>
+  }
 </ion-header>
+
 
 <ion-content [fullscreen]="true">
   <div class="container m-auto">
@@ -128,11 +128,11 @@
         </ion-row>
         <ion-row>
           <ion-col class="col" size="12" size-md="3">
-            <ion-datetime-button datetime="datetime"></ion-datetime-button>
+            <ion-datetime-button datetime="datetimeRegister"></ion-datetime-button>
             <ion-modal [keepContentsMounted]="true" id="datetimeModal">
               <ng-template>
                 <ion-datetime
-                  id="datetime"
+                  id="datetimeRegister"
                   presentation="date"
                   (ionChange)="onDateChange($event)">
                 </ion-datetime>

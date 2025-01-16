@@ -6,7 +6,7 @@ import { IonDatetime, ModalController } from '@ionic/angular';
   selector: 'app-report-os',
   templateUrl: './report-os.page.html',
   styleUrls: ['./report-os.page.scss'],
-  standalone:false
+  standalone: false
 })
 export class ReportOsPage implements OnInit {
   form: FormGroup;
@@ -30,10 +30,10 @@ export class ReportOsPage implements OnInit {
   }
 
   async onDateChange(event: any) {
-    this.selectedDate = event.detail.value; // Armazena o valor da data selecionada
-    this.form.controls['dateSelected'].setValue(new Date(this.selectedDate).toLocaleDateString('pt-BR')); // Formata a data e atualiza o formulário
-    // this.form.controls['dateSelected'].setValue(new Date(this.selectedDate))
+    this.selectedDate = event.detail.value; 
+    this.form.controls['dateSelected'].setValue(new Date(this.selectedDate).toLocaleDateString('pt-BR'));
     console.log('Data selecionada:', this.form.controls['dateSelected'].value);
+    
     // Fecha o modal após a seleção
     const modal = await this.modalController.getTop(); // Obtém o modal ativo
     if (modal) {
@@ -74,17 +74,17 @@ export class ReportOsPage implements OnInit {
     }
   }
 
-  limitNumber(event: any, field: 'ficha' | 'quantidade') {
+  limitNumber(event: any, field: 'quantidade' | 'OS') {
     const maxLength = 20; // Defina o número máximo de caracteres permitidos
     const input = event.target.value;
     event.target.value = input.slice(0, maxLength); // Limita o número de caracteres
-
-    if (input.length > maxLength && field === 'ficha') {
-      this.form.controls['ficha'].setValue(event.target.value); // Atualiza o valor no modelo
-
-    } else if (input.length > maxLength && field === 'quantidade') {
+     if (input.length > maxLength && field === 'quantidade') {
       this.form.controls['quantidade'].setValue(event.target.value); // Atualiza o valor no modelo
+    } else if (input.length > maxLength && field === 'OS') {
+      this.form.controls['OS'].setValue(event.target.value); // Atualiza o valor no modelo
     }
+
+
   }
 
   @HostListener('window:resize', ['$event'])
