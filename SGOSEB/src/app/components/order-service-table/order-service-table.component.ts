@@ -15,7 +15,7 @@ export class OrderServiceTableComponent implements OnInit {
   @Input() tableData: any[] = [];
   @Input() fieldsToShow: string[] = [];
   @Input() fielterCheck:boolean = false;
-
+  @Input() linkFields: string[] = [];
   currentPage = 1;
   itemsPerPage = 10;
   totalPages: number = 0;
@@ -26,6 +26,20 @@ export class OrderServiceTableComponent implements OnInit {
   filterValue: string = '';
   filteredData: any[] = [];
 
+   // Lista de campos que devem ser exibidos como links
+   
+   isLinkField(field: string): boolean {
+    return this.linkFields.includes(field);
+  }
+
+    // Manipula o clique no link
+    onLinkClick(row: any, field: string, event: Event): void {
+      event.preventDefault(); // Previne o comportamento padrão do link
+      console.log('Linha clicada:', row);
+      console.log('Campo clicado:', field);
+      console.log('Valor do campo:', row[field]);
+      // Aqui você pode executar qualquer ação, como abrir um modal, redirecionar, etc.
+    }
   get tableHeaders(): string[] {
     if (this.tableData.length > 0) {
       return this.fieldsToShow.length > 0 ? this.fieldsToShow : Object.keys(this.tableData[0]);

@@ -12,6 +12,9 @@
 <ion-content [fullscreen]="true">
 <app-order-service-table
 [tableData]="data"
-[fieldsToShow]="fieldsToShow">
+[fieldsToShow]="fieldsToShow"
+[fielterCheck]="true"
+[linkFields]="['modelo']"
+>
 </app-order-service-table>
 </ion-content>

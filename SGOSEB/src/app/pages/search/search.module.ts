@@ -19,7 +19,8 @@ import { ComponentModule } from 'src/app/component/component.module';
     SearchPageRoutingModule,
     HeaderDesktopComponent,
     HeaderMobileComponent,
-    ComponentModule
+    ComponentModule,
+    
 
   ],
   declarations: [SearchPage]

@@ -9,7 +9,7 @@ import { Component, HostListener, OnInit } from '@angular/core';
 export class SearchPage implements OnInit {
   isMobile!: boolean;
 
-  fieldsToShow: string[] = ['marca', 'modelo', 'suCia'];
+  fieldsToShow: string[] = ['marca', 'problema', 'suCia', 'modelo', 'usuario'];
   data = [
     {
       marca: 'Toyota', modelo: 'Corolla', placa: 'ABC-1234', suCia: 'SU-123',
@@ -116,7 +116,7 @@ export class SearchPage implements OnInit {
     "peca": "Peça O", "ficha": "Ficha15", "servico": "Serviço P",
     "quantidade": 2, "retiradoPor": "Thiago", "usuario": "Bruno"
 }
-    
+
   ];
 
 

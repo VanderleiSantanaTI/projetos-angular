@@ -10,6 +10,20 @@
 
 
 <ion-content [fullscreen]="true">
-<h1>oioio</h1>
+  <div *ngIf="contatos.length > 0; else loading">
+    <h2>Lista de Contatos</h2>
+    <ul>
+      <li *ngFor="let contato of contatos">
+        <strong>Nome:</strong> {{ contato.nome }}<br>
+        <strong>Nascimento:</strong> {{ contato.nascimento }}<br>
+        <strong>Email:</strong> {{ contato.email }}<br>
+        <strong>Celular:</strong> {{ contato.celular }}<br>
+        <strong>Profissão:</strong> {{ contato.profissao }}
+      </li>
+    </ul>
+  </div>
 
+  <ng-template #loading>
+    <p>Carregando contatos...</p>
+  </ng-template>
 </ion-content>
