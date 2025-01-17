@@ -2,7 +2,7 @@ import { Component, HostListener, OnInit, QueryList, ViewChildren } from '@angul
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IonDatetime, ModalController } from '@ionic/angular';
 import { UtilsService } from 'src/app/services/utils/utils.service';
-import { IPlatformDevice } from 'c:/Users/vande/Documents/GitHub/projetos-angular/SGOSEB/src/app/interfaces/platform-device';
+import { IPlatformDevice } from '../../interfaces/platform-device';
 
 @Component({
   selector: 'app-close-sevice-order',
@@ -16,7 +16,7 @@ export class CloseSeviceOrderPage implements OnInit {
   form: FormGroup;
 
   @ViewChildren(IonDatetime) dateTimeFields!: QueryList<IonDatetime>;
-//  platformActive: IPlatformDevice;
+  // platformActive: IPlatformDevice;
 
   constructor(
     private utilsService: UtilsService,

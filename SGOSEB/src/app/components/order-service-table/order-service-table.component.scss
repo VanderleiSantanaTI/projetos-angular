@@ -1,5 +1,41 @@
-.table-container {
+.table-full {
+  width: 100%;
+  margin-top: 20px;
+  background-color: transparent;
+}
+
+.filter-container {
+  margin: auto;
   width: 90%;
+  padding: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #ccc;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  gap: 10px; /* Espaço entre os elementos */
+  background-color: var(--Light-Gray);
+
+  label {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+  }
+
+  select,
+  input {
+    padding: 6px 10px;
+    border-radius: 15px;
+    border: 1px solid #ccc;
+    min-width: 180px; /* Garante que os elementos não fiquem muito pequenos */
+  }
+}
+
+.table-container {
+  width: 95%;
   margin: auto;
   overflow-x: auto;
   border-radius: 16px;
@@ -38,10 +74,11 @@ tr:nth-child(odd) {
   justify-content: center;
   align-items: center;
   margin-top: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .pagination-controls button {
-  margin: 8px 10px;
   padding: 10px 20px;
   background-color: var(--Petroleo-BG);
   color: white;
@@ -62,7 +99,6 @@ tr:nth-child(odd) {
 }
 
 .items-per-page-select {
-  margin-left: 20px;
   padding: 8px 12px;
   font-size: 14px;
   border: 1px solid var(--Verde-EB);
@@ -72,9 +108,46 @@ tr:nth-child(odd) {
   cursor: pointer;
 }
 
-@media screen and (max-width: 400px) {
+/* Responsividade aprimorada para telas menores */
+@media screen and (max-width: 768px) {
+  .filter-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 15px;
+  }
+
+  .filter-container select,
+  .filter-container input {
+    width: 100%;
+    max-width: 350px;
+  }
+
+  .pagination-controls {
+    flex-direction: column;
+    gap: 5px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .filter-container {
+    width: 100%;
+    border-radius: 0;
+  }
+
+  .filter-container select,
+  .filter-container input {
+    width: 90%;
+    max-width: 100%;
+  }
 
   .items-per-page-select {
     display: none;
   }
+
+  .table-container {
+    width: 100%;
+    border-radius: 0;
+  }
+
 }
