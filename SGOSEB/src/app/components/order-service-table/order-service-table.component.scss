@@ -29,7 +29,8 @@
   input {
     padding: 6px 10px;
     border-radius: 15px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--Verde-EB);
+    background-color: var(--Gray-BG);
     min-width: 180px; /* Garante que os elementos não fiquem muito pequenos */
   }
 }
