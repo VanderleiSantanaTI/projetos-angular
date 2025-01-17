@@ -1,11 +1,11 @@
 <div class="table-full">
-  <div class="filter-container">
+  <div *ngIf="fielterCheck" class="filter-container">
     <label for="filterField">Filtrar por:</label>
     <select id="filterField" [(ngModel)]="selectedFilterField">
       <option value="">Selecione um campo</option>
       <option *ngFor="let header of tableHeaders" [value]="header">{{ header }}</option>
     </select>
-  
+
     <label for="filterValue">Valor:</label>
     <input
       id="filterValue"
@@ -15,8 +15,8 @@
       (ngModelChange)="applyFilter()"
     />
   </div>
-  
-  
+
+
   <div class="table-container">
     <table>
       <thead>
@@ -31,12 +31,12 @@
       </tbody>
     </table>
   </div>
-  
+
   <div class="pagination-controls">
     <button (click)="prevPage()" [disabled]="currentPage === 1">Anterior</button>
     <span>Página {{ currentPage }} de {{ totalPages }}</span>
     <button (click)="nextPage()" [disabled]="currentPage === totalPages">Próxima</button>
-  
+
     <label for="itemsPerPage"></label>
     <select id="itemsPerPage" (change)="updateItemsPerPage($event)" class="items-per-page-select">
       <option *ngFor="let option of pageOptions" [value]="option">{{ option }}</option>
