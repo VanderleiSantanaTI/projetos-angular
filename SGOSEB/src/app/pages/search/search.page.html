@@ -9,12 +9,15 @@
 
 
 
-<ion-content [fullscreen]="true">
+<ion-content class="mb-5 b-4" [fullscreen]="true">
+  <ion-card
+  style="box-shadow: none;background-color: transparent;"
+  class="m-auto w-95 mt-2 titulo-color fz-20">PESQUISA OS
+</ion-card>
 <app-order-service-table
 [tableData]="data"
 [fieldsToShow]="fieldsToShow"
 [fielterCheck]="true"
-[linkFields]="['modelo']"
 >
 </app-order-service-table>
 </ion-content>
