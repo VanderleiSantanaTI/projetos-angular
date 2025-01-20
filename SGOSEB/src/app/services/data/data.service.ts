@@ -1,3 +1,4 @@
+import { getTestBed } from '@angular/core/testing';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
@@ -8,6 +9,7 @@ import { catchError, map } from 'rxjs/operators';
 })
 export class DataService{
   private apiUrl = 'api/contatos/'; // URL da API
+  private apiUrlTest = 'https://jsonplaceholder.typicode.com/posts'; // URL da API
 
   constructor(private http: HttpClient) {}
 
@@ -18,6 +20,14 @@ export class DataService{
       catchError(this.handleError)
     );
   }
+
+  getTest(): Observable<any[]> {
+    return this.http.get<any[]>(this.apiUrlTest).pipe(
+      map((response) => response), // Retorna a resposta completa
+      catchError(this.handleError)
+    );
+  }
+
 
   // Tratamento de erro
   private handleError(error: HttpErrorResponse) {

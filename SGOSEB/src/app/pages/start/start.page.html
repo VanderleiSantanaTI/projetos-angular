@@ -14,7 +14,8 @@
 [tableData]="contatos"
 [fieldsToShow]="fieldsToShow"
 [fielterCheck]="true"
-[linkFields]="['id']"
+[linkFields]="links"
+(linkClick)="handleLinkClick($event)"
 >
 </app-order-service-table>
 <!--

@@ -10,7 +10,63 @@ import { DataService } from 'src/app/services/data/data.service';
 export class StartPage implements OnInit {
   isMobile!: boolean;
   contatos: any[] = [];
+  dataTest: any[] = [];
+
   fieldsToShow = ['id','nome','celular', 'profissao'];
+  fieldsTest = ['userId','id','title', 'body'];
+  links = ['id'];
+
+  constructor(
+    private cdr: ChangeDetectorRef,
+    private dataService: DataService
+  ) {
+
+    // console.log('datas:', this.datas);
+    // console.log('contatos:', this.contatos);
+  }
+
+
+  ngOnInit() {
+    this.carregarContatos();
+    this.checkWindowSize();
+    this.carregarTest();
+  }
+
+  carregarContatos() {
+    this.dataService.getContatos().subscribe(
+      (data) => {
+        // console.log('Contatos recebidos:', data);
+        this.contatos = data; // Armazena os contatos retornados pela API
+        // console.log('Contatos:', this.contatos);
+        this.cdr.detectChanges(); // Força a detecção de mudanças
+      },
+      (error) => {
+        console.error('Erro ao carregar os contatos:', error);
+      }
+    );
+  }
+
+  carregarTest() {
+    this.dataService.getTest().subscribe(
+      (data) => {
+        // console.log('Contatos recebidos:', data);
+        this.dataTest = data; // Armazena os contatos retornados pela API
+        // console.log('Contatos:', this.dataTest);
+        this.cdr.detectChanges(); // Força a detecção de mudanças
+      },
+      (error) => {
+        console.error('Erro ao carregar os contatos:', error);
+      }
+    );
+    }
+
+    handleLinkClick(event: { row: any, field: string }) {
+      console.log('Evento recebido no componente pai:', event.row.profissao);
+      // Aqui você pode executar qualquer ação, como abrir um modal, redirecionar, etc.
+    }
+
+
+
   datas = [
     {
       marca: 'Toyota', modelo: 'Corolla', placa: 'ABC-1234', suCia: 'SU-123',
@@ -27,37 +83,6 @@ export class StartPage implements OnInit {
       quantidade: 1, retiradoPor: 'Ciclano', usuario: 'Beltrano'
     }
   ];
-
-  constructor(
-    private cdr: ChangeDetectorRef,
-    private dataService: DataService
-  ) {
-
-    console.log('datas:', this.datas);
-    console.log('contatos:', this.contatos);
-  }
-
-
-  ngOnInit() {
-    this.carregarContatos();
-    this.checkWindowSize();
-  }
-
-  carregarContatos() {
-    this.dataService.getContatos().subscribe(
-      (data) => {
-        console.log('Contatos recebidos:', data);
-        this.contatos = data; // Armazena os contatos retornados pela API
-        console.log('Contatos:', this.contatos);
-        this.cdr.detectChanges(); // Força a detecção de mudanças
-      },
-      (error) => {
-        console.error('Erro ao carregar os contatos:', error);
-      }
-    );
-  }
-
-
 
 
 
