@@ -6,6 +6,7 @@ import { StartPageRoutingModule } from './start-routing.module';
 import { StartPage } from './start.page';
 import { HeaderDesktopComponent } from 'src/app/components/header-desktop/header-desktop.component';
 import { HeaderMobileComponent } from 'src/app/components/header-mobile/header-mobile.component';
+import { ComponentModule } from 'src/app/component/component.module';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { HeaderMobileComponent } from 'src/app/components/header-mobile/header-m
     StartPageRoutingModule,
     HeaderMobileComponent,
     HeaderDesktopComponent,
+    ComponentModule
 
 
   ],

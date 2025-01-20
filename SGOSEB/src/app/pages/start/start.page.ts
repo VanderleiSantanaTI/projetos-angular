@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, HostListener, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data/data.service';
 
 @Component({
@@ -10,8 +10,33 @@ import { DataService } from 'src/app/services/data/data.service';
 export class StartPage implements OnInit {
   isMobile!: boolean;
   contatos: any[] = [];
+  fieldsToShow = ['id','nome','celular', 'profissao'];
+  datas = [
+    {
+      marca: 'Toyota', modelo: 'Corolla', placa: 'ABC-1234', suCia: 'SU-123',
+      patrimonio: '123456', hodometro: '12000', problema: 'Problema X', sistemaAfetado: 'Sistema Y',
+      data: '2025-01-01', manutencao: 'Manutenção Z', os: 'OS123',
+      peca: 'Peça A', ficha: 'Ficha1', servico: 'Serviço B',
+      quantidade: 2, retiradoPor: 'Fulano', usuario: 'Beltrano'
+    },
+    {
+      marca: 'Honda', modelo: 'Civic', placa: 'DEF-5678', suCia: 'SU-456',
+      patrimonio: '654321', hodometro: '25000', problema: 'Problema Y', sistemaAfetado: 'Sistema X',
+      data: '2025-02-10', manutencao: 'Manutenção A', os: 'OS456',
+      peca: 'Peça B', ficha: 'Ficha2', servico: 'Serviço C',
+      quantidade: 1, retiradoPor: 'Ciclano', usuario: 'Beltrano'
+    }
+  ];
 
-  constructor(private dataService: DataService) {}
+  constructor(
+    private cdr: ChangeDetectorRef,
+    private dataService: DataService
+  ) {
+
+    console.log('datas:', this.datas);
+    console.log('contatos:', this.contatos);
+  }
+
 
   ngOnInit() {
     this.carregarContatos();
@@ -23,12 +48,18 @@ export class StartPage implements OnInit {
       (data) => {
         console.log('Contatos recebidos:', data);
         this.contatos = data; // Armazena os contatos retornados pela API
+        console.log('Contatos:', this.contatos);
+        this.cdr.detectChanges(); // Força a detecção de mudanças
       },
       (error) => {
         console.error('Erro ao carregar os contatos:', error);
       }
     );
   }
+
+
+
+
 
   @HostListener('window:resize', ['$event'])
   onResize(event: Event) {

@@ -123,6 +123,7 @@ export class SearchPage implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log('Dados:', this.data);
     this.checkWindowSize();
   }
 

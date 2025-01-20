@@ -10,6 +10,14 @@
 
 
 <ion-content [fullscreen]="true">
+  <app-order-service-table
+[tableData]="contatos"
+[fieldsToShow]="fieldsToShow"
+[fielterCheck]="true"
+[linkFields]="['id']"
+>
+</app-order-service-table>
+<!--
   <div *ngIf="contatos.length > 0; else loading">
     <h2>Lista de Contatos</h2>
     <ul>
@@ -25,5 +33,5 @@
 
   <ng-template #loading>
     <p>Carregando contatos...</p>
-  </ng-template>
+  </ng-template> -->
 </ion-content>

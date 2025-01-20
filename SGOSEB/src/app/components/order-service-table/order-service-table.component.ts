@@ -27,7 +27,7 @@ export class OrderServiceTableComponent implements OnInit {
   filteredData: any[] = [];
 
    // Lista de campos que devem ser exibidos como links
-   
+
    isLinkField(field: string): boolean {
     return this.linkFields.includes(field);
   }
@@ -49,6 +49,10 @@ export class OrderServiceTableComponent implements OnInit {
 
   ngOnInit() {
     this.filteredData = [...this.tableData];  // Inicializa filteredData com todos os dados
+    this.totalPages = Math.ceil(this.tableData.length / this.itemsPerPage);
+  }
+  ngOnChanges() {
+    this.filteredData = [...this.tableData];  // Atualiza filteredData quando tableData mudar
     this.totalPages = Math.ceil(this.tableData.length / this.itemsPerPage);
   }
 
