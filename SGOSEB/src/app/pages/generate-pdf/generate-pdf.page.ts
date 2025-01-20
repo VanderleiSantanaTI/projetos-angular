@@ -1,0 +1,55 @@
+import { ChangeDetectorRef, Component, HostListener, OnInit } from '@angular/core';
+import { DataService } from 'src/app/services/data/data.service';
+
+@Component({
+  selector: 'app-generate-pdf',
+  templateUrl: './generate-pdf.page.html',
+  styleUrls: ['./generate-pdf.page.scss'],
+  standalone: false
+})
+export class GeneratePdfPage implements OnInit {
+  isMobile!: boolean;
+  contatos: any[] = [];
+
+
+  fieldsToShow = ['id','nome','celular', 'profissao','celular'];
+  links = ['celular'];
+
+  constructor(
+        private cdr: ChangeDetectorRef,
+        private dataService: DataService
+  ) {
+   }
+
+  ngOnInit() {
+    this.carregarContatos();
+    this.checkWindowSize();
+
+  }
+  carregarContatos() {
+    this.dataService.getContatos().subscribe(
+      (data) => {
+        // console.log('Contatos recebidos:', data);
+        this.contatos = data; // Armazena os contatos retornados pela API
+        // console.log('Contatos:', this.contatos);
+        this.cdr.detectChanges(); // Força a detecção de mudanças
+      },
+      (error) => {
+        console.error('Erro ao carregar os contatos:', error);
+      }
+    );
+  }
+
+  handleLinkClick(event: { row: any, field: string }) {
+    console.log('Evento recebido no componente pai:', event.row.profissao);
+    // Aqui você pode executar qualquer ação, como abrir um modal, redirecionar, etc.
+  }
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event) {
+    this.checkWindowSize();
+  }
+
+  checkWindowSize() {
+    this.isMobile = window.innerWidth < 768;
+  }
+}

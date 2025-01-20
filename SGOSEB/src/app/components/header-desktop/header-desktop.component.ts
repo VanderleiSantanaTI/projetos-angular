@@ -84,7 +84,7 @@ export class HeaderDesktopComponent implements OnInit {
           options: [
             {
               label: 'Oredem de serviço-PDF',
-              url: '/start'
+              url: '/generate-pdf'
             }
           ]
         },

@@ -1,0 +1,22 @@
+
+<ion-header [translucent]="true">
+  @if(isMobile) {
+    <app-header-mobile></app-header-mobile>
+  }@else {
+    <app-header-desktop></app-header-desktop>
+  }
+</ion-header>
+
+
+
+<ion-content [fullscreen]="true">
+  <ion-card  class="m-auto w-95 mt-2 titulo-color fz-20">GERADOR DE PDF</ion-card>
+  <app-order-service-table
+[tableData]="contatos"
+[fieldsToShow]="fieldsToShow"
+[fielterCheck]="true"
+[linkFields]="links"
+(linkClick)="handleLinkClick($event)"
+>
+</app-order-service-table>
+</ion-content>

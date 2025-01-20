@@ -29,7 +29,7 @@
           <td *ngFor="let field of tableHeaders">
             <!-- Verifica se o campo deve ser exibido como link -->
             <ng-container *ngIf="isLinkField(field); else defaultField">
-              <a href="#" (click)="onLinkClick(row, field, $event)">{{ row[field] }}</a>
+              <a class="link" href="#" (click)="onLinkClick(row, field, $event)">{{ row[field] }}</a>
             </ng-container>
             <!-- Exibe o valor padrão para campos normais -->
             <ng-template #defaultField>

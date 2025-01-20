@@ -37,6 +37,10 @@ const routes: Routes = [
     path: 'close-sevice-order',
     loadChildren: () => import('./pages/close-sevice-order/close-sevice-order.module').then( m => m.CloseSeviceOrderPageModule)
   },
+  {
+    path: 'generate-pdf',
+    loadChildren: () => import('./pages/generate-pdf/generate-pdf.module').then( m => m.GeneratePdfPageModule)
+  },
 
 
 
