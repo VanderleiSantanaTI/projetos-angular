@@ -14,7 +14,7 @@ export class StartPage implements OnInit {
 
   fieldsToShow = ['id','nome','celular', 'profissao'];
   fieldsTest = ['userId','id','title', 'body'];
-  links = ['id'];
+  links = ['profissao'];
 
   constructor(
     private cdr: ChangeDetectorRef,
@@ -64,7 +64,10 @@ export class StartPage implements OnInit {
       console.log('Evento recebido no componente pai:', event.row.profissao);
       // Aqui você pode executar qualquer ação, como abrir um modal, redirecionar, etc.
     }
-
+    acaoBotao(event: { row: any}) {
+      console.log('Evento recebido no componente pai:', event.row.id);
+      // Aqui você pode executar qualquer ação, como abrir um modal, redirecionar, etc.
+    }
 
 
   datas = [
