@@ -3,21 +3,24 @@ import { NgFor, NgIf} from '@angular/common';
 import { Component, OnInit, Input, NgModule, EventEmitter, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
+import { ButtonComponent } from "../button/button.component";
 
 
 @Component({
   selector: 'app-order-service-table',
   templateUrl: './order-service-table.component.html',
   styleUrls: ['./order-service-table.component.scss'],
-  imports: [NgFor,NgIf, IonicModule,FormsModule]
+  imports: [NgFor, NgIf, IonicModule, FormsModule, ButtonComponent]
 })
 export class OrderServiceTableComponent implements OnInit {
   @Input() tableData: any[] = [];
   @Input() fieldsToShow: string[] = [];
   @Input() fielterCheck:boolean = false;
   @Input() linkFields: string[] = [];
+  @Input() buttonConfig: boolean = false;
   @Output() linkClick = new EventEmitter<{ row: any, field: string }>();
-
+  // @Output() ActionButton = new EventEmitter<{row: any}>();
+  @Output() ActionButton = new EventEmitter();
   currentPage = 1;
   itemsPerPage = 10;
   totalPages: number = 0;
@@ -34,16 +37,30 @@ export class OrderServiceTableComponent implements OnInit {
     return this.linkFields.includes(field);
   }
 
-    // Manipula o clique no link
-    onLinkClick(row: any, field: string, event: Event): void {
-      event.preventDefault(); // Previne o comportamento padrão do link
-      // console.log('Linha clicada:', row);
-      // console.log('Campo clicado:', field);
-      // console.log('Valor do campo:', row[field]);
-      // this.linkClick.emit(row);
-      this.linkClick.emit({ row, field });
-      // Aqui você pode executar qualquer ação, como abrir um modal, redirecionar, etc.
-    }
+    // Manipula o clique no botão
+  onButtonClick(row: any, event: Event): void {
+    // event.preventDefault();
+    this.ActionButton.emit({row}); // Emite o evento com os dados do botão
+  }
+
+
+
+
+
+
+
+
+
+  // Manipula o clique no link
+  onLinkClick(row: any, field: string, event: Event): void {
+    event.preventDefault(); // Previne o comportamento padrão do link
+    // console.log('Linha clicada:', row);
+    // console.log('Campo clicado:', field);
+    // console.log('Valor do campo:', row[field]);
+    // this.linkClick.emit(row);
+    this.linkClick.emit({ row, field });
+    // Aqui você pode executar qualquer ação, como abrir um modal, redirecionar, etc.
+  }
   get tableHeaders(): string[] {
     if (this.tableData.length > 0) {
       return this.fieldsToShow.length > 0 ? this.fieldsToShow : Object.keys(this.tableData[0]);

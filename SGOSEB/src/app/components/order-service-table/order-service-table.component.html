@@ -11,13 +11,8 @@
 
     <div class="input-search">
       <label for="filterValue">Valor:</label>
-      <input
-        id="filterValue"
-        type="text"
-        placeholder="Digite o termo de busca"
-        [(ngModel)]="filterValue"
-        (ngModelChange)="applyFilter()"
-      />
+      <input id="filterValue" type="text" placeholder="Digite o termo de busca" [(ngModel)]="filterValue"
+        (ngModelChange)="applyFilter()" />
     </div>
 
   </div>
@@ -28,6 +23,7 @@
       <thead>
         <tr>
           <th *ngFor="let header of tableHeaders">{{ header }}</th>
+          <th *ngIf="buttonConfig">Ações</th>
         </tr>
       </thead>
       <tbody>
@@ -42,6 +38,13 @@
               {{ row[field] }}
             </ng-template>
           </td>
+
+          <td *ngIf="buttonConfig">
+            <app-button  text="PDF" width="50px" (click)="onButtonClick(row, $event)"></app-button>
+            <!-- <app-button (click)="onButtonClick(row, $event)" text="GERAR PDF"></app-button> -->
+
+          </td>
+
         </tr>
       </tbody>
     </table>
