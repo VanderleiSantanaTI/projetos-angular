@@ -1,19 +1,25 @@
 <div class="table-full">
   <div *ngIf="fielterCheck" class="filter-container">
-    <label for="filterField">Filtrar por:</label>
-    <select id="filterField" [(ngModel)]="selectedFilterField">
-      <option value="">Selecione um campo</option>
-      <option *ngFor="let header of tableHeaders" [value]="header">{{ header }}</option>
-    </select>
+    <div class="input-search">
+      <label for="filterField">Filtrar por:</label>
+      <select id="filterField" [(ngModel)]="selectedFilterField">
+        <option value="">Selecione um campo</option>
+        <option *ngFor="let header of tableHeaders" [value]="header">{{ header }}</option>
+      </select>
+    </div>
 
-    <label for="filterValue">Valor:</label>
-    <input
-      id="filterValue"
-      type="text"
-      placeholder="Digite o termo de busca"
-      [(ngModel)]="filterValue"
-      (ngModelChange)="applyFilter()"
-    />
+
+    <div class="input-search">
+      <label for="filterValue">Valor:</label>
+      <input
+        id="filterValue"
+        type="text"
+        placeholder="Digite o termo de busca"
+        [(ngModel)]="filterValue"
+        (ngModelChange)="applyFilter()"
+      />
+    </div>
+
   </div>
 
 
