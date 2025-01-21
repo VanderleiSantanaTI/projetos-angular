@@ -15,6 +15,19 @@ export class CloseSeviceOrderPage implements OnInit {
   selectedDate: any;
   form: FormGroup;
 
+  isModalOpen = false;  // Variável para controlar a abertura do modal
+  listaOS = ['OS1', 'OS2', 'OS3']; // Exemplo de lista de OS(s)
+
+  // Método para abrir o modal
+  openSearchModal() {
+    this.isModalOpen = true;
+  }
+
+  // Método para fechar o modal
+  closeModal() {
+    this.isModalOpen = false;
+  }
+
   @ViewChildren(IonDatetime) dateTimeFields!: QueryList<IonDatetime>;
   // platformActive: IPlatformDevice;
 

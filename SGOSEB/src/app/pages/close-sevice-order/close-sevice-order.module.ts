@@ -9,6 +9,9 @@ import { CloseSeviceOrderPageRoutingModule } from './close-sevice-order-routing.
 import { CloseSeviceOrderPage } from './close-sevice-order.page';
 import { HeaderDesktopComponent } from 'src/app/components/header-desktop/header-desktop.component';
 import { HeaderMobileComponent } from 'src/app/components/header-mobile/header-mobile.component';
+import { ButtonComponent } from "../../components/button/button.component";
+import { OrderServiceTableComponent } from "../../components/order-service-table/order-service-table.component";
+import { ComponentModule } from 'src/app/component/component.module';
 
 @NgModule({
   imports: [
@@ -18,9 +21,11 @@ import { HeaderMobileComponent } from 'src/app/components/header-mobile/header-m
     CloseSeviceOrderPageRoutingModule,
     HeaderDesktopComponent,
     HeaderMobileComponent,
-    ReactiveFormsModule
-
-  ],
+    ReactiveFormsModule,
+    ButtonComponent,
+    ComponentModule,
+    OrderServiceTableComponent
+],
   declarations: [CloseSeviceOrderPage]
 })
 export class CloseSeviceOrderPageModule {}
