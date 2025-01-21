@@ -60,6 +60,25 @@ h4 {
   height: 1.5rem;
 }
 
+ion-button {
+  transition: all 0.1s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--Verde-Light);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  &:active{
+    transition: all 0s ease-in-out;
+    background-color: lighten(#115c0e, 10%);// or darken
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transform: translateY(1px);
+  }
+
+
+
+}
+
 @media (max-width: 340px) {
   h4 {
     font-size: 1rem;

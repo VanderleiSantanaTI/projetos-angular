@@ -14,7 +14,7 @@ export class StartPage implements OnInit {
 
   fieldsToShow = ['id','nome','celular', 'profissao'];
   fieldsTest = ['userId','id','title', 'body'];
-  links = ['profissao'];
+  links = ['nome'];
 
   constructor(
     private cdr: ChangeDetectorRef,
