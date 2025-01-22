@@ -27,8 +27,11 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let row of paginatedData">
-          <td *ngFor="let field of tableHeaders">
+        <tr *ngFor="let row of paginatedData"
+                [class.selected]="rowSelectionEnabled && row === selectedRow"
+                [ngClass]="{'pointer-cursor': rowSelectionEnabled}"
+                (click)="onRowSelect(row)">
+           <td *ngFor="let field of tableHeaders">
             <!-- Verifica se o campo deve ser exibido como link -->
             <ng-container *ngIf="isLinkField(field); else defaultField">
               <a class="link" href="#" (click)="onLinkClick(row, field, $event)">{{ row[field] }}</a>

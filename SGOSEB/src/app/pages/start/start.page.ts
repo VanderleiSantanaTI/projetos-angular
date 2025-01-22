@@ -17,14 +17,14 @@ export class StartPage implements OnInit {
 
   fieldsToShow = ['id','nome','celular', 'profissao'];
   fieldsTest = ['userId','id','title', 'body'];
-  links = ['nome'];
-  date = this.utilsService.showToast('oioioio','error')
+  links = ['nome', 'id'];
+
 
   constructor(
     private utilsService : UtilsService,
     private cdr: ChangeDetectorRef,
     private dataService: DataService
-    
+
   ) {
 
     // console.log('datas:', this.datas);
@@ -72,10 +72,7 @@ export class StartPage implements OnInit {
       console.log('Evento recebido no componente pai:', event.row.profissao);
       // Aqui você pode executar qualquer ação, como abrir um modal, redirecionar, etc.
     }
-    acaoBotao(event: { row: any}) {
-      console.log('Evento recebido no componente pai:', event.row.id);
-      // Aqui você pode executar qualquer ação, como abrir um modal, redirecionar, etc.
-    }
+
 
 
   datas = [

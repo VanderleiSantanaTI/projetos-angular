@@ -1,6 +1,7 @@
 import { Component, HostListener, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IonDatetime, ModalController } from '@ionic/angular';
+import { UtilsService } from 'src/app/services/utils/utils.service';
 
 @Component({
   selector: 'app-register-os',
@@ -15,7 +16,11 @@ export class RegisterOsPage implements OnInit {
 
   @ViewChildren(IonDatetime) dateTimeFields!: QueryList<IonDatetime>;
 
-  constructor(private fb: FormBuilder, private modalController: ModalController) {
+  constructor(
+        private fb: FormBuilder,
+        private modalController: ModalController,
+        private utilsService: UtilsService
+      ) {
     this.form = this.fb.group({
       marca: ['', Validators.required],
       modelo: ['', Validators.required],
@@ -63,21 +68,19 @@ export class RegisterOsPage implements OnInit {
       this.form.controls[key].updateValueAndValidity();
     });
   }
-
+  
   cadastrar() {
     if (this.form.valid) {
       const osData = this.form.value;
       console.log('Cadastro realizado:', osData);
-      alert('Ordem de Serviço cadastrada com sucesso!');
-      
+
+      this.utilsService.showToast('Ordem de Serviço cadastrada com sucesso!', 'success');
       this.limpar();
       // window.location.reload();
     } else {
       this.adicionarRequired();
     }
   }
-
-
   onKeyPressBlock(event: KeyboardEvent) {
     if (isNaN(Number(event.key))) {
       event.preventDefault(); // Bloqueia o caractere

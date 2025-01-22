@@ -159,3 +159,17 @@ tr:nth-child(odd) {
   }
 
 }
+
+
+tr.selected {
+  background-color: #ddebdd; /* Cor de fundo da linha selecionada */
+  color: rgb(31, 236, 24); /* Cor do texto */
+
+}
+.pointer-cursor {
+  cursor: pointer;
+  &:hover {
+    background-color: #2b472a; /* Cor de fundo da linha selecionada */
+    color: white; /* Cor do texto */
+  }
+}

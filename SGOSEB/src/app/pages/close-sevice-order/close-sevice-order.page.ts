@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { Component, HostListener, NgZone, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IonDatetime, ModalController } from '@ionic/angular';
 import { UtilsService } from 'src/app/services/utils/utils.service';
@@ -16,8 +16,24 @@ export class CloseSeviceOrderPage implements OnInit {
   form: FormGroup;
 
   isModalOpen = false;  // Variável para controlar a abertura do modal
-  listaOS = ['OS1', 'OS2', 'OS3']; // Exemplo de lista de OS(s)
 
+  filtro = ['marca', 'modelo', 'placa', 'servico']; // Filtros disponíveis
+  listaOS = [
+    {
+      id: 1, marca: 'Toyota', modelo: 'Corolla', placa: 'ABC-1234', suCia: 'SU-123',
+      patrimonio: '123456', hodometro: '12000', problema: 'Problema X', sistemaAfetado: 'Sistema Y',
+      data: '2025-01-01', manutencao: 'Manutenção Z', os: 'OS123',
+      peca: 'Peça A', ficha: 'Ficha1', servico: 'Serviço B',
+      quantidade: 2, retiradoPor: 'Fulano', usuario: 'Beltrano'
+    },
+    {
+      id: 2, marca: 'Honda', modelo: 'Civic', placa: 'DEF-5678', suCia: 'SU-456',
+      patrimonio: '654321', hodometro: '25000', problema: 'Problema Y', sistemaAfetado: 'Sistema X',
+      data: '2025-02-10', manutencao: 'Manutenção A', os: 'OS456',
+      peca: 'Peça B', ficha: 'Ficha2', servico: 'Serviço C',
+      quantidade: 1, retiradoPor: 'Ciclano', usuario: 'Beltrano'
+    }
+  ];
   // Método para abrir o modal
   openSearchModal() {
     this.isModalOpen = true;
@@ -35,7 +51,7 @@ export class CloseSeviceOrderPage implements OnInit {
     private utilsService: UtilsService,
     private fb: FormBuilder, private modalController: ModalController) {
     this.form = this.fb.group({
-      OS: [null, [Validators.required, Validators.min(1), Validators.max(10)]],
+      OS: [null, [Validators.required, Validators.min(1)]],
       nome: ['', Validators.required],
       dateSelected: [null, Validators.required]
     });
@@ -48,8 +64,8 @@ export class CloseSeviceOrderPage implements OnInit {
 
   async onDateChange(event: any) {
     this.selectedDate = event.detail.value; // Armazena o valor da data selecionada
-    // this.form.controls['dateSelected'].setValue(new Date(this.selectedDate).toLocaleDateString('pt-BR')); // Formata a data e atualiza o formulário
-    this.form.controls['dateSelected'].setValue(new Date(this.selectedDate))
+    this.form.controls['dateSelected'].setValue(new Date(this.selectedDate).toLocaleDateString('pt-BR')); // Formata a data e atualiza o formulário
+    // this.form.controls['dateSelected'].setValue(new Date(this.selectedDate))
     console.log('Data selecionada:', this.form.controls['dateSelected'].value);
 
     // Fecha o modal após a seleção
@@ -63,6 +79,7 @@ export class CloseSeviceOrderPage implements OnInit {
   limpar() {
     this.form.reset();
     this.dateTimeFields.forEach(date => date.value = '');
+    // this.dateTimeFields.forEach(date => date.value = '');
   }
 
   cadastrar() {
@@ -71,8 +88,7 @@ export class CloseSeviceOrderPage implements OnInit {
       console.log('Cadastro realizado:', osData);
       this.limpar();
       this.utilsService.showToast('(OS) FECHADA com sucesso!.', 'success');
-      // this.utilsService.validateDate('12/13/2022');
-      // window.location.reload();success
+
     } else {
       this.adicionarRequired();
     }
@@ -118,6 +134,19 @@ export class CloseSeviceOrderPage implements OnInit {
     if (input.length > maxLength) {
       this.form.controls['OS'].setValue(event.target.value); // Atualiza o valor no modelo
   }
+}
+
+// activeRow(event: any) {
+//   console.log('Linha selecionada:', event.target);
+
+// }
+
+onRowSelected(row: any): void {
+  console.log('Linha selecionada qt:', row.quantidade);
+  this.form.patchValue({
+    OS: row.id
+  });
+  this.closeModal();
 }
 
 }

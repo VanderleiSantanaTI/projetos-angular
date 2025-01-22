@@ -36,9 +36,10 @@
           expand="block"
           color="medium"
           (click)="isModalOpen = true"
+
           >
           <ion-icon slot="start" name="search"></ion-icon>
-          Pesquisar OS(s) aberta(s)
+          Pesquisar OS(s) aberta()
         </ion-button>
       </ion-col>
 
@@ -108,8 +109,10 @@
        <app-order-service-table
           [tableData]="listaOS"
           [fielterCheck]="true"
+          [fieldsToShow]="filtro"
+          [rowSelectionEnabled]="true"
+          (rowSelected)="onRowSelected($event)"
        >
-
        </app-order-service-table>
 
     </ion-content>

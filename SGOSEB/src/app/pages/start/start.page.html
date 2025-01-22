@@ -10,16 +10,16 @@
 
 
 <ion-content [fullscreen]="true">
-  
+
   <!--[(ngModel)]="myPhoneNumber" adiciona para setar valores-->
-  <ion-input style="background-color: aliceblue;"
+  <!-- <ion-input style="background-color: aliceblue;" //mascara
   label="tel:"
   placeholder="+55 (xxx) xxx-xxxx"
   [maskito]="phoneMask"
   [maskitoElement]="maskPredicate"
-></ion-input>
+></ion-input> -->
 
-  <p>{{date}}</p>
+
   <ion-card
         style="box-shadow: none;background-color: transparent;"
         class="m-auto w-95 mt-2 titulo-color fz-20">HOME
@@ -30,8 +30,6 @@
 [fielterCheck]="true"
 [linkFields]="links"
 (linkClick)="handleLinkClick($event)"
-[buttonConfig]="true"
-(ActionButton)="acaoBotao($event)"
 >
 </app-order-service-table>
 <!--

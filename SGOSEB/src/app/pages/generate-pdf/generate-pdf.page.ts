@@ -12,8 +12,8 @@ export class GeneratePdfPage implements OnInit {
   contatos: any[] = [];
 
 
-  fieldsToShow = ['id','nome','celular', 'profissao','celular'];
-  links = ['celular'];
+  fieldsToShow = ['id','nome','celular', 'profissao'];
+  links = [];
 
   constructor(
         private cdr: ChangeDetectorRef,
@@ -51,5 +51,10 @@ export class GeneratePdfPage implements OnInit {
 
   checkWindowSize() {
     this.isMobile = window.innerWidth < 768;
+  }
+
+  acaoBotao(event: { row: any}) {
+    console.log('Ordem de serviço:', event.row.id);
+    // Aqui você pode executar qualquer ação, como abrir um modal, redirecionar, etc.
   }
 }
