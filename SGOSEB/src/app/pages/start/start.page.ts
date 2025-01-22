@@ -1,5 +1,8 @@
+
 import { ChangeDetectorRef, Component, HostListener, OnInit } from '@angular/core';
+import { MaskitoElementPredicate, MaskitoOptions, maskitoTransform } from '@maskito/core';
 import { DataService } from 'src/app/services/data/data.service';
+import { UtilsService } from 'src/app/services/utils/utils.service';
 
 @Component({
   selector: 'app-start',
@@ -15,10 +18,13 @@ export class StartPage implements OnInit {
   fieldsToShow = ['id','nome','celular', 'profissao'];
   fieldsTest = ['userId','id','title', 'body'];
   links = ['nome'];
+  date = this.utilsService.showToast('oioioio','error')
 
   constructor(
+    private utilsService : UtilsService,
     private cdr: ChangeDetectorRef,
     private dataService: DataService
+    
   ) {
 
     // console.log('datas:', this.datas);
@@ -30,6 +36,8 @@ export class StartPage implements OnInit {
     this.carregarContatos();
     this.checkWindowSize();
     this.carregarTest();
+    this.phoneMask
+
   }
 
   carregarContatos() {
@@ -97,4 +105,14 @@ export class StartPage implements OnInit {
   checkWindowSize() {
     this.isMobile = window.innerWidth < 768;
   }
+
+  // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+  readonly phoneMask: MaskitoOptions = {
+    mask: ['+', '5','5',' ', '(', /\d/, /\d/,')', ' ', /\d/, /\d/, /\d/,/\d/,/\d/, '-', /\d/, /\d/, /\d/, /\d/],
+  };
+
+  // myPhoneNumber = maskitoTransform('99999999999', this.phoneMask);
+  readonly maskPredicate: MaskitoElementPredicate = async (el) => (el as HTMLIonInputElement).getInputElement();
+
 }

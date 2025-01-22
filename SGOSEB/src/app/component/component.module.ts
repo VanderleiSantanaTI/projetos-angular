@@ -5,6 +5,7 @@ import { MaskedInputComponent } from '../components/masked-input/masked-input.co
 import { IonicModule } from '@ionic/angular';
 import { HeaderDesktopComponent } from '../components/header-desktop/header-desktop.component';
 import { OrderServiceTableComponent } from '../components/order-service-table/order-service-table.component';
+import { MaskitoDirective } from '@maskito/angular';
 
 
 
@@ -16,7 +17,8 @@ import { OrderServiceTableComponent } from '../components/order-service-table/or
     HeaderDesktopComponent,
     OrderServiceTableComponent,
     MaskedInputComponent,
-    IonicModule
+    IonicModule,
+    MaskitoDirective
 
 
   ]
@@ -25,7 +27,8 @@ import { OrderServiceTableComponent } from '../components/order-service-table/or
     HeaderDesktopComponent,
     OrderServiceTableComponent,
     MaskedInputComponent,
-    IonicModule
+    IonicModule,
+    MaskitoDirective
   ]
 })
 export class ComponentModule { }
