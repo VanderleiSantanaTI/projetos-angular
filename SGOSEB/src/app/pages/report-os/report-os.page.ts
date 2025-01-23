@@ -66,7 +66,7 @@ export class ReportOsPage implements OnInit {
     if (this.form.valid) {
       const osData = this.form.value;
       console.log('Cadastro realizado:', osData);
-      this.utilsService.showToast('Ordem de Serviço cadastrada com sucesso!', 'success');
+      this.utilsService.showToast(' ✔ cadastrado com sucesso', 'success');
       this.limpar();
       // window.location.reload();
     } else {

@@ -84,7 +84,7 @@ export class UtilsService {
 
   async showToast(
     message: string,
-    status: "success" | "error",
+    status: "success" | "error" | "warning" | "info",
     duration?: number
   ) {
     const toast = await this.toastController.create({
@@ -97,7 +97,7 @@ export class UtilsService {
     return await toast.present();
   }
 
- 
+
 
 
 

@@ -1,13 +1,43 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>login</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="container" [fullscreen]="true">
+  <form [formGroup]="form" (ngSubmit)="cadastrar()" class="form-container">
+    <ion-card class="form-card">
+      <ion-card-title class="titulo-color p-1">Login</ion-card-title>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">login</ion-title>
-    </ion-toolbar>
-  </ion-header>
+      <ion-col class="col" size="12" size-md="12">
+        <ion-input
+          label="Login"
+          label-placement="floating"
+          fill="outline"
+          placeholder="LOGIN"
+          formControlName="login"
+          maxlength="20">
+        </ion-input>
+      </ion-col>
+
+      <ion-col class="col" size="12" size-md="12">
+        <ion-input
+          [type]="passwordType"
+          label="Password"
+          label-placement="floating"
+          fill="outline"
+          placeholder="Senha"
+          formControlName="password"
+          maxlength="20">
+          <ion-icon
+            [name]="passwordIcon"
+            slot="end"
+            (click)="togglePasswordVisibility()">
+          </ion-icon>
+        </ion-input>
+      </ion-col>
+
+      <ion-button class="p-1"
+        color="success"
+        expand="block"
+        [disabled]="!form.valid"
+        type="submit">
+        Login
+      </ion-button>
+    </ion-card>
+  </form>
 </ion-content>

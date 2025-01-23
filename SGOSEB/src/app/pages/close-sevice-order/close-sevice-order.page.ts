@@ -87,7 +87,7 @@ export class CloseSeviceOrderPage implements OnInit {
       const osData = this.form.value;
       console.log('Cadastro realizado:', osData);
       this.limpar();
-      this.utilsService.showToast('(OS) FECHADA com sucesso!.', 'success');
+      this.utilsService.showToast('✔ (OS) FECHADA com sucesso!.', 'success');
 
     } else {
       this.adicionarRequired();
