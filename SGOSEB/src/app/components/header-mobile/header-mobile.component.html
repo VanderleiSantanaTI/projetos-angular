@@ -13,8 +13,9 @@
     <li (click)="toggleSubMenu(1)">Cadastar</li>
     <li (click)="toggleSubMenu(2)">Pesquisar</li>
     <li (click)="toggleSubMenu(3)">Fechar OS</li>
-    <li (click)="toggleSubMenu(4)">Relatorio</li>
-    <li (click)="toggleSubMenu(5)">Mais Opções</li>
+    <li (click)="toggleSubMenu(4)">Retirar</li>
+    <li (click)="toggleSubMenu(5)">Relatorio</li>
+    <li (click)="toggleSubMenu(6)">Mais Opções</li>
     <li>Sair</li>
   </ul>
   <div *ngIf="activeSubMenuIndex === 1" class="sub-menu">
@@ -67,6 +68,21 @@
         <img class="setinhaVoltar" src="/assets/icon/chevron-left-solid.svg" alt=""> Voltar
       </li>
       <li>
+        <h3><strong>Cadastrar retirada</strong></h3>
+      </li>
+      <li (click)="goTo('vehicle-exit')">Retirar</li>
+
+
+    </ul>
+  </div>
+
+
+  <div *ngIf="activeSubMenuIndex === 5" class="sub-menu">
+    <ul>
+      <li class="voltarBar" (click)="closeSubMenu()">
+        <img class="setinhaVoltar" src="/assets/icon/chevron-left-solid.svg" alt=""> Voltar
+      </li>
+      <li>
         <h3>PDF</h3>
       </li>
 
@@ -92,7 +108,7 @@
     </ul>
   </div>
 
-  <div *ngIf="activeSubMenuIndex === 5" class="sub-menu">
+  <div *ngIf="activeSubMenuIndex === 6" class="sub-menu">
     <ul>
       <li class="voltarBar" (click)="closeSubMenu()">
         <img class="setinhaVoltar" src="/assets/icon/chevron-left-solid.svg" alt=""> Voltar

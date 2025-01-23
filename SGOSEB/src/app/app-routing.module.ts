@@ -41,6 +41,10 @@ const routes: Routes = [
     path: 'generate-pdf',
     loadChildren: () => import('./pages/generate-pdf/generate-pdf.module').then( m => m.GeneratePdfPageModule)
   },
+  {
+    path: 'vehicle-exit',
+    loadChildren: () => import('./pages/vehicle-exit/vehicle-exit.module').then( m => m.VehicleExitPageModule)
+  },
 
 
 

@@ -10,7 +10,7 @@
 <ion-content class="container" [fullscreen]="true">
   <ion-card
   style="box-shadow: none;background-color: transparent;"
-  class="m-auto w-95 mt-2 titulo-color fz-20">FECHAR OS
+  class="m-auto w-95 mt-2 titulo-color fz-20">RETIRADA DE VIATURA
 </ion-card>
   <form [formGroup]="form" (ngSubmit)="cadastrar()">
     <ion-card>
@@ -39,7 +39,7 @@
 
           >
           <ion-icon slot="start" name="search"></ion-icon>
-          Pesquisar OS(s) aberta(s)
+          Pesquisar (OS) fechada
         </ion-button>
       </ion-col>
 
@@ -47,7 +47,7 @@
 
     <ion-card>
       <ion-card-header>
-        <ion-card-title class="titulo-color">Finalizar OS</ion-card-title>
+        <ion-card-title class="titulo-color">Retirada</ion-card-title>
       </ion-card-header>
 
       <ion-card-content>
@@ -65,7 +65,7 @@
         <ion-row>
           <ion-col class="col" size="12" size-md="12">
             <ion-input
-              label="Nome do mecânico"
+              label="Retirado por ..."
               label-placement="floating"
               fill="outline"
               placeholder="Nome"
@@ -81,7 +81,7 @@
           expand="block"
           [disabled]="!form.valid"
           type="submit">
-          Cadastrar fechamento
+          Cadastrar Retirada
         </ion-button>
       </ion-card-content>
     </ion-card>

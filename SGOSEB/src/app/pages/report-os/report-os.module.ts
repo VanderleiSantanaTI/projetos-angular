@@ -9,6 +9,7 @@ import { ReportOsPageRoutingModule } from './report-os-routing.module';
 import { ReportOsPage } from './report-os.page';
 import { HeaderMobileComponent } from "../../components/header-mobile/header-mobile.component";
 import { HeaderDesktopComponent } from 'src/app/components/header-desktop/header-desktop.component';
+import { ComponentModule } from 'src/app/component/component.module';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { HeaderDesktopComponent } from 'src/app/components/header-desktop/header
     ReportOsPageRoutingModule,
     HeaderMobileComponent,
     HeaderDesktopComponent,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ComponentModule
 
 ],
   declarations: [ReportOsPage]

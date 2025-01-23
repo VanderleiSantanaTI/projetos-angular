@@ -77,6 +77,21 @@ export class HeaderDesktopComponent implements OnInit {
       ]
     },
     {
+      title: 'Retirada',
+      sections: [
+        {
+          title: 'Retirar Viatura',
+          options: [
+            {
+              label: 'cadastrar retirada',
+              url: '/vehicle-exit'
+            }
+          ]
+        }
+
+      ]
+    },
+    {
       title: 'Relatórios',
       sections: [
         {

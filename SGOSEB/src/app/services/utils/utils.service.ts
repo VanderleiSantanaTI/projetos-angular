@@ -97,6 +97,12 @@ export class UtilsService {
     return await toast.present();
   }
 
+ 
+
+
+
+
+
   togglePasswordVisibility(passwordFields: IPasswordFields, fieldName: string) {
     if (fieldName === "password") {
       passwordFields.password.type = passwordFields.password.type === "password" ? "text" : "password";
