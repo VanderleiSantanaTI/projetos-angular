@@ -1,0 +1,26 @@
+
+ion-segment {
+  margin: 20px;
+
+  --background: var(--Gray-BG);
+  --indicator-color: var(--Verde-Light);
+  --color-checked: var(--White-Light);
+  --color: var(--Light-Gray);
+  border-radius: 8px;
+  max-width: 500px;
+  margin: auto;
+}
+
+ion-segment-button {
+  --color: var(--White-Light);
+  --background-checked: var(--Verde-EB);
+  --color-checked: var(--White-Light);
+  font-size: 16px;
+
+}
+
+h2 {
+  text-align: center;
+  color: var(--Verde-Light);
+  margin-top: 20px;
+}

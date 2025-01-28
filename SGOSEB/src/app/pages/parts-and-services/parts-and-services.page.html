@@ -1,0 +1,49 @@
+<ion-header [translucent]="true">
+  @if(isMobile) {
+    <app-header-mobile></app-header-mobile>
+  }@else {
+    <app-header-desktop></app-header-desktop>
+  }
+</ion-header>
+
+
+
+<ion-content [fullscreen]="true">
+
+  <ion-segment [(ngModel)]="segmentValue" value="pecas" color="primary" class="mt-3">
+    <ion-segment-button value="pecas">
+      <ion-label>Peças</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="servicos">
+      <ion-label>Serviços</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <!-- Conteúdo do Segmento -->
+  <div [ngSwitch]="segmentValue">
+    <!-- Tabela 1 -->
+    <div *ngSwitchCase="'pecas'">
+      <h2>Peças</h2>
+      <app-order-service-table
+      [tableData]="dadosPecas"
+      [fieldsToShow]="fieldsToPecsa"
+      [fielterCheck]="true"
+      >
+      </app-order-service-table>
+    </div>
+
+    <!-- Tabela 2 -->
+    <div *ngSwitchCase="'servicos'">
+      <h2>Serviços</h2>
+      <app-order-service-table
+      [tableData]="dadosServicos"
+      [fieldsToShow]="fieldsToServicos"
+      [renamedHeaders]="renamedHeaders"
+      [fielterCheck]="true"
+      >
+      </app-order-service-table>
+    </div>
+  </div>
+
+</ion-content>
+

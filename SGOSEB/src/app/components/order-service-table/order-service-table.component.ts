@@ -18,16 +18,14 @@ export class OrderServiceTableComponent implements OnInit {
   @Input() fielterCheck:boolean = false;
   @Input() linkFields: string[] = [];
   @Output() linkClick = new EventEmitter<{ row: any, field: string }>();
-
-
   @Input() buttonConfig: boolean = false;
   @Output() ActionButton = new EventEmitter();
-
   @Input() rowSelectionEnabled: boolean = false; // Propriedade para ativar/desativar seleção de linha
   @Output() rowSelected = new EventEmitter<any>(); // Evento para emitir os dados da linha selecionada
+
+  @Input() renamedHeaders: { [key: string]: string } = {}; // Mapeamento para renomear os headers
+
   selectedRow: any = null;
-
-
   currentPage = 1;
   itemsPerPage = 10;
   totalPages: number = 0;
@@ -60,11 +58,16 @@ export class OrderServiceTableComponent implements OnInit {
     this.linkClick.emit({ row, field });
     // Aqui você pode executar qualquer ação, como abrir um modal, redirecionar, etc.
   }
+
   get tableHeaders(): string[] {
     if (this.tableData.length > 0) {
       return this.fieldsToShow.length > 0 ? this.fieldsToShow : Object.keys(this.tableData[0]);
     }
     return [];
+  }
+
+  getRenamedHeader(field: string): string {
+    return this.renamedHeaders[field] || field; // Retorna o nome renomeado ou o nome original
   }
 
   ngOnInit() {

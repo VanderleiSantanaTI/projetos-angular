@@ -22,7 +22,7 @@
     <table>
       <thead>
         <tr>
-          <th *ngFor="let header of tableHeaders">{{ header }}</th>
+          <th *ngFor="let header of tableHeaders">{{ getRenamedHeader(header) }}</th>
           <th *ngIf="buttonConfig">Ações</th>
         </tr>
       </thead>

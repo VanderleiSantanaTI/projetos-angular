@@ -8,25 +8,51 @@ import { catchError, map } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class DataService{
-  private apiUrl = 'api/contatos/'; // URL da API
-  private apiUrlTest = 'https://jsonplaceholder.typicode.com/posts'; // URL da API
+  private apiUrlCadastro_login = 'api/cadastro_login/'; // URL da API
+  private apiUrlFechada_os = 'api/encerrar_os/'; // URL da API
+  private apiUrlAberta_os = 'api/abrir_os/'; // URL da API
+  private apiUrPecas = 'api/pecas/'; // URL da API
+  private apiUrServicos = 'api/servicos/'; // URL da API
 
   constructor(private http: HttpClient) {}
 
   // Método para buscar os contatos
-  getContatos(): Observable<any[]> {
-    return this.http.get<any>(this.apiUrl).pipe(
-      map((response) => response.data), // Extrair a chave "data" da resposta
+  getCadastro_login(): Observable<any[]> {
+    return this.http.get<any>(this.apiUrlCadastro_login).pipe(
+      map((response) => response.data), // Extrair a dados
       catchError(this.handleError)
     );
   }
 
-  getTest(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrlTest).pipe(
-      map((response) => response), // Retorna a resposta completa
+  getFechada_os(): Observable<any[]> {
+    return this.http.get<any>(this.apiUrlFechada_os).pipe(
+      map((response) => response.data),
       catchError(this.handleError)
     );
   }
+
+  getAberta_os(): Observable<any[]> {
+    return this.http.get<any>(this.apiUrlAberta_os).pipe(
+      map((response) => response.data),
+      catchError(this.handleError)
+    );
+  }
+
+  getPecas(): Observable<any[]> {
+    return this.http.get<any>(this.apiUrPecas).pipe(
+      map((response) => response.data),
+      catchError(this.handleError)
+    );
+  }
+
+  getServicos(): Observable<any[]> {
+    return this.http.get<any>(this.apiUrServicos).pipe(
+      map((response) => response.data),
+      
+      catchError(this.handleError)
+    );
+  }
+
 
 
   // Tratamento de erro

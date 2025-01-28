@@ -1,0 +1,53 @@
+
+<ion-header [translucent]="true">
+  @if(isMobile) {
+    <app-header-mobile></app-header-mobile>
+  }@else {
+    <app-header-desktop></app-header-desktop>
+  }
+</ion-header>
+
+
+
+<ion-content [fullscreen]="true">
+
+<!--[(ngModel)]="myPhoneNumber" adiciona para setar valores-->
+<!-- <ion-input style="background-color: aliceblue;" //mascara
+label="tel:"
+placeholder="+55 (xxx) xxx-xxxx"
+[maskito]="phoneMask"
+[maskitoElement]="maskPredicate"
+></ion-input> -->
+
+
+<ion-card
+      style="box-shadow: none;background-color: transparent;"
+      class="m-auto w-95 mt-2 titulo-color fz-20">PERFIS
+</ion-card>
+<app-order-service-table
+[tableData]="contatos"
+[fieldsToShow]="fieldsToShow"
+[fielterCheck]="true"
+[linkFields]="links"
+(linkClick)="handleLinkClick($event)"
+>
+</app-order-service-table>
+<!--
+<div *ngIf="contatos.length > 0; else loading">
+  <h2>Lista de Contatos</h2>
+  <ul>
+    <li *ngFor="let contato of contatos">
+      <strong>Nome:</strong> {{ contato.nome }}<br>
+      <strong>Nascimento:</strong> {{ contato.nascimento }}<br>
+      <strong>Email:</strong> {{ contato.email }}<br>
+      <strong>Celular:</strong> {{ contato.celular }}<br>
+      <strong>Profissão:</strong> {{ contato.profissao }}
+    </li>
+  </ul>
+</div>
+
+<ng-template #loading>
+  <p>Carregando contatos...</p>
+</ng-template> -->
+</ion-content>
+
