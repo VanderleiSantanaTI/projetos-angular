@@ -12,7 +12,7 @@ export class GeneratePdfPage implements OnInit {
   contatos: any[] = [];
 
 
-  fieldsToShow = ['id','nome','celular', 'profissao'];
+  fieldsToShow = ['id','nome_mecanico','data_da_manutencao', 'abrir_os_id'];
   links = [];
 
   constructor(
@@ -22,15 +22,16 @@ export class GeneratePdfPage implements OnInit {
    }
 
   ngOnInit() {
-    this.carregarContatos();
+    this.carregarOSFechada();
     this.checkWindowSize();
 
   }
-  carregarContatos() {
-    this.dataService.getContatos().subscribe(
+  carregarOSFechada() {
+    this.dataService.getFechada_os().subscribe(
       (data) => {
         // console.log('Contatos recebidos:', data);
         this.contatos = data; // Armazena os contatos retornados pela API
+        console.log('Contatos:', this.contatos);
         // console.log('Contatos:', this.contatos);
         this.cdr.detectChanges(); // Força a detecção de mudanças
       },

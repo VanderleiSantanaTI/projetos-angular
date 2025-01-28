@@ -45,6 +45,14 @@ const routes: Routes = [
     path: 'vehicle-exit',
     loadChildren: () => import('./pages/vehicle-exit/vehicle-exit.module').then( m => m.VehicleExitPageModule)
   },
+  {
+    path: 'profiles',
+    loadChildren: () => import('./pages/profiles/profiles.module').then( m => m.ProfilesPageModule)
+  },
+  {
+    path: 'parts-and-services',
+    loadChildren: () => import('./pages/parts-and-services/parts-and-services.module').then( m => m.PartsAndServicesPageModule)
+  },
 
 
 
