@@ -42,7 +42,7 @@
         <h3><strong>Pesquisar</strong></h3>
       </li>
       <li (click)="goTo('search')">Ordem de Serviço</li>
-
+      <li (click)="goTo('parts-and-services')">Peças e Serviços na OS</li>
     </ul>
   </div>
 
@@ -121,7 +121,7 @@
         <img class="setinha" [class.rotated]="activeOption === 'usuario'" src="/assets/icon/setinha.svg" alt="">
       </li>
       <ul *ngIf="activeOption === 'usuario'">
-        <li (click)="goTo('start')">Perfil</li>
+        <li (click)="goTo('profiles')">Perfil</li>
         <li (click)="goTo('start')">Alterar Senha</li>
       </ul>
       <li [style]="activeOption === 'Outros' ? 'color: var(--Verde-Light)' : ''" (click)="toggleSubOptions('Outros')">

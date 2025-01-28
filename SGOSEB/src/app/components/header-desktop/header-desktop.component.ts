@@ -50,11 +50,20 @@ export class HeaderDesktopComponent implements OnInit {
       title: 'pesquisar',
       sections: [
         {
-          title: 'Pesquisar',
+          title: 'O.S',
           options: [
             {
               label: 'Ordem de serviço',
               url: '/search'
+            }
+          ]
+        },
+        {
+          title: 'Peças e Serviços',
+          options: [
+            {
+              label: 'Peças/Serviços na OS',
+              url: '/parts-and-services'
             }
           ]
         }
@@ -126,7 +135,7 @@ export class HeaderDesktopComponent implements OnInit {
           options: [
             {
               label: 'Perfil',
-              url: '/profile-details'
+              url: '/profiles'
             },
             {
               label: 'Alterar senha',
