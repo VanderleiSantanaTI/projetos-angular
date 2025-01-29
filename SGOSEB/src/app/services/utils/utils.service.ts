@@ -4,7 +4,8 @@ import { AlertController, ModalController, ToastController, NavController, Anima
 import { Observable } from "rxjs";
 import { Platform } from "@ionic/angular";
 import { IPlatformDevice } from "src/app/interfaces/platform-device";
-import { HomePage } from "src/app/pages/home/home.page";
+import { StartPage } from "src/app/pages/start/start.page";
+
 
 
 
@@ -540,7 +541,7 @@ export class UtilsService {
 
   showLoading() {
     this.openModal(
-      HomePage,
+      StartPage,
       'loading',
       {},
       (props: ()=>{}) => {},

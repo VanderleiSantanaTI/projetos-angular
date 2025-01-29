@@ -1,8 +1,9 @@
-import { Component, HostListener, NgZone, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { ChangeDetectorRef, Component, HostListener, NgZone, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IonDatetime, ModalController } from '@ionic/angular';
 import { UtilsService } from 'src/app/services/utils/utils.service';
 import { IPlatformDevice } from '../../interfaces/platform-device';
+import { DataService } from 'src/app/services/data/data.service';
 
 @Component({
   selector: 'app-close-sevice-order',
@@ -12,28 +13,79 @@ import { IPlatformDevice } from '../../interfaces/platform-device';
 })
 export class CloseSeviceOrderPage implements OnInit {
   isMobile!: boolean;
+  isModalOpen!: boolean;
   selectedDate: any;
   form: FormGroup;
+  dados: any[] = [];
 
-  isModalOpen = false;  // Variável para controlar a abertura do modal
 
-  filtro = ['marca', 'modelo', 'placa', 'servico']; // Filtros disponíveis
-  listaOS = [
-    {
-      id: 1, marca: 'Toyota', modelo: 'Corolla', placa: 'ABC-1234', suCia: 'SU-123',
-      patrimonio: '123456', hodometro: '12000', problema: 'Problema X', sistemaAfetado: 'Sistema Y',
-      data: '2025-01-01', manutencao: 'Manutenção Z', os: 'OS123',
-      peca: 'Peça A', ficha: 'Ficha1', servico: 'Serviço B',
-      quantidade: 2, retiradoPor: 'Fulano', usuario: 'Beltrano'
-    },
-    {
-      id: 2, marca: 'Honda', modelo: 'Civic', placa: 'DEF-5678', suCia: 'SU-456',
-      patrimonio: '654321', hodometro: '25000', problema: 'Problema Y', sistemaAfetado: 'Sistema X',
-      data: '2025-02-10', manutencao: 'Manutenção A', os: 'OS456',
-      peca: 'Peça B', ficha: 'Ficha2', servico: 'Serviço C',
-      quantidade: 1, retiradoPor: 'Ciclano', usuario: 'Beltrano'
-    }
+  filtro: string[] = [
+    'id',
+    'data',
+    // 'marca_da_viatura',
+    'modelo',
+    'placa_eb',
+    // 'su_cia_da_viatura',
+    'patrimonio',
+    // 'hodometro',
+    // 'problema_apresentado',
+    // 'sistema_afetado',
+    // 'causa_da_avaria',
+    // 'manutencao',
+    // 'usuario',
+    // 'perfil',
+    'situacao_os',
   ];
+
+  renomearCampos: any = {
+    id: 'O.S',
+    data: 'Data',
+    // marca_da_viatura: 'Marca ',
+    modelo: 'Modelo',
+    placa_eb: 'Placa EB',
+    // su_cia_da_viatura: 'SU/Cia',
+    // patrimonio: 'Patrimônio',
+    // hodometro: 'Hodômetro',
+    // problema_apresentado: 'Problema Apresentado',
+    // sistema_afetado: 'Sistema Afetado',
+    // causa_da_avaria: 'Causa da Avaria',
+    manutencao: 'Manutenção',
+    // usuario: 'Usuário',
+    // perfil: 'Perfil',
+    situacao_os: 'Situação da OS',
+  };
+
+
+  constructor(
+    private dataService: DataService,
+    private utilsService: UtilsService,
+     private cdr: ChangeDetectorRef,
+    private fb: FormBuilder, private modalController: ModalController) {
+    this.form = this.fb.group({
+      OS: [null, [Validators.required, Validators.min(1)]],
+      nome: ['', Validators.required],
+      dateSelected: [null, Validators.required]
+    });
+    // this.platformActive = this.utilsService.validatePlatform();
+  }
+
+  ngOnInit() {
+    this.carregarOSToClose();
+    this.checkWindowSize();
+  }
+
+  carregarOSToClose() {
+    this.dataService.getAberta_os().subscribe(
+      (data) => {
+        this.dados = data; // Armazena os contatos retornados pela API
+        console.log('Contatos:',  this.dados);
+        this.cdr.detectChanges(); // Força a detecção de mudanças
+      },
+      (error) => {
+        console.error('Erro ao carregar os contatos:', error);
+      }
+    );
+  }
   // Método para abrir o modal
   openSearchModal() {
     this.isModalOpen = true;
@@ -47,20 +99,8 @@ export class CloseSeviceOrderPage implements OnInit {
   @ViewChildren(IonDatetime) dateTimeFields!: QueryList<IonDatetime>;
   // platformActive: IPlatformDevice;
 
-  constructor(
-    private utilsService: UtilsService,
-    private fb: FormBuilder, private modalController: ModalController) {
-    this.form = this.fb.group({
-      OS: [null, [Validators.required, Validators.min(1)]],
-      nome: ['', Validators.required],
-      dateSelected: [null, Validators.required]
-    });
-    // this.platformActive = this.utilsService.validatePlatform();
-  }
 
-  ngOnInit() {
-    this.checkWindowSize();
-  }
+
 
   async onDateChange(event: any) {
     this.selectedDate = event.detail.value; // Armazena o valor da data selecionada

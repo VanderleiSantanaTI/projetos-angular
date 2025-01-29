@@ -107,11 +107,12 @@
         </ion-item> -->
       <!-- </ion-list> -->
        <app-order-service-table
-          [tableData]="listaOS"
+          [tableData]="dados"
           [fielterCheck]="true"
           [fieldsToShow]="filtro"
           [rowSelectionEnabled]="true"
           (rowSelected)="onRowSelected($event)"
+          [renamedHeaders]="renomearCampos"
        >
        </app-order-service-table>
 

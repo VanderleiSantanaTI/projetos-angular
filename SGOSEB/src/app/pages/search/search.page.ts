@@ -29,6 +29,24 @@ export class SearchPage implements OnInit {
     'situacao_os',
   ];
 
+  renomearCampos: any = {
+    id: 'O.S',
+    data: 'Data',
+    marca_da_viatura: 'Marca ',
+    modelo: 'Modelo',
+    placa_eb: 'Placa EB',
+    su_cia_da_viatura: 'SU/Cia',
+    patrimonio: 'Patrimônio',
+    hodometro: 'Hodômetro',
+    problema_apresentado: 'Problema Apresentado',
+    sistema_afetado: 'Sistema Afetado',
+    causa_da_avaria: 'Causa da Avaria',
+    manutencao: 'Manutenção',
+    usuario: 'Usuário',
+    perfil: 'Perfil',
+    situacao_os: 'Situação da OS',
+  };
+
 
   constructor(
     private dataService: DataService,
@@ -46,7 +64,11 @@ export class SearchPage implements OnInit {
         // console.log('Contatos recebidos:', data);
         this.dados = data; // Armazena os contatos retornados pela API
         // console.log('Contatos:', this.contatos);
-        console.log('Contatos:', this.dados);
+        for (let item of data) {
+          if (item.situacao_os === 'FECHADA') {
+            console.log('Contatos:', item);
+          }
+        }
         this.cdr.detectChanges(); // Força a detecção de mudanças
       },
       (error) => {
