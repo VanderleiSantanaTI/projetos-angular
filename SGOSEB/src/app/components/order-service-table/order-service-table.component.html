@@ -4,7 +4,7 @@
       <label for="filterField">Filtrar por:</label>
       <select id="filterField" [(ngModel)]="selectedFilterField">
         <option value="">Selecione um campo</option>
-        <option *ngFor="let header of tableHeaders" [value]="header">{{ header }}</option>
+        <option *ngFor="let header of tableHeaders" [value]="header">{{ getRenamedHeader(header) }}</option>
       </select>
     </div>
 
