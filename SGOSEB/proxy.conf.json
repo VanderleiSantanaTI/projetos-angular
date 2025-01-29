@@ -1,7 +1,7 @@
 {
   "/api": {
-    // "target": "http://77.37.69.33/alphacode/public/v1",
-    "target": "http://localhost/EB",
+    // "target": "http://localhost/EB",
+    "target": "http://77.37.69.33/EB",
     "secure": false,
     "changeOrigin": true,
     "pathRewrite": {
