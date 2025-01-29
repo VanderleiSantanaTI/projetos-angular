@@ -1,6 +1,7 @@
-import { Component, HostListener, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { ChangeDetectorRef, Component, HostListener, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IonDatetime, ModalController } from '@ionic/angular';
+import { DataService } from 'src/app/services/data/data.service';
 import { UtilsService } from 'src/app/services/utils/utils.service';
 
 @Component({
@@ -13,26 +14,18 @@ export class VehicleExitPage implements OnInit {
   isMobile!: boolean;
   selectedDate: any;
   form: FormGroup;
-
+  dados: any[] = [];
   isModalOpen = false;  // Variável para controlar a abertura do modal
+  isLoading: boolean = true;
 
-  filtro = ['marca', 'modelo', 'placa', 'servico']; // Filtros disponíveis
-  listaOS = [
-    {
-      id: 1, marca: 'Toyota', modelo: 'Corolla', placa: 'ABC-1234', suCia: 'SU-123',
-      patrimonio: '123456', hodometro: '12000', problema: 'Problema X', sistemaAfetado: 'Sistema Y',
-      data: '2025-01-01', manutencao: 'Manutenção Z', os: 'OS123',
-      peca: 'Peça A', ficha: 'Ficha1', servico: 'Serviço B',
-      quantidade: 2, retiradoPor: 'Fulano', usuario: 'Beltrano'
-    },
-    {
-      id: 2, marca: 'Honda', modelo: 'Civic', placa: 'DEF-5678', suCia: 'SU-456',
-      patrimonio: '654321', hodometro: '25000', problema: 'Problema Y', sistemaAfetado: 'Sistema X',
-      data: '2025-02-10', manutencao: 'Manutenção A', os: 'OS456',
-      peca: 'Peça B', ficha: 'Ficha2', servico: 'Serviço C',
-      quantidade: 1, retiradoPor: 'Ciclano', usuario: 'Beltrano'
-    }
-  ];
+  filtro = ['abrir_os_id', 'data_da_manutencao', 'nome_mecanico', 'situacao_os']; // Filtros disponíveis
+  renomearCampos ={
+    abrir_os_id: 'O.S',
+    data_da_manutencao: 'Data',
+    nome_mecanico: 'Mecânico',
+    situacao_os: 'Situação'
+  };
+
   // Método para abrir o modal
   openSearchModal() {
     this.isModalOpen = true;
@@ -47,7 +40,10 @@ export class VehicleExitPage implements OnInit {
   // platformActive: IPlatformDevice;
 
   constructor(
+    private dataService: DataService,
+    private cdr: ChangeDetectorRef,
     private utilsService: UtilsService,
+
     private fb: FormBuilder, private modalController: ModalController) {
     this.form = this.fb.group({
       OS: [null, [Validators.required, Validators.min(1)]],
@@ -58,6 +54,7 @@ export class VehicleExitPage implements OnInit {
   }
 
   ngOnInit() {
+    this.carregarRetirada();
     this.checkWindowSize();
   }
 
@@ -74,6 +71,22 @@ export class VehicleExitPage implements OnInit {
     }
   }
 
+  carregarRetirada() {
+    this.isLoading = true;
+    this.dataService.getFechada_os().subscribe(
+      (data) => {
+        this.dados = data; // Armazena os contatos retornados pela API
+        this.isLoading = false;
+        console.log('Contatos:',  this.dados);
+        // localStorage.setItem('nome', data[0].id);
+        this.cdr.detectChanges();
+      },
+      (error) => {
+        console.error('Erro ao carregar os contatos:', error);
+        this.isLoading = false;
+      }
+    );
+  }
 
   limpar() {
     this.form.reset();

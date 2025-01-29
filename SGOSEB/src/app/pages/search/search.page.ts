@@ -10,6 +10,7 @@ import { DataService } from 'src/app/services/data/data.service';
 export class SearchPage implements OnInit {
   isMobile!: boolean;
   dados: any[] = [];
+  isLoading: boolean = true;
 
   fieldsToShow: string[] = [
     'id',
@@ -59,20 +60,21 @@ export class SearchPage implements OnInit {
   }
 
   carregarAberta_os() {
+    this.isLoading = true;
     this.dataService.getAberta_os().subscribe(
       (data) => {
-        // console.log('Contatos recebidos:', data);
         this.dados = data; // Armazena os contatos retornados pela API
-        // console.log('Contatos:', this.contatos);
+        this.isLoading = false;
+        this.cdr.detectChanges();
         for (let item of data) {
           if (item.situacao_os === 'FECHADA') {
             console.log('Contatos:', item);
           }
         }
-        this.cdr.detectChanges(); // Força a detecção de mudanças
       },
       (error) => {
         console.error('Erro ao carregar os contatos:', error);
+        this.isLoading = false;
       }
     );
   }

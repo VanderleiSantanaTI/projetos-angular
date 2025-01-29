@@ -14,11 +14,14 @@
   style="box-shadow: none;background-color: transparent;"
   class="m-auto w-95 mt-2 titulo-color fz-20">PESQUISA OS
 </ion-card>
+
+<ion-spinner *ngIf="isLoading" name="crescent" class="w-100 pt-5 text-color"></ion-spinner>
 <app-order-service-table
-[tableData]="dados"
-[fieldsToShow]="fieldsToShow"
-[fielterCheck]="true"
-[renamedHeaders]="renomearCampos"
+  *ngIf="!isLoading"
+  [tableData]="dados"
+  [fieldsToShow]="fieldsToShow"
+  [fielterCheck]="true"
+  [renamedHeaders]="renomearCampos"
 >
 </app-order-service-table>
 </ion-content>

@@ -13,7 +13,7 @@ import { DataService } from 'src/app/services/data/data.service';
 })
 export class CloseSeviceOrderPage implements OnInit {
   isMobile!: boolean;
-  isModalOpen!: boolean;
+  isModalOpen: boolean = false;  // Variável para controlar a abertura do modal
   selectedDate: any;
   form: FormGroup;
   dados: any[] = [];
@@ -22,36 +22,18 @@ export class CloseSeviceOrderPage implements OnInit {
   filtro: string[] = [
     'id',
     'data',
-    // 'marca_da_viatura',
     'modelo',
     'placa_eb',
-    // 'su_cia_da_viatura',
     'patrimonio',
-    // 'hodometro',
-    // 'problema_apresentado',
-    // 'sistema_afetado',
-    // 'causa_da_avaria',
-    // 'manutencao',
-    // 'usuario',
-    // 'perfil',
     'situacao_os',
   ];
 
   renomearCampos: any = {
     id: 'O.S',
     data: 'Data',
-    // marca_da_viatura: 'Marca ',
     modelo: 'Modelo',
     placa_eb: 'Placa EB',
-    // su_cia_da_viatura: 'SU/Cia',
-    // patrimonio: 'Patrimônio',
-    // hodometro: 'Hodômetro',
-    // problema_apresentado: 'Problema Apresentado',
-    // sistema_afetado: 'Sistema Afetado',
-    // causa_da_avaria: 'Causa da Avaria',
     manutencao: 'Manutenção',
-    // usuario: 'Usuário',
-    // perfil: 'Perfil',
     situacao_os: 'Situação da OS',
   };
 
@@ -68,12 +50,10 @@ export class CloseSeviceOrderPage implements OnInit {
     });
     // this.platformActive = this.utilsService.validatePlatform();
   }
-
   ngOnInit() {
     this.carregarOSToClose();
     this.checkWindowSize();
   }
-
   carregarOSToClose() {
     this.dataService.getAberta_os().subscribe(
       (data) => {
