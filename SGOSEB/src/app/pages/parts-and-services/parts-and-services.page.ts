@@ -17,12 +17,10 @@ export class PartsAndServicesPage implements OnInit {
   dadosServicos: any[] = [];
 
 
-  fieldsToPecsa: string[] = [];
-  fieldsToServicos: string[] = ['servico_realizado', 'tempo_de_servico_realizado'];
-  renamedHeaders = {
-    servico_realizado: 'Serviço Realizado',
-    tempo_de_servico_realizado: 'Tempo de Serviço'
-  };
+  fieldsToPecsa: string[] = ['abrir_os_id', 'peca_utilizada', 'qtd', 'num_ficha'];
+  renamedHeadersPecas: any = {abrir_os_id: 'O.S', peca_utilizada: 'Peça Utilizada', qtd: 'Quantidade', num_ficha: 'Número da Ficha'};
+  fieldsToServicos: string[] = ['abrir_os_id', 'servico_realizado','tempo_de_servico_realizado'];
+  renamedHeadersServicos = {abrir_os_id: 'O.S', servico_realizado: 'Serviço Realizado', tempo_de_servico_realizado: 'Tempo de Serviço'};
   constructor(
         private dataService: DataService,
         private cdr: ChangeDetectorRef,

@@ -1,6 +1,7 @@
-import { Component, HostListener, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { ChangeDetectorRef, Component, HostListener, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IonDatetime, ModalController } from '@ionic/angular';
+import { DataService } from 'src/app/services/data/data.service';
 import { UtilsService } from 'src/app/services/utils/utils.service';
 
 @Component({
@@ -14,10 +15,33 @@ export class ReportOsPage implements OnInit {
   isMobile!: boolean;
   selectedDate: any;
   isModalOpen = false;
+  dados: any[] = [];
+
+
+
+  filtro: string[] = [
+    'id',
+    'data',
+    'modelo',
+    'placa_eb',
+    'patrimonio',
+    'situacao_os',
+  ];
+
+  renomearCampos: any = {
+    id: 'O.S',
+    data: 'Data',
+    modelo: 'Modelo',
+    placa_eb: 'Placa EB',
+    manutencao: 'Manutenção',
+    situacao_os: 'Situação da OS',
+  };
 
   @ViewChildren(IonDatetime) dateTimeFields!: QueryList<IonDatetime>;
 
   constructor(
+        private dataService: DataService,
+        private cdr: ChangeDetectorRef,
         private fb: FormBuilder,
         private modalController: ModalController,
         private utilsService: UtilsService
@@ -32,7 +56,21 @@ export class ReportOsPage implements OnInit {
     });
   }
   ngOnInit() {
+    this.carregarOSAbreta();
     this.checkWindowSize();
+  }
+
+  carregarOSAbreta() {
+    this.dataService.getAberta_os().subscribe(
+      (data) => {
+        this.dados = data; // Armazena os contatos retornados pela API
+        console.log('Contatos:',  this.dados);
+        this.cdr.detectChanges(); // Força a detecção de mudanças
+      },
+      (error) => {
+        console.error('Erro ao carregar os contatos:', error);
+      }
+    );
   }
 
   async onDateChange(event: any) {
@@ -101,24 +139,6 @@ export class ReportOsPage implements OnInit {
   checkWindowSize() {
     this.isMobile = window.innerWidth < 768;
   }
-
-  filtro = ['marca', 'modelo', 'placa', 'servico']; // Filtros disponíveis
-  listaOS = [
-    {
-      id: 1, marca: 'Toyota', modelo: 'Corolla', placa: 'ABC-1234', suCia: 'SU-123',
-      patrimonio: '123456', hodometro: '12000', problema: 'Problema X', sistemaAfetado: 'Sistema Y',
-      data: '2025-01-01', manutencao: 'Manutenção Z', os: 'OS123',
-      peca: 'Peça A', ficha: 'Ficha1', servico: 'Serviço B',
-      quantidade: 2, retiradoPor: 'Fulano', usuario: 'Beltrano'
-    },
-    {
-      id: 2, marca: 'Honda', modelo: 'Civic', placa: 'DEF-5678', suCia: 'SU-456',
-      patrimonio: '654321', hodometro: '25000', problema: 'Problema Y', sistemaAfetado: 'Sistema X',
-      data: '2025-02-10', manutencao: 'Manutenção A', os: 'OS456',
-      peca: 'Peça B', ficha: 'Ficha2', servico: 'Serviço C',
-      quantidade: 1, retiradoPor: 'Ciclano', usuario: 'Beltrano'
-    }
-  ];
 
   onRowSelected(row: any): void {
     console.log('Linha selecionada qt:', row.quantidade);

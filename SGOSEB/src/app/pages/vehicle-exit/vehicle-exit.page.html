@@ -100,18 +100,16 @@
       </ion-toolbar>
     </ion-header>
     <ion-content>
-      <!-- Conteúdo da pesquisa, como lista de OS(s) -->
-      <!-- <ion-list> -->
-        <!-- <ion-item *ngFor="let os of listaOS">
-          {{ os }}
-        </ion-item> -->
-      <!-- </ion-list> -->
+
+      <ion-spinner *ngIf="isLoading" name="crescent" class="w-100 pt-5 text-color"></ion-spinner>
        <app-order-service-table
-          [tableData]="listaOS"
+          *ngIf="!isLoading"
+          [tableData]="dados"
           [fielterCheck]="true"
           [fieldsToShow]="filtro"
           [rowSelectionEnabled]="true"
           (rowSelected)="onRowSelected($event)"
+          [renamedHeaders]="renomearCampos"
        >
        </app-order-service-table>
 
