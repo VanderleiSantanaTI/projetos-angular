@@ -212,4 +212,11 @@ export class HeaderDesktopComponent implements OnInit {
       this.activeSection = null;
     }
   }
+
+  logout() {
+    localStorage.removeItem('authToken');
+    sessionStorage.removeItem('authToken');
+    this.navService.navigateForward('/login');
+    // this.utilsService.showToast('✖ Sessão expirada. Faça login novamente.', 'error');
+  }
 }

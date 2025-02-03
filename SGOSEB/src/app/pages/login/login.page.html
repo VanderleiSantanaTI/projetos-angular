@@ -1,5 +1,5 @@
 <ion-content class="container" [fullscreen]="true">
-  <form [formGroup]="form" (ngSubmit)="cadastrar()" class="form-container">
+  <form [formGroup]="form" (ngSubmit)="loginAccont()" class="form-container">
     <ion-card class="form-card">
       <ion-card-title class="titulo-color p-1">Login</ion-card-title>
 
@@ -21,7 +21,7 @@
           label-placement="floating"
           fill="outline"
           placeholder="SENHA"
-          formControlName="password"
+          formControlName="senha"
           maxlength="20">
           <ion-icon
             [name]="passwordIcon"

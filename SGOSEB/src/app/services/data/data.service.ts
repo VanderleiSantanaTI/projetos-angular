@@ -1,6 +1,6 @@
 import { getTestBed } from '@angular/core/testing';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
@@ -8,12 +8,13 @@ import { catchError, map } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class DataService{
+  private apiUrllogin = 'api/login/'; // URL da API
   private apiUrlCadastro_login = 'api/cadastro_login/'; // URL da API
   private apiUrlFechada_os = 'api/encerrar_os/'; // URL da API
   private apiUrlAberta_os = 'api/abrir_os/'; // URL da API
   private apiUrPecas = 'api/pecas/'; // URL da API
   private apiUrServicos = 'api/servicos/'; // URL da API
-
+  private apiUrlValidateToken = 'api/validate_token/'
   constructor(private http: HttpClient) {}
 
   // Método para buscar os contatos
@@ -53,11 +54,34 @@ export class DataService{
     );
   }
 
+  // Método para enviar login e senha
+  postLogin(loginData: { login: string; senha: string }): Observable<{ token: string; message: string }> {
+    return this.http.post<any>(this.apiUrllogin, loginData).pipe(
+      map(response => ({
+        token: response.data.token,   // Captura o token
+        message: response.message     // Captura a mensagem
+      })),
+      catchError(this.handleError)
+    );
+  }
 
+  // Método para validar o token
+  validateToken(token: string): Observable<any> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}` // Envia o token como "Bearer Token"
+    });
+    return this.http.get(this.apiUrlValidateToken, { headers }).pipe(
+      map((response) => response),
+      catchError(this.handleError)
+    );
+  }
 
   // Tratamento de erro
   private handleError(error: HttpErrorResponse) {
     console.error('Erro na API:', error);
     return throwError(() => new Error('Erro ao conectar com a API.'));
   }
+
+
+
 }
