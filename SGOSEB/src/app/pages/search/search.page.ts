@@ -1,7 +1,10 @@
+import { AuthServiceService } from 'src/app/services/authService/auth-service.service';
+import { UtilsService } from './../../services/utils/utils.service';
 import { ChangeDetectorRef, Component, HostListener, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data/data.service';
 import { NavService } from 'src/app/services/nav/nav.service';
-import { UtilsService } from 'src/app/services/utils/utils.service';
+import { HttpHeaders } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-search',
@@ -55,18 +58,22 @@ export class SearchPage implements OnInit {
     private dataService: DataService,
     private cdr: ChangeDetectorRef,
     private utilsService: UtilsService,
-    private navService: NavService
+    private navService: NavService,
+    private AuthService: AuthServiceService
+
   ) { }
 
   ngOnInit() {
     this.carregarAberta_os();
     this.checkWindowSize();
     this.validateTokenAndNavigate();
+
+
   }
 
   validateTokenAndNavigate() {
     const token = localStorage.getItem('authToken');
-    
+
     if (!token) {
       // Caso não haja token, redireciona para o login
       this.navService.navigateForward('/login');
@@ -83,14 +90,13 @@ export class SearchPage implements OnInit {
       },
       (error) => {
         console.error('Falha na validação do token:', error);
-        
         // Caso o token seja inválido, redireciona para o login
         this.navService.navigateForward('/login');
         this.utilsService.showToast('✖ Token inválido. Faça o login novamente.', 'error');
       }
     );
   }
-  
+
   carregarAberta_os() {
     this.isLoading = true;
     this.dataService.getAberta_os().subscribe(

@@ -23,7 +23,7 @@
               label-placement="floating"
               fill="outline"
               placeholder="Digite a marca"
-              formControlName="marca"
+              formControlName="marca_da_viatura"
               maxlength="50">
             </ion-input>
           </ion-col>
@@ -43,7 +43,7 @@
               label-placement="floating"
               fill="outline"
               placeholder="Digite a placa"
-              formControlName="placa"
+              formControlName="placa_eb"
               maxlength="50">
             </ion-input>
           </ion-col>
@@ -55,7 +55,7 @@
               label-placement="floating"
               fill="outline"
               placeholder="Digite a SU/CIA"
-              formControlName="suCia"
+              formControlName="su_cia_da_viatura"
               maxlength="10">
             </ion-input>
           </ion-col>
@@ -91,7 +91,7 @@
               label-placement="floating"
               fill="outline"
               placeholder="Descreva o problema"
-              formControlName="problema"
+              formControlName="problema_apresentado"
               [counter]="true"
               maxlength="300">
             </ion-textarea>
@@ -105,10 +105,10 @@
               label-placement="floating"
               fill="outline"
               placeholder="Digite o sistema"
-              formControlName="sistema"
+              formControlName="sistema_afetado"
               [counter]="true"
               maxlength="55"
-              
+
               >
             </ion-input>
           </ion-col>
@@ -120,7 +120,7 @@
               label-placement="floating"
               fill="outline"
               placeholder="Descreva a causa"
-              formControlName="causa"
+              formControlName="causa_da_avaria"
               [counter]="true"
               maxlength="300">
             </ion-textarea>
@@ -159,7 +159,7 @@
           (click)="limpar()">
           Limpar
         </ion-button>
-        <ion-button
+        <ion-button (click)="submitForm()"
           color="success"
           expand="block"
           [disabled]="!form.valid"

@@ -1,3 +1,4 @@
+import { AuthServiceService } from 'src/app/services/authService/auth-service.service';
 import { NgClass } from '@angular/common';
 import { Component, HostListener, OnInit, Output } from '@angular/core';
 import { NavItem } from 'src/app/interfaces/nav';
@@ -165,17 +166,26 @@ export class HeaderDesktopComponent implements OnInit {
   ];
 
   protected activeSection: number | null = null;
+  userInfo: any;
 
   constructor(
-    private navService: NavService
+    private navService: NavService,
+    private authService: AuthServiceService
+  ) {
+    const payload = this.authService.getTokenPayload();
+    if (payload) {
+      this.userInfo = payload.data; // Acessa os dados do usuário
+      console.log('Nome:', this.userInfo.nome);
+      console.log('Perfil:', this.userInfo.perfil);
+      console.log('Status:', this.userInfo.status);
+    }
+   }
 
-
-  ) { }
 
   ngOnInit() {
+
   }
-
-
+  // Se o token for válido, obtém o payload
 
   protected async setActiveSection(idx: number)
   {

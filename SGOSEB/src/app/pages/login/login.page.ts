@@ -36,7 +36,7 @@ export class LoginPage implements OnInit {
   ngOnInit() {
     this.authService.logout();
 
-  
+
   }
 
   loginAccont() {
@@ -51,27 +51,21 @@ export class LoginPage implements OnInit {
           this.utilsService.showToast(`✔ ${response.message}`,'success');
           this.limpar();
           this.navService.navigateForward('/start');
-          
+
 
         },
         (error) => {
           console.error('Login failed:', error);
 
-          // Verifique se a resposta de erro contém uma mensagem
-          if (error.error && error.error.message) {
-            // Exibe a mensagem de erro personalizada
-            this.utilsService.showToast(`✖ ${error.error.message}`, 'error');
-          } else {
-            // Caso a resposta não tenha a estrutura esperada
-            this.utilsService.showToast('✖ Senha ou login incorretos!', 'error');
-          }
+          this.utilsService.showToast('✖ Senha ou login incorretos!', 'error');
+
         }
       );
     } else {
       this.adicionarRequired();
     }
   }
-  
+
 
   adicionarRequired() {
     Object.keys(this.form.controls).forEach(key => {

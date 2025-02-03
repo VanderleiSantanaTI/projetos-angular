@@ -2,8 +2,8 @@
   <div class="top-header">
     <img src="#" alt="Logo da marca" (click)="goTo('/start')" style="cursor: pointer;">
     <div class="account-info">
-      <p class="user-name">{{"userName"}} |</p>
-     
+      <p class="user-name">{{this.userInfo.nome || ''}} |</p>
+
       <p class="conected link" (click)="logout()">{{"sair"}}</p>
     </div>
   </div>

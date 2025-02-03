@@ -20,18 +20,13 @@ export class StartPage implements OnInit, OnDestroy {
     private utilsService: UtilsService
   ) {
   }
-  
-  
-  
+
+
+
   ngOnInit() {
     this.authService.startTokenValidation();
-    // // Checar se o token é válido no início
-    // this.checkTokenValidity();
 
-    // // Verificação periódica do token a cada 1 minuto (60.000 ms)
-    // this.tokenCheckInterval = setInterval(() => {
-    //   this.checkTokenValidity();
-    // }, 60000);
+  
   }
 
   ngOnDestroy() {
