@@ -99,7 +99,7 @@ export class SearchPage implements OnInit {
 
   carregarAberta_os() {
     this.isLoading = true;
-    this.dataService.getAberta_os().subscribe(
+    this.dataService.getAbrir_os().subscribe(
       (data) => {
         this.dados = data; // Armazena os contatos retornados pela API
         this.isLoading = false;

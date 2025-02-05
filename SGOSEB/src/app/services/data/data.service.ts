@@ -11,10 +11,11 @@ import { UtilsService } from '../utils/utils.service';
   providedIn: 'root',
 })
 export class DataService{
+  private apiUrlOS_abertas = 'api/os_abertas/'; // URL da API
   private apiUrllogin = 'api/login/'; // URL da API
   private apiUrlCadastro_login = 'api/cadastro_login/'; // URL da API
   private apiUrlFechada_os = 'api/encerrar_os/'; // URL da API
-  private apiUrlAberta_os = 'api/abrir_os/'; // URL da API
+  private apiUrlAbrir_os = 'api/abrir_os/'; // URL da API
   private apiUrPecas = 'api/pecas/'; // URL da API
   private apiUrServicos = 'api/servicos/'; // URL da API
   private apiUrlValidateToken = 'api/validate_token/'
@@ -40,8 +41,15 @@ export class DataService{
     );
   }
 
-  getAberta_os(): Observable<any[]> {
-    return this.http.get<any>(this.apiUrlAberta_os).pipe(
+  getOS_abertas(): Observable<any[]> {
+    return this.http.get<any>(this.apiUrlOS_abertas).pipe(
+      map((response) => response.data),
+      catchError(this.handleError)
+    );
+  }
+
+  getAbrir_os(): Observable<any[]> {
+    return this.http.get<any>(this.apiUrlAbrir_os).pipe(
       map((response) => response.data),
       catchError(this.handleError)
     );
@@ -121,6 +129,7 @@ export class DataService{
   }): Observable<any> {
     const payload = this.authService.getTokenPayload();
     if (payload) {
+      console.log('Payload:', payload);
       osData.usuario = payload.nome;
       osData.perfil = payload.perfil;
       osData.cadastro_login_idabrios = payload.id;
@@ -137,7 +146,7 @@ export class DataService{
       'Authorization': `Bearer ${token}`
     });
 
-    return this.http.post<any>(this.apiUrlAberta_os, osData, { headers }).pipe(
+    return this.http.post<any>(this.apiUrlAbrir_os, osData, { headers }).pipe(
       map(response => response),
       catchError(this.handleError)
     );

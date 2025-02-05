@@ -24,6 +24,7 @@ export class RegisterOsPage implements OnInit {
         private dataService: DataService
       ) {
     this.form = this.fb.group({
+      data: [null, Validators.required],
       marca_da_viatura: ['', Validators.required],
       modelo: ['', Validators.required],
       placa_eb: ['', Validators.required],
@@ -34,7 +35,6 @@ export class RegisterOsPage implements OnInit {
       sistema_afetado: ['', Validators.required],
       causa_da_avaria: ['', Validators.required],
       manutencao: ['', Validators.required],
-      data: [null, Validators.required]
     });
 
 

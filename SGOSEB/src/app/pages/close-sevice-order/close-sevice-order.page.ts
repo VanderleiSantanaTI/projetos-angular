@@ -55,7 +55,7 @@ export class CloseSeviceOrderPage implements OnInit {
     this.checkWindowSize();
   }
   carregarOSToClose() {
-    this.dataService.getAberta_os().subscribe(
+    this.dataService.getOS_abertas().subscribe(
       (data) => {
         this.dados = data; // Armazena os contatos retornados pela API
         console.log('Contatos:',  this.dados);
