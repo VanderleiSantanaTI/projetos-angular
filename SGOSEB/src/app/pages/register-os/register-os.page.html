@@ -14,7 +14,7 @@
       <h1>Cadastro de OS</h1>
     </div>
     <!-- Inputs principais -->
-    <form [formGroup]="form" (ngSubmit)="cadastrar()">
+    <form [formGroup]="form" (ngSubmit)="submitForm()">
       <ion-grid>
         <ion-row>
           <ion-col class="col" size="12" size-md="4">
@@ -24,7 +24,8 @@
               fill="outline"
               placeholder="Digite a marca"
               formControlName="marca_da_viatura"
-              maxlength="50">
+              maxlength="50"
+              >
             </ion-input>
           </ion-col>
           <ion-col class="col" size="12" size-md="4">
@@ -159,7 +160,7 @@
           (click)="limpar()">
           Limpar
         </ion-button>
-        <ion-button (click)="submitForm()"
+        <ion-button
           color="success"
           expand="block"
           [disabled]="!form.valid"

@@ -125,16 +125,16 @@ export class DataService{
     manutencao: string;
     usuario: string;
     perfil: string;
-    cadastro_login_idabrios: number;
+    cadastro_login_idabrios : number;
   }): Observable<any> {
     const payload = this.authService.getTokenPayload();
     if (payload) {
-      console.log('Payload:', payload);
-      osData.usuario = payload.nome;
-      osData.perfil = payload.perfil;
-      osData.cadastro_login_idabrios = payload.id;
+      console.log('Payload:', payload.data.id);
+      osData.usuario = payload.data.nome;
+      osData.perfil = payload.data.perfil;
+      osData.cadastro_login_idabrios = payload.data.id;
     }
-
+    console.log('Dados da OS222:', osData);
     const token = this.authService.getToken();
     if (!token) {
       return throwError('No token provided');

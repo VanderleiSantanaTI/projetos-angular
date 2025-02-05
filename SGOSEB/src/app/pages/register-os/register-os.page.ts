@@ -51,6 +51,7 @@ export class RegisterOsPage implements OnInit {
           console.log('OS aberta com sucesso:', response);
           this.utilsService.showToast('✔ OS aberta com sucesso!', 'success');
           this.modalController.dismiss();
+          this.limpar();
         },
         error => {
           console.error('Erro ao abrir OS:', error);
@@ -91,18 +92,18 @@ export class RegisterOsPage implements OnInit {
     });
   }
 
-  cadastrar() {
-    if (this.form.valid) {
-      const osData = this.form.value;
-      console.log('Cadastro realizado:', osData);
+  // cadastrar() {
+  //   if (this.form.valid) {
+  //     const osData = this.form.value;
+  //     console.log('Cadastro realizado:', osData);
 
-      this.utilsService.showToast('✔ Ordem de Serviço cadastrada com sucesso!', 'success');
-      this.limpar();
-      // window.location.reload();
-    } else {
-      this.adicionarRequired();
-    }
-  }
+  //     this.utilsService.showToast('✔ Ordem de Serviço cadastrada com sucesso!', 'success');
+  //     this.limpar();
+  //     // window.location.reload();
+  //   } else {
+  //     this.adicionarRequired();
+  //   }
+  // }
   onKeyPressBlock(event: KeyboardEvent) {
     if (isNaN(Number(event.key))) {
       event.preventDefault(); // Bloqueia o caractere
