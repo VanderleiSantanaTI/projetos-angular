@@ -49,7 +49,7 @@ export class RegisterOsPage implements OnInit {
       this.dataService.postOpenOS(osData).subscribe(
         response => {
           console.log('OS aberta com sucesso:', response);
-          this.utilsService.showToast('✔ OS aberta com sucesso!', 'success');
+          this.utilsService.showToast(`✔ ${response.message}!`, 'success');
           this.modalController.dismiss();
           this.limpar();
         },

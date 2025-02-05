@@ -34,11 +34,24 @@
            <td *ngFor="let field of tableHeaders">
             <!-- Verifica se o campo deve ser exibido como link -->
             <ng-container *ngIf="isLinkField(field); else defaultField">
-              <a class="link" href="#" (click)="onLinkClick(row, field, $event)">{{ row[field] }}</a>
+              <a class="link" href="#" (click)="onLinkClick(row, field, $event)">
+                {{ row[field] }}
+              </a>
             </ng-container>
             <!-- Exibe o valor padrão para campos normais -->
             <ng-template #defaultField>
-              {{ row[field] }}
+              <!-- Se o texto for maior que 10, exibe o conteúdo completo -->
+              <div *ngIf="row[field].length < 20; else otherText">
+                {{ row[field] }}
+              </div>
+            
+              <!-- Caso contrário, exibe o texto truncado com tooltip -->
+              <ng-template #otherText>
+                <span [title]="row[field]">
+                  <!-- {{ row[field] }} -->
+                  {{ getTruncatedText(row[field]) }}
+                </span>
+              </ng-template>
             </ng-template>
           </td>
 

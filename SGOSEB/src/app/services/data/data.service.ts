@@ -152,6 +152,36 @@ export class DataService{
     );
   }
 
+  postServicos(servicoData: {
+		peca_utilizada: string,	
+		num_ficha : number,
+		qtd	 : number,
+		abrir_os_id : number,
+		usuario : string
+  }): Observable<any> {
+    const payload = this.authService.getTokenPayload();
+    if (payload) {
+      servicoData.usuario = payload.data.nome;
+      // servicoData.cadastro_login_idabrios = payload.data.id;
+    }
+    // console.log('Dados da OS222:', servicoData);
+    const token = this.authService.getToken();
+    if (!token) {
+      return throwError('No token provided');
+    }
+
+    console.log('Token:', token);
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+
+    return this.http.post<any>(this.apiUrlAbrir_os, servicoData, { headers }).pipe(
+      map(response => response),
+      catchError(this.handleError)
+    );
+  }
+
   // Tratamento de erro
   private handleError(error: HttpErrorResponse) {
     console.error('Erro na API:', error);

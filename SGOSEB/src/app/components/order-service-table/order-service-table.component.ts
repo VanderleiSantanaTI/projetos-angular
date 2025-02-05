@@ -119,7 +119,10 @@ export class OrderServiceTableComponent implements OnInit {
     this.currentPage = 1;
   }
 
-
+  getTruncatedText(text: string, limit: number = 15): string {
+    return text && text.length > limit ? text.substring(0, limit) + '...' : text;
+  }
+  
   onRowSelect(row: any): void {
     if (this.rowSelectionEnabled) {
       this.selectedRow = row; // Define a linha clicada como selecionada

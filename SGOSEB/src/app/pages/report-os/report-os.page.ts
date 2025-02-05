@@ -61,7 +61,7 @@ export class ReportOsPage implements OnInit {
   }
 
   carregarOSAbreta() {
-    this.dataService.getAbrir_os().subscribe(
+    this.dataService.getOS_abertas().subscribe(
       (data) => {
         this.dados = data; // Armazena os contatos retornados pela API
         console.log('Contatos:',  this.dados);
