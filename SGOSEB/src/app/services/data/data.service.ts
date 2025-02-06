@@ -34,6 +34,33 @@ export class DataService{
     );
   }
 
+  postClose_OS (osData: {
+    nome_mecanico: string;
+    data_da_manutencao: string;
+    cadastro_login_id: number;
+    abrir_os_id: number;
+    }): Observable<any> {
+      const payload = this.authService.getTokenPayload();
+      if (payload) {
+        osData.cadastro_login_id = payload.data.id;
+      }
+      const token = this.authService.getToken();
+      if (!token) {
+        return throwError('No token provided');
+      }
+
+      // console.log('Token:', token);
+      const headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      });
+
+      return this.http.post<any>(this.apiUrlFechada_os, osData, { headers }).pipe(
+        map(response => response),
+        catchError(this.handleError)
+      );
+    }
+
   getFechada_os(): Observable<any[]> {
     return this.http.get<any>(this.apiUrlFechada_os).pipe(
       map((response) => response.data),
@@ -153,7 +180,7 @@ export class DataService{
   }
 
   postServicos(servicoData: {
-		peca_utilizada: string,	
+		peca_utilizada: string,
 		num_ficha : number,
 		qtd	 : number,
 		abrir_os_id : number,

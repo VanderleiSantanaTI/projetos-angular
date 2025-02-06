@@ -44,9 +44,9 @@ export class CloseSeviceOrderPage implements OnInit {
      private cdr: ChangeDetectorRef,
     private fb: FormBuilder, private modalController: ModalController) {
     this.form = this.fb.group({
-      OS: [null, [Validators.required, Validators.min(1)]],
-      nome: ['', Validators.required],
-      dateSelected: [null, Validators.required]
+      abrir_os_id: [null, [Validators.required, Validators.min(1)]],
+      nome_mecanico: ['', Validators.required],
+      data_da_manutencao: [null, Validators.required]
     });
     // this.platformActive = this.utilsService.validatePlatform();
   }
@@ -84,9 +84,9 @@ export class CloseSeviceOrderPage implements OnInit {
 
   async onDateChange(event: any) {
     this.selectedDate = event.detail.value; // Armazena o valor da data selecionada
-    this.form.controls['dateSelected'].setValue(new Date(this.selectedDate).toLocaleDateString('pt-BR')); // Formata a data e atualiza o formulário
-    // this.form.controls['dateSelected'].setValue(new Date(this.selectedDate))
-    console.log('Data selecionada:', this.form.controls['dateSelected'].value);
+    this.form.controls['data_da_manutencao'].setValue(new Date(this.selectedDate).toLocaleDateString('pt-BR')); // Formata a data e atualiza o formulário
+    // this.form.controls['data_da_manutencao'].setValue(new Date(this.selectedDate))
+    console.log('Data selecionada:', this.form.controls['data_da_manutencao'].value);
 
     // Fecha o modal após a seleção
     const modal = await this.modalController.getTop(); // Obtém o modal ativo
@@ -105,12 +105,24 @@ export class CloseSeviceOrderPage implements OnInit {
   cadastrar() {
     if (this.form.valid) {
       const osData = this.form.value;
-      console.log('Cadastro realizado:', osData);
-      this.limpar();
-      this.utilsService.showToast('✔ (OS) FECHADA com sucesso!.', 'success');
-
+      this.dataService.postClose_OS(osData).subscribe(
+        response => {
+          if (response.status !== 200){
+            this.utilsService.showToast(`✖ ${response.message}.`, 'error');
+            this.limpar();
+            return;
+          }
+          this.utilsService.showToast(`✔ ${response.message}!`, 'success');
+          this.modalController.dismiss();
+          this.limpar();
+        },
+        error => {
+          // console.error('Erro Fechar OS:', error.message);
+          this.utilsService.showToast(`✖ ${error.message}.`, 'error');
+        }
+      );
     } else {
-      this.adicionarRequired();
+      this.utilsService.showToast('✖ Preencha todos os campos obrigatórios.', 'error');
     }
   }
 
@@ -152,7 +164,7 @@ export class CloseSeviceOrderPage implements OnInit {
     event.target.value = input.slice(0, maxLength); // Limita o número de caracteres
 
     if (input.length > maxLength) {
-      this.form.controls['OS'].setValue(event.target.value); // Atualiza o valor no modelo
+      this.form.controls['abrir_os_id'].setValue(event.target.value); // Atualiza o valor no modelo
   }
 }
 
@@ -164,7 +176,7 @@ export class CloseSeviceOrderPage implements OnInit {
 onRowSelected(row: any): void {
   console.log('Linha selecionada qt:', row.quantidade);
   this.form.patchValue({
-    OS: row.id
+    abrir_os_id: row.id
   });
   this.closeModal();
 }
