@@ -1,7 +1,8 @@
 {
   "/api": {
-    "target": "http://localhost/EB1",
+    // "target": "http://localhost/EB",
     // "target": "http://77.37.69.33/EB",
+    "target": "http://vsatech.com.br/EB",
     "secure": false,
     "changeOrigin": true,
     "pathRewrite": {

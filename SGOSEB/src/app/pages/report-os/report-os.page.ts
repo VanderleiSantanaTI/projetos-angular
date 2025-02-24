@@ -13,7 +13,6 @@ import { UtilsService } from 'src/app/services/utils/utils.service';
 export class ReportOsPage implements OnInit {
   form: FormGroup;
   isMobile!: boolean;
-  selectedDate: any;
   isModalOpen = false;
   dados: any[] = [];
 
@@ -37,7 +36,7 @@ export class ReportOsPage implements OnInit {
     situacao_os: 'Situação da OS',
   };
 
-  @ViewChildren(IonDatetime) dateTimeFields!: QueryList<IonDatetime>;
+
 
   constructor(
         private dataService: DataService,
@@ -50,9 +49,9 @@ export class ReportOsPage implements OnInit {
       OS: [null, [Validators.required, Validators.min(1)]],
       peca: [''],
       ficha: [''],
-      servico: ['', Validators.required],
-      quantidade: [null, [Validators.required, Validators.min(1)]],
-      dateSelected: [null, Validators.required]
+      quantidade: [null, [ Validators.min(1)]],
+      time: [null, Validators.required],
+      servico: ['', Validators.required]
     });
   }
   ngOnInit() {
@@ -73,22 +72,10 @@ export class ReportOsPage implements OnInit {
     );
   }
 
-  async onDateChange(event: any) {
-    this.selectedDate = event.detail.value;
-    this.form.controls['dateSelected'].setValue(new Date(this.selectedDate).toLocaleDateString('pt-BR'));
-    console.log('Data selecionada:', this.form.controls['dateSelected'].value);
-
-    // Fecha o modal após a seleção
-    const modal = await this.modalController.getTop(); // Obtém o modal ativo
-    if (modal) {
-      await modal.dismiss(); // Fecha o modal
-    }
-  }
 
 
   limpar() {
     this.form.reset();
-    this.dateTimeFields.forEach(date => date.value = '');
   }
 
 

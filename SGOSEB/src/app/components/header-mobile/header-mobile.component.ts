@@ -58,8 +58,8 @@ export class HeaderMobileComponent {
 
   goTo(page: string) {
 
-      this.navService.navigateForward(page);
-
+    this.navService.navigatesimple(page);
+    // this.router.navigate([page]); 
     this.closeSubMenu();
     this.closeMenu();
   }

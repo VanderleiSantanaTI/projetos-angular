@@ -70,7 +70,7 @@ ion-button {
   }
   &:active{
     transition: all 0s ease-in-out;
-    background-color: lighten(#115c0e, 10%);// or darken
+    background-color: var(--Verde-Light);// or darken
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     transform: translateY(1px);
   }

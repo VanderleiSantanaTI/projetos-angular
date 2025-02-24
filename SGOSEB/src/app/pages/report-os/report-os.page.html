@@ -36,7 +36,7 @@
         </ion-row>
 
         <ion-row>
-          <ion-col class="col" size="12" size-md="9">
+          <ion-col class="col" size="12" size-md="6">
             <ion-input
               label="Peça Utilizada"
               label-placement="floating"
@@ -47,7 +47,7 @@
             </ion-input>
           </ion-col>
 
-          <ion-col class="col" size="12" size-md="3">
+          <ion-col class="col" size="12" size-md="2">
             <ion-input
               type="text"
               label="Nº de Ficha"
@@ -58,22 +58,9 @@
               maxlength="20"
               >
             </ion-input>
-          </ion-col>
-        </ion-row>
-
-        <ion-row>
-          <ion-col class="col" size="12" size-md="9">
-            <ion-input
-              label="Serviço Realizado"
-              label-placement="floating"
-              fill="outline"
-              placeholder="Serviço"
-              formControlName="servico"
-              maxlength="50">
-            </ion-input>
-          </ion-col>
-
-          <ion-col class="col" size="12" size-md="3">
+          </ion-col >
+          
+          <ion-col class="col" size="12" size-md="2">
             <ion-input
               type="number"
               label="Quantidade"
@@ -85,25 +72,42 @@
               (input)="limitNumber($event, 'quantidade')">
             </ion-input>
           </ion-col>
-        </ion-row>
 
-        <ion-row>
+          <ion-col class="col" size="12" size-md="2">
+            <ion-input
+              type="time"
+              label="temp/troca h:m"
+              label-placement="floating"
+              fill="outline"
+              placeholder="Nº de Ficha"
+              formControlName="ficha"
+              maxlength="20"
+              >
+            </ion-input>
+          </ion-col >
+
+        </ion-row>
+         <br>
+
+       
           <ion-col class="col" size="12" size-md="9">
+            <ion-input
+              label="Serviço Realizado*"
+              label-placement="floating"
+              fill="outline"
+              placeholder="Serviço"
+              formControlName="servico"
+              maxlength="50">
+            </ion-input>
           </ion-col>
 
-          <ion-col class="col" size="12" size-md="3">
-            <ion-datetime-button datetime="datetimeReport"></ion-datetime-button>
-            <ion-modal [keepContentsMounted]="true" id="datetimeModal">
-              <ng-template>
-                <ion-datetime
-                  id="datetimeReport"
-                  presentation="date"
-                  (ionChange)="onDateChange($event)">
-                </ion-datetime>
-              </ng-template>
-            </ion-modal>
-          </ion-col>
-        </ion-row>
+      
+
+        
+      
+
+ 
+       
 
         <ion-button
           expand="block"

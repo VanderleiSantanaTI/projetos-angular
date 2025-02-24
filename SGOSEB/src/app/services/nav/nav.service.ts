@@ -1,4 +1,6 @@
+
 import { inject, Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
 
 @Injectable({
@@ -7,8 +9,13 @@ import { NavController } from '@ionic/angular';
 export class NavService {
 
   navController = inject(NavController);
+  router = inject(Router);
 
   constructor() { }
+
+  async navigatesimple(page: string): Promise<void> {
+    await this.router.navigate([page]);
+  }
 
   async navigateForward(
     page: string,
