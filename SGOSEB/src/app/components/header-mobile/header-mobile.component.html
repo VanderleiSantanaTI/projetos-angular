@@ -9,7 +9,7 @@
 </header>
 <nav [class.sidebar]="true" [class.open]="isMenuOpen">
   <ul *ngIf="activeSubMenuIndex === null" class="sub-menu">
-    <li (click)="goTo('start')">Home</li>
+    <li (click)="goTo('start')">Início</li>
     <li (click)="toggleSubMenu(1)">Cadastar</li>
     <li (click)="toggleSubMenu(2)">Pesquisar</li>
     <li (click)="toggleSubMenu(3)">Fechar OS</li>
