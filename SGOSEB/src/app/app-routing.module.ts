@@ -5,9 +5,6 @@ import { authGuard } from './guards/auth.guard';
 const routes: Routes = [
   {
     path: '',
-    // redirectTo: 'register-os',
-    // redirectTo: 'home',
-    // redirectTo: 'report-os',
     redirectTo: 'start',
     pathMatch: 'full'
   },

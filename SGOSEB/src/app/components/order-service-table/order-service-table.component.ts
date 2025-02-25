@@ -25,6 +25,8 @@ export class OrderServiceTableComponent implements OnInit {
 
   @Input() renamedHeaders: { [key: string]: string } = {}; // Mapeamento para renomear os headers
 
+  isLoading: boolean = true;
+
   selectedRow: any = null;
   currentPage = 1;
   itemsPerPage = 10;
@@ -71,9 +73,17 @@ export class OrderServiceTableComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.filteredData = [...this.tableData];  // Inicializa filteredData com todos os dados
-    this.totalPages = Math.ceil(this.tableData.length / this.itemsPerPage);
+    this.loadData();
   }
+  loadData() {
+    this.isLoading = true; 
+    setTimeout(() => {
+      this.filteredData = [...this.tableData]; // Inicializa filteredData com todos os dados
+      this.totalPages = Math.ceil(this.tableData.length / this.itemsPerPage);
+      this.isLoading = false; // Finaliza o estado de carregamento
+    }, 2000); 
+  }
+
   ngOnChanges() {
     this.filteredData = [...this.tableData];  // Atualiza filteredData quando tableData mudar
     this.totalPages = Math.ceil(this.tableData.length / this.itemsPerPage);

@@ -86,7 +86,7 @@ export class SearchPage implements OnInit {
       (response) => {
         console.log('Token validado com sucesso:', response);
         // Redireciona para a página principal, caso o token seja válido
-        this.navService.navigateRoot('/home');
+        this.navService.navigateRoot('/start');
       },
       (error) => {
         console.error('Falha na validação do token:', error);

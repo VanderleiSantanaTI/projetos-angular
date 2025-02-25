@@ -19,10 +19,10 @@ export class HeaderDesktopComponent implements OnInit {
   menuCardVisible: boolean = false;
 
   protected nav: NavItem[] = [
-    { title: 'Home',
+    { title: 'Início',
       sections: [
         {
-          title: 'Home',
+          title: 'Início',
           options:[
          { label: 'Tela principal',
               url: '/start'}
@@ -140,11 +140,11 @@ export class HeaderDesktopComponent implements OnInit {
             },
             {
               label: 'Alterar senha',
-              url: '/alter-password'
+              url: '/start'
             },
             {
               label: 'Acesso de Usuários',
-              url: '/user-access'
+              url: '/start'
             }
           ]
       },
@@ -153,11 +153,11 @@ export class HeaderDesktopComponent implements OnInit {
           options: [
             {
               label: 'Documentos',
-              url: '/document'
+              url: '/start'
             },
             {
               label: 'Termos de uso',
-              url: '/terms'
+              url: '/start'
             }
           ]
         },
