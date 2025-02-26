@@ -36,12 +36,16 @@ type TUrlParams<T> = {
 export class UtilsService {
   private storage?: Storage = window.localStorage;
   // protected store = inject(Store);
-  navController = inject(NavController);
-  alertController = inject(AlertController);
-  toastController = inject(ToastController);
-  modalController = inject(ModalController);
-  animationCtrl = inject(AnimationController);
-  platform = inject(Platform);
+  constructor(
+    private platform: Platform,
+    private alertController: AlertController,
+    private toastController: ToastController,
+    private navController: NavController,
+    private modalController: ModalController,
+    private animationController: AnimationController
+  ){
+
+  }
 
   screenWidth: number = this.platform.width();
 
