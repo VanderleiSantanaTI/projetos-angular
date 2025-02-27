@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ModalController } from '@ionic/angular';
 import { UtilsService } from 'src/app/services/utils/utils.service';
 import { DataService } from 'src/app/services/data/data.service'; // Importe o serviço de dados
 import { NavService } from 'src/app/services/nav/nav.service';

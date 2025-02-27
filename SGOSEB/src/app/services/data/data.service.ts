@@ -1,24 +1,24 @@
-
-import { getTestBed } from '@angular/core/testing';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { AuthServiceService } from '../authService/auth-service.service';
 import { UtilsService } from '../utils/utils.service';
+import { environment} from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DataService{
-  private apiUrlOS_abertas = 'api/os_abertas/'; // URL da API
-  private apiUrllogin = 'api/login/'; // URL da API
-  private apiUrlCadastro_login = 'api/cadastro_login/'; // URL da API
-  private apiUrlFechada_os = 'api/encerrar_os/'; // URL da API
-  private apiUrlAbrir_os = 'api/abrir_os/'; // URL da API
-  private apiUrPecas = 'api/pecas/'; // URL da API
-  private apiUrServicos = 'api/servicos/'; // URL da API
-  private apiUrlValidateToken = 'api/validate_token/'
+
+  private apiUrlOS_abertas = environment.production ? `${environment.apiUrl}/os_abertas/`: ''
+  private apiUrllogin = environment.production ? `${environment.apiUrl}/login/`: ''
+  private apiUrlCadastro_login = environment.production ? `${environment.apiUrl}/cadastro_login/`: ''
+  private apiUrlFechada_os = environment.production? `${environment.apiUrl}/encerrar_os/`: ''
+  private apiUrlAbrir_os = environment.production? `${environment.apiUrl}/abrir_os/`: ''
+  private apiUrPecas = environment.production? `${environment.apiUrl}/pecas/`: ''
+  private apiUrServicos = environment.production? `${environment.apiUrl}/servicos/`: ''
+  private apiUrlValidateToken = environment.production? `${environment.apiUrl}/validate_token/`: ''
   userInfo: any;
   constructor(
     private http: HttpClient,
