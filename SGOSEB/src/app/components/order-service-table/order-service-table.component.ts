@@ -22,7 +22,7 @@ export class OrderServiceTableComponent implements OnInit {
   @Output() ActionButton = new EventEmitter();
   @Input() rowSelectionEnabled: boolean = false; // Propriedade para ativar/desativar seleção de linha
   @Output() rowSelected = new EventEmitter<any>(); // Evento para emitir os dados da linha selecionada
-
+  
   @Input() renamedHeaders: { [key: string]: string } = {}; // Mapeamento para renomear os headers
 
   isLoading: boolean = true;
@@ -76,16 +76,20 @@ export class OrderServiceTableComponent implements OnInit {
     this.loadData();
   }
   loadData() {
-    this.isLoading = true; 
+    this.isLoading = true;
     setTimeout(() => {
       this.filteredData = [...this.tableData]; // Inicializa filteredData com todos os dados
       this.totalPages = Math.ceil(this.tableData.length / this.itemsPerPage);
       this.isLoading = false; // Finaliza o estado de carregamento
-    }, 2000); 
+    }, 2000);
   }
 
   ngOnChanges() {
-    this.filteredData = [...this.tableData];  // Atualiza filteredData quando tableData mudar
+    if (!this.tableData || !Array.isArray(this.tableData)) {
+      this.tableData = []; // Evita erro se tableData for nulo
+    }
+
+    this.filteredData = [...this.tableData];
     this.totalPages = Math.ceil(this.tableData.length / this.itemsPerPage);
   }
 
@@ -132,7 +136,7 @@ export class OrderServiceTableComponent implements OnInit {
   getTruncatedText(text: string, limit: number = 15): string {
     return text && text.length > limit ? text.substring(0, limit) + '...' : text;
   }
-  
+
   onRowSelect(row: any): void {
     if (this.rowSelectionEnabled) {
       this.selectedRow = row; // Define a linha clicada como selecionada
