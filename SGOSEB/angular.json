@@ -54,6 +54,7 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
+              "optimization": false,  // acrescentado para o ionic serve --prod para não otimizar o código
               "outputHashing": "all"
             },
             "development": {
@@ -83,7 +84,7 @@
               "progress": false
             }
           },
-          "defaultConfiguration": "development",
+          "defaultConfiguration": "development"
 
         },
         "extract-i18n": {
