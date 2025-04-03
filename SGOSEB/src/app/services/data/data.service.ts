@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { BehaviorSubject, firstValueFrom, Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { AuthServiceService } from '../authService/auth-service.service';
 import { UtilsService } from '../utils/utils.service';
@@ -20,6 +20,10 @@ export class DataService{
   private apiUrServicos = environment.production? `${environment.apiUrl}/servicos/`: ''
   private apiUrlValidateToken = environment.production? `${environment.apiUrl}/validate_token/`: ''
   userInfo: any;
+
+  private osAbertaSubject = new BehaviorSubject<any[]>([]);
+  public osAberta$ = this.osAbertaSubject.asObservable();
+
   constructor(
     private http: HttpClient,
     private authService: AuthServiceService,
@@ -70,17 +74,34 @@ export class DataService{
 
   getOS_abertas(): Observable<any[]> {
     return this.http.get<any>(this.apiUrlOS_abertas).pipe(
-      map((response) => response.data),
+      map((response) => {
+        this.osAbertaSubject.next(response.data);
+        return response.data
+      }),
       catchError(this.handleError)
     );
   }
 
-  getAbrir_os(): Observable<any[]> {
-    return this.http.get<any>(this.apiUrlAbrir_os).pipe(
-      map((response) => response.data),
-      catchError(this.handleError)
-    );
+  // getAbrir_os(): Observable<any[]> {
+  //   return this.http.get<any>(this.apiUrlAbrir_os).pipe(
+  //     map((response) => response.data),
+  //     catchError(this.handleError)
+  //   );
+  // }
+  async getAbrir_os(): Promise<any[]> {
+    try {
+      // get, post ... retorna como observable
+      // firstValueFrom converte o observable em uma promise
+      // e trabalha como uma conexa assincrona normalmente
+      const response = await firstValueFrom(this.http.get<any>(this.apiUrlAbrir_os));
+      return response.data;
+    } catch (error) {
+      this.handleError(error as HttpErrorResponse);
+      return [];
+    }
   }
+
+
 
   getPecas(): Observable<any[]> {
     return this.http.get<any>(this.apiUrPecas).pipe(

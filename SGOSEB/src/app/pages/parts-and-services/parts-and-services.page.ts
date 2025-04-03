@@ -1,4 +1,5 @@
 import { ChangeDetectorRef, Component, HostListener, OnInit } from '@angular/core';
+import { catchError, Subject, takeUntil, tap, throwError } from 'rxjs';
 import { DataService } from 'src/app/services/data/data.service';
 
 
@@ -15,7 +16,7 @@ export class PartsAndServicesPage implements OnInit {
   segmentValue: string = 'pecas';
   dadosPecas: any[] = [];
   dadosServicos: any[] = [];
-
+  private destroy$ = new Subject<void>();
 
   fieldsToPecsa: string[] = ['abrir_os_id', 'peca_utilizada', 'qtd', 'num_ficha'];
   renamedHeadersPecas: any = {abrir_os_id: 'O.S', peca_utilizada: 'Peça Utilizada', qtd: 'Quantidade', num_ficha: 'Número da Ficha'};
@@ -34,26 +35,29 @@ export class PartsAndServicesPage implements OnInit {
     this.checkWindowSize();
   }
 
-
   carregarPecas() {
-    this.dataService.getPecas().subscribe(
+    this.dataService.getPecas().pipe(
+      takeUntil(this.destroy$)  // A inscrição será limpa quando o componente for destruído
+    ).subscribe(
       (data) => {
         this.dadosPecas = data;
-        console.log('Contatos:', this.dadosPecas);
-        this.cdr.detectChanges(); // Força a detecção de mudanças
       },
       (error) => {
-        console.error('Erro ao carregar os contatos:', error);
+        console.error('Erro ao carregar os dados de peças:', error);
       }
     );
+  }
+  ngOnDestroy() {  // Método chamado quando o componente é destruído parece que não mudou muita coisa não
+    this.destroy$.next();  // Desinscreve automaticamente os Observables
+    this.destroy$.complete();
   }
 
   carregarServicos() {
     this.dataService.getServicos().subscribe(
       (data) => {
         this.dadosServicos = data;
-        console.log('Contatos:', this.dadosServicos);
-        this.cdr.detectChanges(); // Força a detecção de mudanças
+        // console.log('Contatos:', this.dadosServicos);
+        // this.cdr.detectChanges(); // Força a detecção de mudanças
       },
       (error) => {
         console.error('Erro ao carregar os contatos:', error);

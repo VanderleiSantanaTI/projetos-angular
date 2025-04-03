@@ -8,10 +8,12 @@ import { NavController } from '@ionic/angular';
 })
 export class NavService {
 
-  navController = inject(NavController);
-  router = inject(Router);
 
-  constructor() { }
+
+  constructor(
+    private navController: NavController,
+    private router: Router
+  ) { }
 
   async navigatesimple(page: string): Promise<void> {
     await this.router.navigate([page]);
