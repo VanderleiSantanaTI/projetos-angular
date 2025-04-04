@@ -54,18 +54,29 @@ export class CloseSeviceOrderPage implements OnInit {
     this.carregarOSToClose();
     this.checkWindowSize();
   }
-  carregarOSToClose() {
-    this.dataService.getOS_abertas().subscribe(
-      (data) => {
-        this.dados = data; // Armazena os contatos retornados pela API
-        console.log('Contatos:',  this.dados);
-        this.cdr.detectChanges(); // Força a detecção de mudanças
-      },
-      (error) => {
-        console.error('Erro ao carregar os contatos:', error);
-      }
-    );
+  // carregarOSToClose() {
+  //   this.dataService.getOS_abertas().subscribe(
+  //     (data) => {
+  //       this.dados = data; // Armazena os contatos retornados pela API
+  //       console.log('Contatos:',  this.dados);
+  //       this.cdr.detectChanges(); // Força a detecção de mudanças
+  //     },
+  //     (error) => {
+  //       console.error('Erro ao carregar os contatos:', error);
+  //     }
+  //   );
+  // }
+
+  async carregarOSToClose() {
+    try {
+      const dados = await this.dataService.getOs_abertas();
+      this.dados = dados; // Armazena os contatos retornados pela API
+      console.log('Contatos:', this.dados);
+    } catch (error) {
+      console.error('Erro ao carregar os contatos:', error);
+    }
   }
+
   // Método para abrir o modal
   openSearchModal() {
     this.isModalOpen = true;

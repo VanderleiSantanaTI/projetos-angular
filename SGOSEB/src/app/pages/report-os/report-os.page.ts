@@ -16,8 +16,6 @@ export class ReportOsPage implements OnInit {
   isModalOpen = false;
   dados: any[] = [];
 
-
-
   filtro: string[] = [
     'id',
     'data',
@@ -35,8 +33,6 @@ export class ReportOsPage implements OnInit {
     manutencao: 'Manutenção',
     situacao_os: 'Situação da OS',
   };
-
-
 
   constructor(
         private dataService: DataService,
@@ -59,18 +55,16 @@ export class ReportOsPage implements OnInit {
     this.checkWindowSize();
   }
 
-  carregarOSAbreta() {
-    this.dataService.getOS_abertas().subscribe(
-      (data) => {
-        this.dados = data; // Armazena os contatos retornados pela API
-        console.log('Contatos:',  this.dados);
-        this.cdr.detectChanges(); // Força a detecção de mudanças
-      },
-      (error) => {
-        console.error('Erro ao carregar os contatos:', error);
-      }
-    );
+  async carregarOSAbreta() {
+    try {
+      const dados = await this.dataService.getOs_abertas();
+      this.dados = dados;
+    } catch (error) {
+      console.error('Erro ao carregar os contatos:', error);
+    }
   }
+
+
 
 
 

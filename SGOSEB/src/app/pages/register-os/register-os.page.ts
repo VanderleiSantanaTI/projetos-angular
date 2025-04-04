@@ -43,8 +43,10 @@ export class RegisterOsPage implements OnInit {
   ngOnInit() {
     this.checkWindowSize();
   }
+
   submitForm() {
     if (this.form.valid) {
+
       const osData = this.form.value;
       this.dataService.postOpenOS(osData).subscribe(
         response => {
@@ -55,9 +57,10 @@ export class RegisterOsPage implements OnInit {
         },
         error => {
           console.error('Erro ao abrir OS:', error);
-          this.utilsService.showToast('✖ Erro ao abrir OS. Tente novamente.', 'error');
+          this.utilsService.showToast('✖ Erro ao abrir OS. Tent novamente.', 'error');
         }
       );
+
     } else {
       this.utilsService.showToast('✖ Preencha todos os campos obrigatórios.', 'error');
     }

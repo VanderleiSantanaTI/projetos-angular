@@ -71,21 +71,33 @@ export class VehicleExitPage implements OnInit {
     }
   }
 
-  carregarRetirada() {
-    this.isLoading = true;
-    this.dataService.getFechada_os().subscribe(
-      (data) => {
-        this.dados = data; // Armazena os contatos retornados pela API
-        this.isLoading = false;
-        console.log('Contatos:',  this.dados);
-        // localStorage.setItem('nome', data[0].id);
-        this.cdr.detectChanges();
-      },
-      (error) => {
-        console.error('Erro ao carregar os contatos:', error);
-        this.isLoading = false;
-      }
-    );
+  // carregarRetirada() {
+  //   this.isLoading = true;
+  //   this.dataService.getFechada_os().subscribe(
+  //     (data) => {
+  //       this.dados = data; // Armazena os contatos retornados pela API
+  //       this.isLoading = false;
+  //       console.log('Contatos:',  this.dados);
+  //       // localStorage.setItem('nome', data[0].id);
+  //       this.cdr.detectChanges();
+  //     },
+  //     (error) => {
+  //       console.error('Erro ao carregar os contatos:', error);
+  //       this.isLoading = false;
+  //     }
+  //   );
+  // }
+
+  async carregarRetirada() {
+    try {
+      const dados = await this.dataService.getFechada_os();
+      this.dados = dados; // Armazena os contatos retornados pela API
+      this.isLoading = false;
+      console.log('Contatos:', this.dados);
+    } catch (error) {
+      console.error('Erro ao carregar os contatos:', error);
+      this.isLoading = false;
+    }
   }
 
   limpar() {

@@ -26,19 +26,30 @@ export class GeneratePdfPage implements OnInit {
     this.checkWindowSize();
 
   }
-  carregarOSFechada() {
-    this.dataService.getFechada_os().subscribe(
-      (data) => {
-        // console.log('Contatos recebidos:', data);
-        this.contatos = data; // Armazena os contatos retornados pela API
-        console.log('Contatos:', this.contatos);
-        // console.log('Contatos:', this.contatos);
-        this.cdr.detectChanges(); // Força a detecção de mudanças
-      },
-      (error) => {
-        console.error('Erro ao carregar os contatos:', error);
-      }
-    );
+  // carregarOSFechada() {
+  //   this.dataService.getFechada_os().subscribe(
+  //     (data) => {
+  //       // console.log('Contatos recebidos:', data);
+  //       this.contatos = data; // Armazena os contatos retornados pela API
+  //       console.log('Contatos:', this.contatos);
+
+
+  //     },
+  //     (error) => {
+  //       console.error('Erro ao carregar os contatos:', error);
+  //     }
+  //   );
+  // }
+  async carregarOSFechada() {
+    try {
+      const data = await this.dataService.getFechada_os();
+      console.log('Contatos recebidos:', data);
+      this.contatos = data; // Armazena os contatos retornados pela API
+      console.log('Contatos:', this.contatos);
+    }
+    catch (error) {
+      console.error('Erro ao carregar os contatos:', error);
+    }
   }
 
   handleLinkClick(event: { row: any, field: string }) {

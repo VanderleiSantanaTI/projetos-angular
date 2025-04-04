@@ -30,12 +30,15 @@ export class DataService{
     private utilsService: UtilsService
   ) {}
 
-  // Método para buscar os contatos
-  getCadastro_login(): Observable<any[]> {
-    return this.http.get<any>(this.apiUrlCadastro_login).pipe(
-      map((response) => response.data), // Extrair a dados
-      catchError(this.handleError)
-    );
+  // Método para obter os dados de OS abertas
+  async getCadastro_login(): Promise<any[]> {
+    try {
+      const response = await firstValueFrom(this.http.get<any>(this.apiUrlCadastro_login));
+      return response.data;
+    } catch (error) {
+      this.handleError(error as HttpErrorResponse);
+      return [];
+    }
   }
 
   postClose_OS (osData: {
@@ -50,7 +53,10 @@ export class DataService{
       }
       const token = this.authService.getToken();
       if (!token) {
-        return throwError('No token provided');
+
+
+      return throwError(() => new Error('No token provided'));
+
       }
 
       // console.log('Token:', token);
@@ -65,21 +71,32 @@ export class DataService{
       );
     }
 
-  getFechada_os(): Observable<any[]> {
-    return this.http.get<any>(this.apiUrlFechada_os).pipe(
-      map((response) => response.data),
-      catchError(this.handleError)
-    );
+  // getFechada_os(): Observable<any[]> {
+  //   return this.http.get<any>(this.apiUrlFechada_os).pipe(
+  //     map((response) => response.data),
+  //     catchError(this.handleError)
+  //   );
+  // }
+
+  async getFechada_os(): Promise<any[]> {
+    try {
+      const response = await firstValueFrom(this.http.get<any>(this.apiUrlFechada_os));
+      return response.data;
+    } catch (error) {
+      this.handleError(error as HttpErrorResponse);
+      return [];
+    }
   }
 
-  getOS_abertas(): Observable<any[]> {
-    return this.http.get<any>(this.apiUrlOS_abertas).pipe(
-      map((response) => {
-        this.osAbertaSubject.next(response.data);
-        return response.data
-      }),
-      catchError(this.handleError)
-    );
+   async getOs_abertas(): Promise<any[]> {
+    try {
+      const response = await firstValueFrom(this.http.get<any>(this.apiUrlOS_abertas));
+      return response.data;
+    } catch (error) {
+      this.handleError(error as HttpErrorResponse);
+      return [];
+
+    }
   }
 
   // getAbrir_os(): Observable<any[]> {
@@ -89,6 +106,7 @@ export class DataService{
   //   );
   // }
   async getAbrir_os(): Promise<any[]> {
+
     try {
       // get, post ... retorna como observable
       // firstValueFrom converte o observable em uma promise
@@ -103,33 +121,68 @@ export class DataService{
 
 
 
-  getPecas(): Observable<any[]> {
-    return this.http.get<any>(this.apiUrPecas).pipe(
-      map((response) => response.data),
-      catchError(this.handleError)
-    );
+  // getPecas(): Observable<any[]> {
+  //   return this.http.get<any>(this.apiUrPecas).pipe(
+  //     map((response) => response.data),
+  //     catchError(this.handleError)
+  //   );
+  // }
+
+  async getPecas(): Promise<any[]> {
+    try {
+      const response = await firstValueFrom(this.http.get<any>(this.apiUrPecas));
+      return response.data;
+    } catch (error) {
+      this.handleError(error as HttpErrorResponse);
+      return [];
+    }
   }
 
-  getServicos(): Observable<any[]> {
-    return this.http.get<any>(this.apiUrServicos).pipe(
-      map((response) => response.data),
+  // getServicos(): Observable<any[]> {
+  //   return this.http.get<any>(this.apiUrServicos).pipe(
+  //     map((response) => response.data),
 
-      catchError(this.handleError)
-    );
+  //     catchError(this.handleError)
+  //   );
+  // }
+
+  async getServicos(): Promise<any[]> {
+    try {
+      const response = await firstValueFrom(this.http.get<any>(this.apiUrServicos));
+      return response.data;
+    }
+    catch (error) {
+      this.handleError(error as HttpErrorResponse);
+      return [];
+    }
   }
 
 
   // Método para enviar login e senha
-  postLogin(loginData: { login: string; senha: string }): Observable<{ token: string; message: string }> {
-    return this.http.post<any>(this.apiUrllogin, loginData).pipe(
-      map(response => ({
-        token: response.data.token,   // Captura o token
-        message: response.message     // Captura a mensagem
-      })),
-      catchError(this.handleError)
-    );
+  // postLogin(loginData: { login: string; senha: string }): Observable<{ token: string; message: string }> {
+  //   return this.http.post<any>(this.apiUrllogin, loginData).pipe(
+  //     map(response => ({
+  //       token: response.data.token,   // Captura o token
+  //       message: response.message     // Captura a mensagem
+  //     })),
+  //     catchError(this.handleError)
+  //   );
+  // }
+  async postLogin(loginData: { login: string; senha: string }): Promise<{ token: string; message: string } | null> {
+    try {
+      const response = await firstValueFrom(this.http.post<any>(this.apiUrllogin, loginData));
+      return {
+        token: response.data.token,
+        message: response.message
+      };
+    }
+    catch (error) {
+      this.handleError(error as HttpErrorResponse);
+      return null;
+    }
   }
 
+  // Método para obter o token
 
   // Método para validar o token
   validateToken(token: string): Observable<any> {
@@ -185,7 +238,8 @@ export class DataService{
     console.log('Dados da OS222:', osData);
     const token = this.authService.getToken();
     if (!token) {
-      return throwError('No token provided');
+
+      return throwError(() => new Error('No token provided'));
     }
 
     console.log('Token:', token);
@@ -215,7 +269,7 @@ export class DataService{
     // console.log('Dados da OS222:', servicoData);
     const token = this.authService.getToken();
     if (!token) {
-      return throwError('No token provided');
+      return throwError(() => new Error('No token provided'));
     }
 
     console.log('Token:', token);

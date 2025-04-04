@@ -34,27 +34,35 @@ export class ProfilesPage implements OnInit {
 
   }
 
-  carregarCadastro_login() {
-    this.dataService.getCadastro_login().subscribe(
-      (data) => {
-        // console.log('Contatos recebidos:', data);
-        this.contatos = data; // Armazena os contatos retornados pela API
-        // console.log('Contatos:', this.contatos);
-        console.log('Contatos:', this.contatos);
-        this.cdr.detectChanges(); // Força a detecção de mudanças
-      },
-      (error) => {
-        console.error('Erro ao carregar os contatos:', error);
-      }
-    );
+  // carregarCadastro_login() {
+  //   this.dataService.getCadastro_login().subscribe(
+  //     (data) => {
+  //       // console.log('Contatos recebidos:', data);
+  //       this.contatos = data; // Armazena os contatos retornados pela API
+  //       // console.log('Contatos:', this.contatos);
+  //       console.log('Contatos:', this.contatos);
+  //       this.cdr.detectChanges(); // Força a detecção de mudanças
+  //     },
+  //     (error) => {
+  //       console.error('Erro ao carregar os contatos:', error);
+  //     }
+  //   );
+  // }
+
+  async carregarCadastro_login() {
+    try {
+      const dados = await this.dataService.getCadastro_login();
+      this.contatos = dados;
+    }
+    catch (error) {
+      console.error('Erro ao carregar os contatos:', error);
+    }
   }
 
-
-
-    handleLinkClick(event: { row: any, field: string }) {
-      console.log('ID login:', event.row.id);
-      // Aqui você pode executar qualquer ação, como abrir um modal, redirecionar, etc.
-    }
+  handleLinkClick(event: { row: any, field: string }) {
+    console.log('ID login:', event.row.id);
+    // Aqui você pode executar qualquer ação, como abrir um modal, redirecionar, etc.
+  }
 
 
 

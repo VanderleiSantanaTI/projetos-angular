@@ -38,28 +38,53 @@ export class LoginPage implements OnInit {
 
   }
 
-  loginAccont() {
+  // loginAccont() {
+  //   if (this.form.valid) {
+  //     const loginData = this.form.value;
+  //     this.dataService.postLogin(loginData).subscribe(
+  //       (response) => { // O token já vem diretamente
+  //         console.log('Login successful:', response);
+  //         // Salva o token no localStorage para uso posterior
+  //         localStorage.setItem('authToken', response.token);
+
+  //         this.utilsService.showToast(`✔ ${response.message}`,'success');
+  //         this.limpar();
+  //         this.navService.navigateForward('/start');
+
+  //       },
+  //       (error) => {
+  //         console.error('Login failed:', error);
+
+  //         this.utilsService.showToast('✖ Senha ou login incorretos!', 'error');
+
+  //       }
+  //     );
+  //   } else {
+  //     this.adicionarRequired();
+  //   }
+  // }
+
+  async loginAccont() {
     if (this.form.valid) {
       const loginData = this.form.value;
-      this.dataService.postLogin(loginData).subscribe(
-        (response) => { // O token já vem diretamente
-          console.log('Login successful:', response);
-          // Salva o token no localStorage para uso posterior
-          localStorage.setItem('authToken', response.token);
-
-          this.utilsService.showToast(`✔ ${response.message}`,'success');
-          this.limpar();
-          this.navService.navigateForward('/start');
-
-
-        },
-        (error) => {
-          console.error('Login failed:', error);
-
-          this.utilsService.showToast('✖ Senha ou login incorretos!', 'error');
-
+      console.log('Login data:', loginData); // Verifica os dados de login
+      try {
+        const response = await this.dataService.postLogin(loginData); // agora é uma Promise
+        if (!response) {
+          throw new Error('Login failed: No response from server');
+        }else if (response.token === undefined) {
+          throw new Error('Login failed: Token not found in response');
         }
-      );
+        localStorage.setItem('authToken', response.token);
+        this.utilsService.showToast(`✔ ${response.message}`, 'success');
+        this.limpar();
+        this.navService.navigateForward('/start');
+
+      } catch (error) {
+        console.error('Login failed:', error);
+        this.utilsService.showToast('✖ Senha ou login incorretos!', 'error');
+      }
+
     } else {
       this.adicionarRequired();
     }

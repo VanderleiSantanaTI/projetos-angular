@@ -32,38 +32,44 @@ export class PartsAndServicesPage implements OnInit {
   ngOnInit() {
     this.carregarServicos();
     this.carregarPecas();
-    this.checkWindowSize();
+    // this.checkWindowSize();
   }
 
-  carregarPecas() {
-    this.dataService.getPecas().pipe(
-      takeUntil(this.destroy$)  // A inscrição será limpa quando o componente for destruído
-    ).subscribe(
-      (data) => {
-        this.dadosPecas = data;
-      },
-      (error) => {
-        console.error('Erro ao carregar os dados de peças:', error);
-      }
-    );
-  }
-  ngOnDestroy() {  // Método chamado quando o componente é destruído parece que não mudou muita coisa não
-    this.destroy$.next();  // Desinscreve automaticamente os Observables
-    this.destroy$.complete();
+  // carregarPecas() {
+  //   this.dataService.getPecas().pipe(
+  //     takeUntil(this.destroy$)  // A inscrição será limpa quando o componente for destruído
+  //   ).subscribe(
+  //     (data) => {
+  //       this.dadosPecas = data;
+  //     },
+  //     (error) => {
+  //       console.error('Erro ao carregar os dados de peças:', error);
+  //     }
+  //   );
+  // }
+  // ngOnDestroy() {  // Método chamado quando o componente é destruído parece que não mudou muita coisa não
+  //   this.destroy$.next();  // Desinscreve automaticamente os Observables
+  //   this.destroy$.complete();
+  // }
+
+  async carregarPecas() {
+    try{
+      const dadosPecas =  await this.dataService.getPecas();
+      this.dadosPecas = dadosPecas;
+    }catch (error) {
+      console.error('Erro ao carregar os contatos:', error);
+    }
   }
 
-  carregarServicos() {
-    this.dataService.getServicos().subscribe(
-      (data) => {
-        this.dadosServicos = data;
-        // console.log('Contatos:', this.dadosServicos);
-        // this.cdr.detectChanges(); // Força a detecção de mudanças
-      },
-      (error) => {
-        console.error('Erro ao carregar os contatos:', error);
-      }
-    );
+  async carregarServicos() {
+    try{
+      const dadosServicos =  await this.dataService.getServicos();
+      this.dadosServicos = dadosServicos;
+    }catch (error) {
+      console.error('Erro ao carregar os contatos:', error);
+    }
   }
+
 
 
   @HostListener('window:resize', ['$event'])
