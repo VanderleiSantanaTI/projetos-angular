@@ -32,8 +32,14 @@ export class DataService{
 
   // Método para obter os dados de OS abertas
   async getCadastro_login(): Promise<any[]> {
+    const token = this.authService.getToken();
+    if (!token) {
+      return [];
+    }
+    const headers = new HttpHeaders()
+    .set('Authorization', 'Bearer ' + token)
     try {
-      const response = await firstValueFrom(this.http.get<any>(this.apiUrlCadastro_login));
+      const response = await firstValueFrom(this.http.get<any>(this.apiUrlCadastro_login, { headers }));
       return response.data;
     } catch (error) {
       this.handleError(error as HttpErrorResponse);
@@ -89,9 +95,17 @@ export class DataService{
   }
 
    async getOs_abertas(): Promise<any[]> {
+    const token = this.authService.getToken();
+    if (!token) {
+      return [];
+    }
+    const headers = new HttpHeaders()
+    .set('Authorization', 'Bearer ' + token)
+    // .set('Content-Type', 'application/json') // Adicionando o cabeçalho de tipo de conteúdo, se necessário
     try {
-      const response = await firstValueFrom(this.http.get<any>(this.apiUrlOS_abertas));
+      const response = await firstValueFrom(this.http.get<any>(this.apiUrlOS_abertas, { headers }));
       return response.data;
+
     } catch (error) {
       this.handleError(error as HttpErrorResponse);
       return [];
@@ -106,12 +120,17 @@ export class DataService{
   //   );
   // }
   async getAbrir_os(): Promise<any[]> {
-
+    const token = this.authService.getToken();
+    if (!token) {
+      return [];
+    }
+    const headers = new HttpHeaders()
+    .set('Authorization', 'Bearer ' + token)
     try {
       // get, post ... retorna como observable
       // firstValueFrom converte o observable em uma promise
       // e trabalha como uma conexa assincrona normalmente
-      const response = await firstValueFrom(this.http.get<any>(this.apiUrlAbrir_os));
+      const response = await firstValueFrom(this.http.get<any>(this.apiUrlAbrir_os, { headers }));
       return response.data;
     } catch (error) {
       this.handleError(error as HttpErrorResponse);
@@ -129,8 +148,14 @@ export class DataService{
   // }
 
   async getPecas(): Promise<any[]> {
+    const token = this.authService.getToken();
+    if (!token) {
+      return [];
+    }
+    const headers = new HttpHeaders()
+    .set('Authorization', 'Bearer ' + token)
     try {
-      const response = await firstValueFrom(this.http.get<any>(this.apiUrPecas));
+      const response = await firstValueFrom(this.http.get<any>(this.apiUrPecas, { headers }));
       return response.data;
     } catch (error) {
       this.handleError(error as HttpErrorResponse);
@@ -147,8 +172,17 @@ export class DataService{
   // }
 
   async getServicos(): Promise<any[]> {
+    const token = this.authService.getToken();
+    if (!token) {
+      return [];
+    }
+    const headers = new HttpHeaders()
+    .set('Authorization', 'Bearer ' + token) // Adicionando o cabeçalho de autorização
+    // .set('Content-Type', 'application/json'); // Adicionando o cabeçalho de tipo de conteúdo, se necessário
+
+
     try {
-      const response = await firstValueFrom(this.http.get<any>(this.apiUrServicos));
+      const response = await firstValueFrom(this.http.get<any>(this.apiUrServicos, { headers }));
       return response.data;
     }
     catch (error) {
