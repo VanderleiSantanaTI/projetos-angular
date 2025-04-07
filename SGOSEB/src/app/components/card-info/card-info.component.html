@@ -1,0 +1,46 @@
+<ion-content class="ion-padding">
+  <h2>Viaturas com OS Abertas</h2>
+  <div class="card-scroll">
+    <ng-container *ngFor="let viatura of viaturas">
+      <ion-card *ngIf="viatura.status === 'aberta'" color="danger">
+        <ion-card-header>
+          <ion-card-title>{{ viatura.modelo }}</ion-card-title>
+          <ion-card-subtitle>{{ viatura.status | titlecase }}</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          {{ viatura.detalhes }}
+        </ion-card-content>
+      </ion-card>
+    </ng-container>
+  </div>
+
+  <h2>Viaturas em Manutenção</h2>
+  <div class="card-scroll">
+    <ng-container *ngFor="let viatura of viaturas">
+      <ion-card *ngIf="viatura.status === 'fazendo'" color="warning">
+        <ion-card-header>
+          <ion-card-title>{{ viatura.modelo }}</ion-card-title>
+          <ion-card-subtitle>{{ viatura.status | titlecase }}</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          {{ viatura.detalhes }}
+        </ion-card-content>
+      </ion-card>
+    </ng-container>
+  </div>
+
+  <h2>Viaturas Prontas para Retirada</h2>
+  <div class="card-scroll">
+    <ng-container *ngFor="let viatura of viaturas">
+      <ion-card *ngIf="viatura.status === 'pronto'" color="success">
+        <ion-card-header>
+          <ion-card-title>{{ viatura.modelo }}</ion-card-title>
+          <ion-card-subtitle>{{ viatura.status | titlecase }}</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          {{ viatura.detalhes }}
+        </ion-card-content>
+      </ion-card>
+    </ng-container>
+  </div>
+</ion-content>

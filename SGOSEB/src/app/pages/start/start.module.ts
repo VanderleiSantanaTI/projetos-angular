@@ -7,6 +7,7 @@ import { StartPage } from './start.page';
 import { HeaderDesktopComponent } from 'src/app/components/header-desktop/header-desktop.component';
 import { HeaderMobileComponent } from 'src/app/components/header-mobile/header-mobile.component';
 import { ComponentModule } from 'src/app/component/component.module';
+import { CardInfoComponent } from 'src/app/components/card-info/card-info.component';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { ComponentModule } from 'src/app/component/component.module';
     StartPageRoutingModule,
     HeaderMobileComponent,
     HeaderDesktopComponent,
-    ComponentModule
+    ComponentModule,
+    CardInfoComponent
 
 
   ],

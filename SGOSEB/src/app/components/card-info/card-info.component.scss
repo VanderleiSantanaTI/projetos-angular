@@ -1,0 +1,11 @@
+.card-scroll {
+  display: flex;
+  overflow-x: auto;
+  gap: 12px;
+  padding-bottom: 10px;
+}
+
+ion-card {
+  min-width: 10rem;
+  flex-shrink: 0;
+}
