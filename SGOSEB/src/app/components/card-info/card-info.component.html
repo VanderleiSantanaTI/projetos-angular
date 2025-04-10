@@ -1,5 +1,5 @@
 <ion-content class="ion-padding">
-  <h2>Viaturas com OS Abertas</h2>
+  <h3>OS Abertas</h3>
   <div class="card-scroll">
     <ng-container *ngFor="let viatura of viaturas">
       <ion-card *ngIf="viatura.status === 'aberta'" color="danger">
@@ -14,7 +14,7 @@
     </ng-container>
   </div>
 
-  <h2>Viaturas em Manutenção</h2>
+  <h3>OS Em Manutenção</h3>
   <div class="card-scroll">
     <ng-container *ngFor="let viatura of viaturas">
       <ion-card *ngIf="viatura.status === 'fazendo'" color="warning">
@@ -29,7 +29,7 @@
     </ng-container>
   </div>
 
-  <h2>Viaturas Prontas para Retirada</h2>
+  <h3>OS Disponínel</h3>
   <div class="card-scroll">
     <ng-container *ngFor="let viatura of viaturas">
       <ion-card *ngIf="viatura.status === 'pronto'" color="success">

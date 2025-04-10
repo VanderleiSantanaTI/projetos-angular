@@ -12,7 +12,7 @@ import { UtilsService } from 'src/app/services/utils/utils.service';
 export class StartPage implements OnInit{
   isMobile!: boolean;
   userInfo: any;
- 
+
 
   constructor(
     private authService: AuthServiceService,
@@ -26,7 +26,7 @@ export class StartPage implements OnInit{
   ngOnInit() {
     this.authService.startTokenValidation();
     this.checkWindowSize();
-  
+
   }
 
 
@@ -63,5 +63,19 @@ export class StartPage implements OnInit{
   checkWindowSize() {
     this.isMobile = window.innerWidth < 768;
   }
+
+  viaturasDashboard = [
+    { modelo: 'Fiat Toro', status: 'aberta', detalhes: 'Troca de óleo' },
+    { modelo: 'Hilux', status: 'fazendo', detalhes: 'Revisão completa' },
+    { modelo: 'Fiat Pálio', status: 'aberta', detalhes: 'Troca de óleo' },
+    { modelo: 'Renault Duster', status: 'pronto', detalhes: 'Limpeza final' },
+    { modelo: 'Strada', status: 'retirada', detalhes: 'Já entregue' }, // não será exibido
+    { modelo: 'Chevrolet S10', status: 'aberta', detalhes: 'Troca de pneus' },
+    { modelo: 'Ford Ranger', status: 'fazendo', detalhes: 'Revisão elétrica' },
+    { modelo: 'Volkswagen Amarok', status: 'pronto', detalhes: 'Lavagem completa' },
+    { modelo: 'Jeep Compass', status: 'aberta', detalhes: 'Troca de bateria' },
+    { modelo: 'Toyota Corolla', status: 'fazendo', detalhes: 'Revisão de freios' }
+  ];
+
 
 }
