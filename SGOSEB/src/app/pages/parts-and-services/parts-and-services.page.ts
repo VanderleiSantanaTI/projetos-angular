@@ -32,7 +32,7 @@ export class PartsAndServicesPage implements OnInit {
   ngOnInit() {
     this.carregarServicos();
     this.carregarPecas();
-    // this.checkWindowSize();
+    this.checkWindowSize();
   }
 
   // carregarPecas() {
