@@ -2,43 +2,46 @@
   <h3>OS Abertas</h3>
   <div class="card-scroll">
     <ng-container *ngFor="let viatura of viaturas">
-      <ion-card *ngIf="viatura.status === 'aberta'" color="danger">
+      <ion-card *ngIf="viatura.situacao_os == 'ABERTA'" color="danger">
         <ion-card-header>
-          <ion-card-title>{{ viatura.modelo }}</ion-card-title>
-          <ion-card-subtitle>{{ viatura.status | titlecase }}</ion-card-subtitle>
+          <ion-card-title>Modelo: {{ viatura.modelo }}</ion-card-title>
+          <ion-card-subtitle>Placa: {{ viatura.placa_eb| titlecase }}</ion-card-subtitle>
         </ion-card-header>
         <ion-card-content>
-          {{ viatura.detalhes }}
+          Numero OS: {{ viatura.id }}<br>
+          {{ viatura.problema_apresentado }}
         </ion-card-content>
       </ion-card>
     </ng-container>
   </div>
 
-  <h3>OS Em Manutenção</h3>
+  <!-- <h3>OS Em Manutenção</h3>
   <div class="card-scroll">
     <ng-container *ngFor="let viatura of viaturas">
-      <ion-card *ngIf="viatura.status === 'fazendo'" color="warning">
+      <ion-card *ngIf="viatura.situacao_os == 'FECHADA' " color="warning">
         <ion-card-header>
           <ion-card-title>{{ viatura.modelo }}</ion-card-title>
-          <ion-card-subtitle>{{ viatura.status | titlecase }}</ion-card-subtitle>
+          <ion-card-subtitle>{{ viatura.placa_eb | titlecase }}</ion-card-subtitle>
         </ion-card-header>
         <ion-card-content>
-          {{ viatura.detalhes }}
+          {{ viatura.problema_apresentado }}
         </ion-card-content>
       </ion-card>
     </ng-container>
-  </div>
+  </div> -->
 
   <h3>OS Disponínel</h3>
   <div class="card-scroll">
     <ng-container *ngFor="let viatura of viaturas">
-      <ion-card *ngIf="viatura.status === 'pronto'" color="success">
+
+      <ion-card *ngIf="viatura.situacao_os === 'FECHADA'" color="success">
         <ion-card-header>
-          <ion-card-title>{{ viatura.modelo }}</ion-card-title>
-          <ion-card-subtitle>{{ viatura.status | titlecase }}</ion-card-subtitle>
+          <ion-card-title>Modelo: {{ viatura.modelo_veiculo }}</ion-card-title>
+          <ion-card-subtitle>OS: {{ viatura.id | titlecase }}</ion-card-subtitle>
         </ion-card-header>
         <ion-card-content>
-          {{ viatura.detalhes }}
+          Mecanico: {{ viatura.nome_mecanico| titlecase }}<br>
+          Data: {{ viatura.data_da_manutencao }}
         </ion-card-content>
       </ion-card>
     </ng-container>

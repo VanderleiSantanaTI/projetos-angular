@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://localhost/EB'
+  apiUrl: 'http://vsatech.com.br/EB'
 };
 

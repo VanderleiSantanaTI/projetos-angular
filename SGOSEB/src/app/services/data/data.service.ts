@@ -39,7 +39,8 @@ export class DataService{
     const headers = new HttpHeaders()
     .set('Authorization', 'Bearer ' + token)
     try {
-      const response = await firstValueFrom(this.http.get<any>(this.apiUrlCadastro_login, { headers }));
+      // const response = await firstValueFrom(this.http.get<any>(this.apiUrlCadastro_login, { headers }));
+      const response = await firstValueFrom(this.http.get<any>(this.apiUrlCadastro_login));
       return response.data;
     } catch (error) {
       this.handleError(error as HttpErrorResponse);
@@ -85,7 +86,14 @@ export class DataService{
   // }
 
   async getFechada_os(): Promise<any[]> {
+    const token = this.authService.getToken();
+    if (!token) {
+      return [];
+    }
+    const headers = new HttpHeaders()
+    .set('Authorization', 'Bearer ' + token)
     try {
+      // const response = await firstValueFrom(this.http.get<any>(this.apiUrlFechada_os, { headers }));
       const response = await firstValueFrom(this.http.get<any>(this.apiUrlFechada_os));
       return response.data;
     } catch (error) {
@@ -103,7 +111,8 @@ export class DataService{
     .set('Authorization', 'Bearer ' + token)
     // .set('Content-Type', 'application/json') // Adicionando o cabeçalho de tipo de conteúdo, se necessário
     try {
-      const response = await firstValueFrom(this.http.get<any>(this.apiUrlOS_abertas, { headers }));
+      // const response = await firstValueFrom(this.http.get<any>(this.apiUrlOS_abertas, { headers }));
+      const response = await firstValueFrom(this.http.get<any>(this.apiUrlOS_abertas));
       return response.data;
 
     } catch (error) {
@@ -124,13 +133,13 @@ export class DataService{
     if (!token) {
       return [];
     }
-    const headers = new HttpHeaders()
-    .set('Authorization', 'Bearer ' + token)
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token)
     try {
       // get, post ... retorna como observable
       // firstValueFrom converte o observable em uma promise
       // e trabalha como uma conexa assincrona normalmente
-      const response = await firstValueFrom(this.http.get<any>(this.apiUrlAbrir_os, { headers }));
+      // const response = await firstValueFrom(this.http.get<any>(this.apiUrlAbrir_os, { headers }));
+      const response = await firstValueFrom(this.http.get<any>(this.apiUrlAbrir_os));
       return response.data;
     } catch (error) {
       this.handleError(error as HttpErrorResponse);
@@ -155,7 +164,8 @@ export class DataService{
     const headers = new HttpHeaders()
     .set('Authorization', 'Bearer ' + token)
     try {
-      const response = await firstValueFrom(this.http.get<any>(this.apiUrPecas, { headers }));
+      // const response = await firstValueFrom(this.http.get<any>(this.apiUrPecas, { headers }));
+      const response = await firstValueFrom(this.http.get<any>(this.apiUrPecas));
       return response.data;
     } catch (error) {
       this.handleError(error as HttpErrorResponse);
@@ -182,7 +192,10 @@ export class DataService{
 
 
     try {
-      const response = await firstValueFrom(this.http.get<any>(this.apiUrServicos, { headers }));
+      // const response = await firstValueFrom(this.http.get<any>(this.apiUrServicos, { headers }));
+
+      const response = await firstValueFrom(this.http.get<any>(this.apiUrServicos));
+
       return response.data;
     }
     catch (error) {

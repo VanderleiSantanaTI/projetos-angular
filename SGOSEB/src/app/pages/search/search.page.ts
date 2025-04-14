@@ -97,9 +97,9 @@ export class SearchPage implements OnInit {
       const data = await this.dataService.getAbrir_os();
       this.dados = data;
       this.isLoading = false;
-
-      const fechadas = data.filter((item) => item.situacao_os === 'FECHADA');
-      console.log('OS Fechadas:', fechadas);
+      console.log('Dados pesquisa:', this.dados);
+    // const fechadas = data.filter((item) => item.situacao_os === 'ABERTA');
+    //   console.log('OS Fechadas:', fechadas);
     } catch (error) {
       console.error('Erro ao carregar OS:', error);
       this.isLoading = false;

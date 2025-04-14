@@ -1,5 +1,6 @@
 import { Component, HostListener, OnInit} from '@angular/core';
 import { AuthServiceService } from 'src/app/services/authService/auth-service.service';
+import { DataService } from 'src/app/services/data/data.service';
 import { NavService } from 'src/app/services/nav/nav.service';
 import { UtilsService } from 'src/app/services/utils/utils.service';
 
@@ -12,18 +13,21 @@ import { UtilsService } from 'src/app/services/utils/utils.service';
 export class StartPage implements OnInit{
   isMobile!: boolean;
   userInfo: any;
-
+  dados: any[] = [];
+  isLoading: boolean = true;
 
   constructor(
     private authService: AuthServiceService,
     private navService: NavService,
-    private utilsService: UtilsService
+    private utilsService: UtilsService,
+    private dataService: DataService
   ) {
   }
 
 
 
   ngOnInit() {
+    this.carregarAberta_os()
     this.authService.startTokenValidation();
     this.checkWindowSize();
 
@@ -49,6 +53,7 @@ export class StartPage implements OnInit{
   }
 
   logout(): void {
+
     // Chama o método de logout do AuthService
     this.authService.logout();
     // Navega para a página de login após o logout
@@ -64,18 +69,43 @@ export class StartPage implements OnInit{
     this.isMobile = window.innerWidth < 768;
   }
 
-  viaturasDashboard = [
-    { modelo: 'Fiat Toro', status: 'aberta', detalhes: 'Troca de óleo' },
-    { modelo: 'Hilux', status: 'fazendo', detalhes: 'Revisão completa' },
-    { modelo: 'Fiat Pálio', status: 'aberta', detalhes: 'Troca de óleo' },
-    { modelo: 'Renault Duster', status: 'pronto', detalhes: 'Limpeza final' },
-    { modelo: 'Strada', status: 'retirada', detalhes: 'Já entregue' }, // não será exibido
-    { modelo: 'Chevrolet S10', status: 'aberta', detalhes: 'Troca de pneus' },
-    { modelo: 'Ford Ranger', status: 'fazendo', detalhes: 'Revisão elétrica' },
-    { modelo: 'Volkswagen Amarok', status: 'pronto', detalhes: 'Lavagem completa' },
-    { modelo: 'Jeep Compass', status: 'aberta', detalhes: 'Troca de bateria' },
-    { modelo: 'Toyota Corolla', status: 'fazendo', detalhes: 'Revisão de freios' }
-  ];
+
+  async  carregarAberta_os() {
+    this.isLoading = true;
+    try {
+      const dataAbertos = await this.dataService.getAbrir_os();
+      const dataFechados = await this.dataService.getFechada_os();
+      this.dados = [...dataAbertos, ...dataFechados];
+      console.log('Dados pesquisa:', this.dados);
+      this.isLoading = false;
+      // console.log('Dados pesquisa:',  [
+      //   { modelo: 'Fiat Toro', status: 'aberta', detalhes: 'Troca de óleo' },
+      //   { modelo: 'Hilux', status: 'fazendo', detalhes: 'Revisão completa' }]);
+
+    // const fechadas = data.filter((item) => item.situacao_os === 'ABERTA');
+    //   console.log('OS Fechadas:', fechadas);
+    } catch (error) {
+      console.error('Erro ao carregar OS:', error);
+      this.isLoading = false;
+    }
+  }
+
+
+
+
+
+  // viaturasDashboard = [
+  //   { modelo: 'Fiat Toro', status: 'aberta', detalhes: 'Troca de óleo' },
+  //   { modelo: 'Hilux', status: 'fazendo', detalhes: 'Revisão completa' },
+  //   { modelo: 'Fiat Pálio', status: 'aberta', detalhes: 'Troca de óleo' },
+  //   { modelo: 'Renault Duster', status: 'pronto', detalhes: 'Limpeza final' },
+  //   { modelo: 'Strada', status: 'retirada', detalhes: 'Já entregue' }, // não será exibido
+  //   { modelo: 'Chevrolet S10', status: 'aberta', detalhes: 'Troca de pneus' },
+  //   { modelo: 'Ford Ranger', status: 'fazendo', detalhes: 'Revisão elétrica' },
+  //   { modelo: 'Volkswagen Amarok', status: 'pronto', detalhes: 'Lavagem completa' },
+  //   { modelo: 'Jeep Compass', status: 'aberta', detalhes: 'Troca de bateria' },
+  //   { modelo: 'Toyota Corolla', status: 'fazendo', detalhes: 'Revisão de freios' }
+  // ];
 
 
 }
