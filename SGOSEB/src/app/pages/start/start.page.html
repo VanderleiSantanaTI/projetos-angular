@@ -1,15 +1,19 @@
 
-  <ion-header [translucent]="true">
-    @if(isMobile) {
-      <app-header-mobile></app-header-mobile>
-    }@else {
-      <app-header-desktop></app-header-desktop>
-    }
-  </ion-header>
-
-
+<ion-header [translucent]="true">
+  @if(isMobile) {
+    <app-header-mobile></app-header-mobile>
+  }@else {
+    <app-header-desktop></app-header-desktop>
+  }
+</ion-header>
 
 <ion-content [fullscreen]="true">
- <h1 class="m-1">Dashboard</h1>
- <app-card-info [viaturas]="dados"></app-card-info>
+
+
+    <h1 class="m-1">Dashboard</h1>
+    <app-card-info [viaturas]="dados"></app-card-info>
+
+
+
 </ion-content>
+

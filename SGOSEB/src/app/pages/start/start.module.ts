@@ -8,6 +8,7 @@ import { HeaderDesktopComponent } from 'src/app/components/header-desktop/header
 import { HeaderMobileComponent } from 'src/app/components/header-mobile/header-mobile.component';
 import { ComponentModule } from 'src/app/component/component.module';
 import { CardInfoComponent } from 'src/app/components/card-info/card-info.component';
+import { FooterComponent } from "../../components/footer/footer.component";
 
 @NgModule({
   imports: [
@@ -18,10 +19,9 @@ import { CardInfoComponent } from 'src/app/components/card-info/card-info.compon
     HeaderMobileComponent,
     HeaderDesktopComponent,
     ComponentModule,
-    CardInfoComponent
-
-
-  ],
+    CardInfoComponent,
+    FooterComponent
+],
   declarations: [StartPage]
 })
 export class StartPageModule {}

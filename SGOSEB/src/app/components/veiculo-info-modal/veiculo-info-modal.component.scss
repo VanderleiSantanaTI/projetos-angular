@@ -1,0 +1,59 @@
+/* Arquivo: viatura-info-modal.component.scss */
+
+.modal-flutuante {
+  margin: 0;
+  max-height: 100vh;
+  overflow-y: auto;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  width: 100%;
+
+}
+
+.fechar-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  z-index: 10;
+  font-size: 24px;
+  --padding-start: 4px;
+  --padding-end: 4px;
+}
+
+ion-card-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 8px;
+}
+
+ion-card-subtitle {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+ion-card-header {
+  padding-bottom: 16px;
+}
+
+ion-item {
+  --padding-start: 0;
+}
+
+ion-icon {
+  font-size: 20px;
+}
+
+h3 {
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.acoes {
+  margin-top: 20px;
+}
+
+ion-button[expand="block"] {
+  margin: 0;
+}

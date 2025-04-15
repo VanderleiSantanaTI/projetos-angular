@@ -1,3 +1,4 @@
+import {  VeiculoInfoModalComponent} from './components/veiculo-info-modal/veiculo-info-modal.component';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
@@ -17,7 +18,8 @@ import { HttpClientModule } from '@angular/common/http';
     IonicModule.forRoot(),
     AppRoutingModule,
     ComponentModule,
-    HttpClientModule
+    HttpClientModule,
+    VeiculoInfoModalComponent,
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],

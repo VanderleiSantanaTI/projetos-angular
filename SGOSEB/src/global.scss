@@ -7,3 +7,31 @@
 @import "scss/fonts";
 @import "scss/reset";
 @import "scss/toast";
+
+/* Adicione ao arquivo global.scss */
+
+.viatura-modal-flutuante {
+  --backdrop-opacity: 0.6;
+  --width: 90%;
+  --max-width: 500px;
+  --height: auto;
+  --max-height: 80%;
+  --border-radius: 10px;
+  --box-shadow: 0 28px 48px rgba(0, 0, 0, 0.4);
+
+  .modal-wrapper {
+    position: relative;
+    box-shadow: none;
+    background: transparent !important;
+  }
+
+  ion-backdrop {
+    --backdrop-opacity: 0.6 !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .viatura-modal-flutuante {
+    --width: 95%;
+  }
+}

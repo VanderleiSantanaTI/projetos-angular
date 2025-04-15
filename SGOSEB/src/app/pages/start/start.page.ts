@@ -1,4 +1,5 @@
 import { Component, HostListener, OnInit} from '@angular/core';
+import { Platform } from '@ionic/angular';
 import { AuthServiceService } from 'src/app/services/authService/auth-service.service';
 import { DataService } from 'src/app/services/data/data.service';
 import { NavService } from 'src/app/services/nav/nav.service';
@@ -17,6 +18,7 @@ export class StartPage implements OnInit{
   isLoading: boolean = true;
 
   constructor(
+    private platform: Platform,
     private authService: AuthServiceService,
     private navService: NavService,
     private utilsService: UtilsService,
@@ -27,6 +29,16 @@ export class StartPage implements OnInit{
 
 
   ngOnInit() {
+        // Detecta se é mobile baseado na largura da tela
+        this.checkIfMobile();
+
+        // Monitora mudanças de tamanho da tela
+        this.platform.resize.subscribe(() => {
+          this.checkIfMobile();
+        });
+
+
+
     this.carregarAberta_os()
     this.authService.startTokenValidation();
     this.checkWindowSize();
@@ -68,7 +80,9 @@ export class StartPage implements OnInit{
   checkWindowSize() {
     this.isMobile = window.innerWidth < 768;
   }
-
+  checkIfMobile() {
+    this.isMobile = this.platform.width() < 768; // md breakpoint do Ionic
+  }
 
   async  carregarAberta_os() {
     this.isLoading = true;

@@ -1,0 +1,65 @@
+/* footer.component.scss */
+:host {
+  z-index: 10; // Garantir que o z-index seja adequado para não interferir com modais
+}
+
+.desktop-footer {
+  --background: var(--ion-color-dark);
+  --color: var(--ion-color-light);
+  position: relative; // Mudado de fixed para relative
+
+  ion-toolbar {
+    --background: var(--ion-color-dark);
+    --color: var(--ion-color-light);
+    --border-color: transparent;
+  }
+
+  h3 {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--ion-color-light);
+  }
+
+  ion-item {
+    --background: transparent;
+    --color: var(--ion-color-light-shade);
+    --padding-start: 0;
+
+    &:hover {
+      --color: var(--ion-color-light);
+    }
+  }
+
+  .social-icons {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .copyright {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--ion-color-medium);
+    text-align: center;
+    font-size: 0.9rem;
+  }
+}
+
+.mobile-tabs {
+  z-index: 100; // Z-index menor que modais típicos do Ionic (geralmente são 1000+)
+
+  ion-tab-bar {
+    --background: var(--ion-color-light);
+    position: relative; // Garantir que não bloqueia interações
+  }
+
+  ion-tab-button {
+    --color: var(--ion-color-medium);
+    --color-selected: var(--ion-color-primary);
+  }
+}
+
+// Ajuste para garantir que o conteúdo principal tenha padding-bottom adequado
+::ng-deep ion-content {
+  --padding-bottom: var(--ion-safe-area-bottom, 0) + 56px; // Altura aproximada da tab bar
+}
