@@ -1,65 +1,41 @@
-/* footer.component.scss */
 :host {
-  z-index: 10; // Garantir que o z-index seja adequado para não interferir com modais
-}
+  display: block;
 
-.desktop-footer {
-  --background: var(--ion-color-dark);
-  --color: var(--ion-color-light);
-  position: relative; // Mudado de fixed para relative
-
-  ion-toolbar {
-    --background: var(--ion-color-dark);
-    --color: var(--ion-color-light);
-    --border-color: transparent;
-  }
-
-  h3 {
-    font-weight: bold;
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
-    color: var(--ion-color-light);
-  }
-
-  ion-item {
-    --background: transparent;
-    --color: var(--ion-color-light-shade);
-    --padding-start: 0;
-
-    &:hover {
-      --color: var(--ion-color-light);
-    }
-  }
-
-  .social-icons {
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  .copyright {
-    margin-top: 2rem;
-    padding-top: 1rem;
-    border-top: 1px solid var(--ion-color-medium);
-    text-align: center;
-    font-size: 0.9rem;
+  @media (min-width: 768px) {
+    display: none;
   }
 }
 
 .mobile-tabs {
-  z-index: 100; // Z-index menor que modais típicos do Ionic (geralmente são 1000+)
-
   ion-tab-bar {
-    --background: var(--ion-color-light);
-    position: relative; // Garantir que não bloqueia interações
-  }
+    --background: #fff;
+    --border: 1px solid #e0e0e0;
+    box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.05);
+    padding-bottom: env(safe-area-inset-bottom);
 
-  ion-tab-button {
-    --color: var(--ion-color-medium);
-    --color-selected: var(--ion-color-primary);
-  }
-}
+    ion-tab-button {
+      --color: #888;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 6px 0;
 
-// Ajuste para garantir que o conteúdo principal tenha padding-bottom adequado
-::ng-deep ion-content {
-  --padding-bottom: var(--ion-safe-area-bottom, 0) + 56px; // Altura aproximada da tab bar
+      ion-icon {
+        font-size: 1.2rem;
+      }
+
+      ion-label {
+        font-size: 0.75rem;
+        margin-top: 2px;
+      }
+
+      &:hover {
+        background-color: #f3f3f3;
+      }
+
+      &.tab-selected {
+        --color: var(--ion-color-primary);
+      }
+    }
+  }
 }

@@ -12,6 +12,7 @@ import { HeaderMobileComponent } from 'src/app/components/header-mobile/header-m
 import { ButtonComponent } from "../../components/button/button.component";
 import { OrderServiceTableComponent } from "../../components/order-service-table/order-service-table.component";
 import { ComponentModule } from 'src/app/component/component.module';
+import { FooterComponent } from 'src/app/components/footer/footer.component';
 
 @NgModule({
   imports: [
@@ -24,7 +25,8 @@ import { ComponentModule } from 'src/app/component/component.module';
     ReactiveFormsModule,
     ButtonComponent,
     ComponentModule,
-    OrderServiceTableComponent
+    OrderServiceTableComponent,
+    FooterComponent
 ],
   declarations: [CloseSeviceOrderPage]
 })

@@ -3,12 +3,13 @@
 }
 
 .container {
+
   max-width: 1024px;
   background-color: var(--Gray-BG);
   margin-top:50px ;
   padding: 20px 10px;
   border-radius: 15px;
-  
+
   ion-input{
     --border-radius: 10px;
     // background-color: var(--Petroleo-BG);

@@ -10,6 +10,7 @@ import { ReportOsPage } from './report-os.page';
 import { HeaderMobileComponent } from "../../components/header-mobile/header-mobile.component";
 import { HeaderDesktopComponent } from 'src/app/components/header-desktop/header-desktop.component';
 import { ComponentModule } from 'src/app/component/component.module';
+import { FooterComponent } from 'src/app/components/footer/footer.component';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import { ComponentModule } from 'src/app/component/component.module';
     HeaderMobileComponent,
     HeaderDesktopComponent,
     ReactiveFormsModule,
-    ComponentModule
+    ComponentModule,
+    FooterComponent
 
 ],
   declarations: [ReportOsPage]

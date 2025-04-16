@@ -8,6 +8,7 @@ import { PartsAndServicesPageRoutingModule } from './parts-and-services-routing.
 
 import { PartsAndServicesPage } from './parts-and-services.page';
 import { ComponentModule } from 'src/app/component/component.module';
+import { FooterComponent } from 'src/app/components/footer/footer.component';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { ComponentModule } from 'src/app/component/component.module';
     IonicModule,
     PartsAndServicesPageRoutingModule,
     ComponentModule,
-    
+    FooterComponent
+
 
 
   ],

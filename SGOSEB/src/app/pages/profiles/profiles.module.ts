@@ -10,6 +10,7 @@ import { ProfilesPage } from './profiles.page';
 import { HeaderMobileComponent } from 'src/app/components/header-mobile/header-mobile.component';
 import { HeaderDesktopComponent } from 'src/app/components/header-desktop/header-desktop.component';
 import { ComponentModule } from 'src/app/component/component.module';
+import { FooterComponent } from "../../components/footer/footer.component";
 
 @NgModule({
   imports: [
@@ -19,8 +20,9 @@ import { ComponentModule } from 'src/app/component/component.module';
     ProfilesPageRoutingModule,
     HeaderMobileComponent,
     HeaderDesktopComponent,
-    ComponentModule
-  ],
+    ComponentModule,
+    FooterComponent
+],
   declarations: [ProfilesPage]
 })
 export class ProfilesPageModule {}

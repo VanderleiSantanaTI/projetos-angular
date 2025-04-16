@@ -10,6 +10,7 @@ import { SearchPage } from './search.page';
 import { HeaderDesktopComponent } from 'src/app/components/header-desktop/header-desktop.component';
 import { HeaderMobileComponent } from 'src/app/components/header-mobile/header-mobile.component';
 import { ComponentModule } from 'src/app/component/component.module';
+import { FooterComponent } from "../../components/footer/footer.component";
 
 @NgModule({
   imports: [
@@ -20,9 +21,8 @@ import { ComponentModule } from 'src/app/component/component.module';
     HeaderDesktopComponent,
     HeaderMobileComponent,
     ComponentModule,
-    
-
-  ],
+    FooterComponent
+],
   declarations: [SearchPage]
 })
 export class SearchPageModule {}

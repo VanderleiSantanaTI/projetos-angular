@@ -8,6 +8,7 @@ import { GeneratePdfPageRoutingModule } from './generate-pdf-routing.module';
 
 import { GeneratePdfPage } from './generate-pdf.page';
 import { ComponentModule } from 'src/app/component/component.module';
+import { FooterComponent } from 'src/app/components/footer/footer.component';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { ComponentModule } from 'src/app/component/component.module';
     FormsModule,
     IonicModule,
     GeneratePdfPageRoutingModule,
-    ComponentModule
+    ComponentModule,
+    FooterComponent
   ],
   declarations: [GeneratePdfPage]
 })
