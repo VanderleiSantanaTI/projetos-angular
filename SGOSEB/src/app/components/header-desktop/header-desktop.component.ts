@@ -36,7 +36,7 @@ export class HeaderDesktopComponent implements OnInit {
           title: 'Veiculos',
           options: [
             {
-              label: 'Oderm de serviço',
+              label: 'Ordem de serviço',
               url: '/register-os'
             },
             {

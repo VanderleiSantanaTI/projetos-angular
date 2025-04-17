@@ -8,6 +8,7 @@ import { VehicleExitPageRoutingModule } from './vehicle-exit-routing.module';
 
 import { VehicleExitPage } from './vehicle-exit.page';
 import { ComponentModule } from 'src/app/component/component.module';
+import { FooterComponent } from "../../components/footer/footer.component";
 
 @NgModule({
   imports: [
@@ -16,8 +17,9 @@ import { ComponentModule } from 'src/app/component/component.module';
     IonicModule,
     VehicleExitPageRoutingModule,
     ComponentModule,
-    ReactiveFormsModule
-  ],
+    ReactiveFormsModule,
+    FooterComponent
+],
   declarations: [VehicleExitPage]
 })
 export class VehicleExitPageModule {}

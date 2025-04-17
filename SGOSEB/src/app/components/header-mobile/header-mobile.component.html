@@ -16,7 +16,7 @@
     <li (click)="toggleSubMenu(4)">Retirar</li>
     <li (click)="toggleSubMenu(5)">Relatorio</li>
     <li (click)="toggleSubMenu(6)">Mais Opções</li>
-    <li>Sair</li>
+    <li (click)="logout()">Sair</li>
   </ul>
   <div *ngIf="activeSubMenuIndex === 1" class="sub-menu">
     <ul>

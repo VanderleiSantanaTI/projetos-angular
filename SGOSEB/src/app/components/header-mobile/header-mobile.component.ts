@@ -59,9 +59,16 @@ export class HeaderMobileComponent {
   goTo(page: string) {
 
     this.navService.navigatesimple(page);
-    // this.router.navigate([page]); 
+    // this.router.navigate([page]);
     this.closeSubMenu();
     this.closeMenu();
+  }
+
+  logout() {
+    localStorage.removeItem('authToken');
+    sessionStorage.removeItem('authToken');
+    this.navService.navigateForward('/login');
+    // this.utilsService.showToast('✖ Sessão expirada. Faça login novamente.', 'error');
   }
 
 
