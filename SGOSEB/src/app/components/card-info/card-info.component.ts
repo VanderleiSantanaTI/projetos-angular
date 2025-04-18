@@ -43,18 +43,7 @@ export class CardInfoComponent  implements OnInit {
 
   @Input() viaturas : CardInfo[] = [];
 
-//   viaturas = [
-//     { modelo: 'Fiat Toro', status: 'aberta', detalhes: 'Troca de óleo' },
-//     { modelo: 'Hilux', status: 'fazendo', detalhes: 'Revisão completa' },
-//     { modelo: 'Fiat Pálio', status: 'aberta', detalhes: 'Troca de óleo' },
-//     { modelo: 'Renault Duster', status: 'pronto', detalhes: 'Limpeza final' },
-//     { modelo: 'Strada', status: 'retirada', detalhes: 'Já entregue' }, // não será exibido
-//     { modelo: 'Chevrolet S10', status: 'aberta', detalhes: 'Troca de pneus' },
-//     { modelo: 'Ford Ranger', status: 'fazendo', detalhes: 'Revisão elétrica' },
-//     { modelo: 'Volkswagen Amarok', status: 'pronto', detalhes: 'Lavagem completa' },
-//     { modelo: 'Jeep Compass', status: 'aberta', detalhes: 'Troca de bateria' },
-//     { modelo: 'Toyota Corolla', status: 'fazendo', detalhes: 'Revisão de freios' }
-// ];
+
   constructor(private modalController: ModalController) { }
 
   ngOnInit() {}
@@ -64,9 +53,7 @@ export class CardInfoComponent  implements OnInit {
       componentProps: {
         viatura: viatura
       },
-      cssClass: 'viatura-modal-flutuante',
-      breakpoints: [0, 0.5, 0.8, 1], // 0% (início), 50% (meio), 80% (quase cheio), 100% (cheio)
-      initialBreakpoint: 1, // Começa a modal em 100% da altura da tela
+      cssClass: 'viatura-modal-centralizado', // Classe para centralizar o modal
       backdropDismiss: true,
       showBackdrop: true
     });

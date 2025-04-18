@@ -6,7 +6,7 @@
 }
 .ion-padding{
   z-index: 1;
-  height: 80%;
+  height: 100%;
 }
 ion-card {
   min-width: 10rem;
@@ -22,7 +22,18 @@ h3 {
   border-radius: 1rem;
 }
 
-
+// .viatura-modal-centralizado {
+//   --width: 90%; /* Ajusta a largura do modal */
+//   --height: 100%; /* Ajusta a altura do modal */
+//   --border-radius: 16px; /* Bordas arredondadas */
+//   --box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.2); /* Sombra para o modal */
+//   position: fixed;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%, -50%); /* Centraliza o modal */
+//   background: var(--ion-background-color, #fff); /* Cor de fundo */
+//   z-index: 1000; /* Garante que o modal fique acima de outros elementos */
+// }
 
 
 @media screen and (max-width: 768px) {

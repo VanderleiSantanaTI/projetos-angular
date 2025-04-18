@@ -14,7 +14,9 @@ import { UtilsService } from 'src/app/services/utils/utils.service';
 export class StartPage implements OnInit{
   isMobile!: boolean;
   userInfo: any;
-  dados: any[] = [];
+  dadosOSAbertas: any[] = [];
+  dadosOSFechadas: any[] = [];
+  dadosOS: any[] = [];
   isLoading: boolean = true;
 
   constructor(
@@ -89,8 +91,12 @@ export class StartPage implements OnInit{
     try {
       const dataAbertos = await this.dataService.getAbrir_os();
       const dataFechados = await this.dataService.getFechada_os();
-      this.dados = [...dataAbertos, ...dataFechados];
-      console.log('Dados pesquisa:', this.dados);
+      this.dadosOSAbertas = dataAbertos.filter((item) => item.situacao_os === 'ABERTA');
+      this.dadosOSFechadas = dataFechados.filter((item) => item.situacao_os === 'FECHADA');
+      this.dadosOS = [...this.dadosOSAbertas, ...this.dadosOSFechadas];
+      
+      console.log('Dados pesquisa:', this.dadosOSAbertas);
+      console.log('Dados pesquisa:', this.dadosOSFechadas);
       this.isLoading = false;
       // console.log('Dados pesquisa:',  [
       //   { modelo: 'Fiat Toro', status: 'aberta', detalhes: 'Troca de óleo' },
@@ -103,23 +109,6 @@ export class StartPage implements OnInit{
       this.isLoading = false;
     }
   }
-
-
-
-
-
-  // viaturasDashboard = [
-  //   { modelo: 'Fiat Toro', status: 'aberta', detalhes: 'Troca de óleo' },
-  //   { modelo: 'Hilux', status: 'fazendo', detalhes: 'Revisão completa' },
-  //   { modelo: 'Fiat Pálio', status: 'aberta', detalhes: 'Troca de óleo' },
-  //   { modelo: 'Renault Duster', status: 'pronto', detalhes: 'Limpeza final' },
-  //   { modelo: 'Strada', status: 'retirada', detalhes: 'Já entregue' }, // não será exibido
-  //   { modelo: 'Chevrolet S10', status: 'aberta', detalhes: 'Troca de pneus' },
-  //   { modelo: 'Ford Ranger', status: 'fazendo', detalhes: 'Revisão elétrica' },
-  //   { modelo: 'Volkswagen Amarok', status: 'pronto', detalhes: 'Lavagem completa' },
-  //   { modelo: 'Jeep Compass', status: 'aberta', detalhes: 'Troca de bateria' },
-  //   { modelo: 'Toyota Corolla', status: 'fazendo', detalhes: 'Revisão de freios' }
-  // ];
 
 
 }
