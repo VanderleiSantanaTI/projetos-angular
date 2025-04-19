@@ -5,7 +5,7 @@
   <div class="card-scroll">
     <ng-container *ngFor="let viatura of viaturas">
       <ion-card
-        *ngIf="viatura.situacao_os == 'ABERTA'"
+        *ngIf="viatura.situacao_os_aberta == 'ABERTA'"
         color="danger"
         (click)="abrirDetalhesViatura(viatura)"
         class="viatura-card">
@@ -14,7 +14,7 @@
           <ion-card-subtitle>Placa: {{ viatura.placa_eb | titlecase }}</ion-card-subtitle>
         </ion-card-header>
         <ion-card-content>
-          Numero OS: {{ viatura.id }}<br>
+          Numero OS: {{ viatura.id_os }}<br>
           {{ viatura.problema_apresentado }}
         </ion-card-content>
       </ion-card>
@@ -25,16 +25,17 @@
   <div class="card-scroll">
     <ng-container *ngFor="let viatura of viaturas">
       <ion-card
-        *ngIf="viatura.situacao_os === 'FECHADA'"
+        *ngIf="viatura.situacao_os_encerrada == 'FECHADA'"
         color="success"
         (click)="abrirDetalhesViatura(viatura)"
         class="viatura-card">
         <ion-card-header>
-          <ion-card-title>Modelo: {{ viatura.modelo_veiculo }}</ion-card-title>
-          <ion-card-subtitle>OS: {{ viatura.id | titlecase }}</ion-card-subtitle>
+          <ion-card-title>Modelo: {{ viatura.modelo }}</ion-card-title>
+          <ion-card-subtitle>OS: {{ viatura.id_os | titlecase }}</ion-card-subtitle>
         </ion-card-header>
         <ion-card-content>
           Mecanico: {{ viatura.nome_mecanico | titlecase }}<br>
+          Placa: {{ viatura.placa_eb | titlecase }}<br>
           Data: {{ viatura.data_da_manutencao }}
         </ion-card-content>
       </ion-card>

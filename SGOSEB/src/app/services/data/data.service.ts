@@ -19,6 +19,7 @@ export class DataService{
   private apiUrPecas = environment.production? `${environment.apiUrl}/pecas/`: ''
   private apiUrServicos = environment.production? `${environment.apiUrl}/servicos/`: ''
   private apiUrlValidateToken = environment.production? `${environment.apiUrl}/validate_token/`: ''
+  private apiUrlGetAll_OS = environment.production? `${environment.apiUrl}/os_geral/`: ''
   userInfo: any;
 
   private osAbertaSubject = new BehaviorSubject<any[]>([]);
@@ -140,6 +141,24 @@ export class DataService{
       // e trabalha como uma conexa assincrona normalmente
       // const response = await firstValueFrom(this.http.get<any>(this.apiUrlAbrir_os, { headers }));
       const response = await firstValueFrom(this.http.get<any>(this.apiUrlAbrir_os));
+      return response.data;
+    } catch (error) {
+      this.handleError(error as HttpErrorResponse);
+      return [];
+    }
+  }
+
+
+
+  async getALL_os(): Promise<any[]> {
+    const token = this.authService.getToken();
+    if (!token) {
+      return [];
+    }
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token)
+    try {
+
+      const response = await firstValueFrom(this.http.get<any>(this.apiUrlGetAll_OS));
       return response.data;
     } catch (error) {
       this.handleError(error as HttpErrorResponse);

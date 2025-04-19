@@ -14,8 +14,6 @@ import { UtilsService } from 'src/app/services/utils/utils.service';
 export class StartPage implements OnInit{
   isMobile!: boolean;
   userInfo: any;
-  dadosOSAbertas: any[] = [];
-  dadosOSFechadas: any[] = [];
   dadosOS: any[] = [];
   isLoading: boolean = true;
 
@@ -89,14 +87,12 @@ export class StartPage implements OnInit{
   async  carregarAberta_os() {
     this.isLoading = true;
     try {
-      const dataAbertos = await this.dataService.getAbrir_os();
-      const dataFechados = await this.dataService.getFechada_os();
-      this.dadosOSAbertas = dataAbertos.filter((item) => item.situacao_os === 'ABERTA');
-      this.dadosOSFechadas = dataFechados.filter((item) => item.situacao_os === 'FECHADA');
-      this.dadosOS = [...this.dadosOSAbertas, ...this.dadosOSFechadas];
+      const data = await this.dataService.getALL_os();
+   
+      this.dadosOS = data;
       
-      console.log('Dados pesquisa:', this.dadosOSAbertas);
-      console.log('Dados pesquisa:', this.dadosOSFechadas);
+      console.log('Dados pesquisa:', this.dadosOS);
+      
       this.isLoading = false;
       // console.log('Dados pesquisa:',  [
       //   { modelo: 'Fiat Toro', status: 'aberta', detalhes: 'Troca de óleo' },

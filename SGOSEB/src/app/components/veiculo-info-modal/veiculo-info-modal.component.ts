@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { IonicModule, ModalController } from '@ionic/angular';
-import { IonCard } from "@ionic/angular/standalone";
+import { ICardInfo } from 'src/app/interfaces/cardInfo';
+
 
 @Component({
   selector: 'app-veiculo-info-modal',
@@ -10,8 +11,8 @@ import { IonCard } from "@ionic/angular/standalone";
   imports: [IonicModule, CommonModule]
 })
 export class VeiculoInfoModalComponent implements OnInit {
-  // Recebe os dados da viatura como input
-  @Input() viatura: any;
+  
+  @Input() viatura!: ICardInfo; 
 
   constructor(private modalController: ModalController) { }
 
