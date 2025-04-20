@@ -1,4 +1,48 @@
+.card-content-ios {
+  padding-bottom: 0px;
+}
+.container-os {
+  display: flex;
+  justify-content: flex-end;
+  .os {
+    padding: 0.3rem;
+    background-color: rgba(0, 0, 0, 0.349);
+    border-radius: 10px;
+    min-width: 3.5rem;
+    text-align: center;
+  }
+}
+.circle, .circle-2 {
+  margin-left: 1rem;
 
+}
+.circle::before{
+  content: "";
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 50%;
+  background-color: rgba(248, 255, 22, 0.7607843137);
+  position: absolute;
+  top: 0.25rem;
+  left: 0rem;
+}
+.circle-2::before{
+  content: "";
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 50%;
+  background-color: rgba(0, 255, 0, 0.76);
+  position: absolute;
+  top: 0.25rem;
+  left: 0rem;
+}
+
+ion-card-header {
+  display: flex;
+  flex-direction: column;
+  
+
+}
 .card-scroll {
   display: flex;
   overflow-x: auto;
@@ -17,23 +61,17 @@ ion-card {
 h3 {
   font-size: 1.2rem;
   margin: 0;
-  background-color: var(--ion-color-primary);
+  background-image: linear-gradient(to right, var(--ion-color-primary) 0%, rgba(52, 152, 219, 0) 90%);
   padding-left: 1rem;
   border-radius: 1rem;
 }
 
-// .viatura-modal-centralizado {
-//   --width: 90%; /* Ajusta a largura do modal */
-//   --height: 100%; /* Ajusta a altura do modal */
-//   --border-radius: 16px; /* Bordas arredondadas */
-//   --box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.2); /* Sombra para o modal */
-//   position: fixed;
-//   top: 50%;
-//   left: 50%;
-//   transform: translate(-50%, -50%); /* Centraliza o modal */
-//   background: var(--ion-background-color, #fff); /* Cor de fundo */
-//   z-index: 1000; /* Garante que o modal fique acima de outros elementos */
-// }
+.viatura-card{
+  border-left: 10px solid #f8ff16c2;
+  border-bottom: 2px solid #f8ff16c2;
+  border-radius: 15px;
+  // background-color: #e406063a;
+}
 
 
 @media screen and (max-width: 768px) {
@@ -55,7 +93,7 @@ h3 {
   h3 {
     font-size: 1.2rem;
     margin: 0;
-    background-color: var(--ion-color-primary);
+    background-image: linear-gradient(to right, var(--ion-color-primary) 0%, rgba(52, 152, 219, 0) 90%);
     padding-left: 1rem;
     border-radius: 1rem;
   }

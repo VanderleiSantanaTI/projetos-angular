@@ -10,13 +10,19 @@
         (click)="abrirDetalhesViatura(viatura)"
         class="viatura-card">
         <ion-card-header>
-          <ion-card-title>Modelo: {{ viatura.modelo }}</ion-card-title>
-          <ion-card-subtitle>Placa: {{ viatura.placa_eb | titlecase }}</ion-card-subtitle>
+          <div class="container-os">
+            <div class="os"><b>OS:</b> <em>{{ viatura.id_os }}</em><br></div>
+          </div>
+            <ion-card-title><em>{{ viatura.modelo }}</em></ion-card-title>
+            <ion-card-subtitle><b></b> {{ viatura.marca_da_viatura | titlecase }}</ion-card-subtitle>
+            <ion-card-subtitle><b>Placa:</b> {{ viatura.placa_eb | titlecase }}</ion-card-subtitle>
         </ion-card-header>
-        <ion-card-content>
-          Numero OS: {{ viatura.id_os }}<br>
-          {{ viatura.problema_apresentado }}
+        <ion-card-content [ngClass] = "viatura.manutencao === 'CORRETIVA' ? 'circle': 'circle-2'">
+          {{ viatura.manutencao | titlecase }}
         </ion-card-content>
+        <ion-card-subtitle class="d-flex justify-content-end p-1">
+          {{ viatura.data }}
+        </ion-card-subtitle>
       </ion-card>
     </ng-container>
   </div>
@@ -30,14 +36,20 @@
         (click)="abrirDetalhesViatura(viatura)"
         class="viatura-card">
         <ion-card-header>
-          <ion-card-title>Modelo: {{ viatura.modelo }}</ion-card-title>
-          <ion-card-subtitle>OS: {{ viatura.id_os | titlecase }}</ion-card-subtitle>
-        </ion-card-header>
-        <ion-card-content>
+          <div class="container-os">
+            <div class="os"><b>OS:</b> <em>{{ viatura.id_os | titlecase  }}</em><br></div>
+          </div>
+          <ion-card-title><em>{{ viatura.modelo }}</em></ion-card-title>
+          <ion-card-subtitle><b></b> {{ viatura.marca_da_viatura | titlecase }}</ion-card-subtitle>
           Mecanico: {{ viatura.nome_mecanico | titlecase }}<br>
           Placa: {{ viatura.placa_eb | titlecase }}<br>
-          Data: {{ viatura.data_da_manutencao }}
+        </ion-card-header>
+        <ion-card-content [ngClass] = "viatura.manutencao === 'CORRETIVA' ? 'circle': 'circle-2'">
+          {{ viatura.manutencao | titlecase }}
         </ion-card-content>
+        <ion-card-subtitle class="d-flex justify-content-end p-1">
+          Data: {{ viatura.data_da_manutencao }}
+        </ion-card-subtitle>
       </ion-card>
     </ng-container>
   </div>

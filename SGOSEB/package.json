@@ -30,6 +30,7 @@
     "@ionic/angular": "^8.0.0",
     "@maskito/angular": "^3.2.1",
     "@maskito/core": "^3.2.1",
+    "angular-google-charts": "^16.0.2",
     "ionicons": "^7.0.0",
     "ngx-mask": "^19.0.6",
     "rxjs": "~7.8.0",

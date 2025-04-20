@@ -1,3 +1,4 @@
+
 import { Component, HostListener, OnInit} from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { AuthServiceService } from 'src/app/services/authService/auth-service.service';
@@ -9,7 +10,8 @@ import { UtilsService } from 'src/app/services/utils/utils.service';
   selector: 'app-start',
   templateUrl: './start.page.html',
   styleUrls: ['./start.page.scss'],
-  standalone: false
+  standalone: false,
+
 })
 export class StartPage implements OnInit{
   isMobile!: boolean;
@@ -33,20 +35,20 @@ export class StartPage implements OnInit{
         this.checkIfMobile();
 
         // Monitora mudanças de tamanho da tela
-        this.platform.resize.subscribe(() => {
-          this.checkIfMobile();
-        });
+        // this.platform.resize.subscribe(() => {
+        //   this.checkIfMobile();
+        // });
 
 
 
     this.carregarAberta_os()
     this.authService.startTokenValidation();
-    this.checkWindowSize();
+    // this.checkWindowSize();
 
   }
 
 
-
+  
   checkTokenValidity() {
     if (!this.authService.isTokenValid()) {
       this.logout();
@@ -75,11 +77,12 @@ export class StartPage implements OnInit{
 
   @HostListener('window:resize', ['$event'])
   onResize(event: Event) {
-    this.checkWindowSize();
+    // this.checkWindowSize();
+    this.checkIfMobile();
   }
-  checkWindowSize() {
-    this.isMobile = window.innerWidth < 768;
-  }
+  // checkWindowSize() {
+  //   this.isMobile = window.innerWidth < 768;
+  // }
   checkIfMobile() {
     this.isMobile = this.platform.width() < 768; // md breakpoint do Ionic
   }

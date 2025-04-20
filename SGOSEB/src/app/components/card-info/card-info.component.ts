@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgClass } from '@angular/common';
 import { Component, OnInit, Input } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonContent } from "@ionic/angular/standalone";
@@ -34,7 +34,16 @@ interface ICardInfo {
   selector: 'app-card-info',
   templateUrl: './card-info.component.html',
   styleUrls: ['./card-info.component.scss'],
-  imports: [CommonModule, IonContent, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle],
+  imports: [
+    CommonModule,
+    NgClass, 
+    IonContent, 
+    IonCard, 
+    IonCardContent, 
+    IonCardHeader, 
+    IonCardSubtitle, 
+    IonCardTitle,
+  ],
 
 })
 export class CardInfoComponent  implements OnInit {
@@ -45,12 +54,14 @@ export class CardInfoComponent  implements OnInit {
   constructor(private modalController: ModalController) { }
 
   ngOnInit() {}
+
   async abrirDetalhesViatura(viatura: ICardInfo) {
     const modal = await this.modalController.create({
       component: VeiculoInfoModalComponent,
       componentProps: {
         viatura: viatura
       },
+      
       cssClass: 'viatura-modal-centralizado', // Classe para centralizar o modal
       backdropDismiss: true,
       showBackdrop: true

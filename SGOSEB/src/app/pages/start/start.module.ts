@@ -9,6 +9,7 @@ import { HeaderMobileComponent } from 'src/app/components/header-mobile/header-m
 import { ComponentModule } from 'src/app/component/component.module';
 import { CardInfoComponent } from 'src/app/components/card-info/card-info.component';
 import { FooterComponent } from "../../components/footer/footer.component";
+import { GraficoManutencaoComponent } from 'src/app/components/grafico-manutencao/grafico-manutencao.component';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import { FooterComponent } from "../../components/footer/footer.component";
     HeaderDesktopComponent,
     ComponentModule,
     CardInfoComponent,
-    FooterComponent
+    FooterComponent,
+    GraficoManutencaoComponent
 ],
   declarations: [StartPage]
 })
