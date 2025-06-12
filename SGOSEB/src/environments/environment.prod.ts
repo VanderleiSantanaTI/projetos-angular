@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://vsatech.com.br/EB'
+  apiUrl: 'http://vsatech.com.br/projetos-angular-backend/EB'
 };
